@@ -1,10 +1,12 @@
 package com.zj.bda.web.controller;
 
+import com.zj.bda.common.annotation.ValidatedController;
 import com.zj.bda.web.result.ViewResultUtil;
 import org.hibernate.validator.constraints.Range;
-import org.springframework.stereotype.Controller;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -12,8 +14,9 @@ import javax.validation.constraints.Min;
 /**
  * Created by Dongguabai on 2018-06-14.
  */
-@Controller
-@Validated
+//@Controller
+//@ValidatedController
+@ValidatedController
 public class Test01Controller {
 
     @RequestMapping(value = "test01")
