@@ -15,11 +15,6 @@
         <dependency>
             <groupId>com.bda</groupId>
             <version>${project.version}</version>
-            <artifactId>bda-zj-common</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.bda</groupId>
-            <version>${project.version}</version>
             <artifactId>bda-zj-persistence</artifactId>
         </dependency>
     </dependencies>

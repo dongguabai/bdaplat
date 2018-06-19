@@ -19,11 +19,6 @@
             <artifactId>bda-zj-service</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.bda</groupId>
-            <version>${project.version}</version>
-            <artifactId>bda-zj-common</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
             <version>RELEASE</version>
