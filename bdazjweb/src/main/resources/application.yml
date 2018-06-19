@@ -2,6 +2,7 @@ server:
   port: 18001
   tomcat:
     uri-encoding: UTF-8
+    max-threads: 100
 spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
