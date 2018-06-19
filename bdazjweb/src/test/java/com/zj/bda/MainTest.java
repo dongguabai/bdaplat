@@ -1,6 +1,6 @@
-package com.bda.test;
+package com.zj.bda;
 
-import com.bda.test.model.Person;
+import com.zj.bda.model.Person;
 import com.google.common.base.Objects;
 import com.zj.bda.common.util.JsonUtil;
 import com.zj.bda.web.result.ViewResultUtil;

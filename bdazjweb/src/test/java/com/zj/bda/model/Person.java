@@ -1,4 +1,4 @@
-package com.bda.test.model;
+package com.zj.bda.model;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
