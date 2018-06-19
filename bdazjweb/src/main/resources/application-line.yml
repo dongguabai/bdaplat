@@ -1,0 +1,41 @@
+server:
+  port: 18002
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 100
+
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@10.110.1.35:1521:orcl
+    username: ddqc
+    password:
+    platform: oracle
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 5
+      min-idle: 1
+      max-active: 20
+      query-timeout: 6000
+      transaction-query-timeout: 6000
+      remove-abandoned-timeout: 1800
+      filters: wall,stat
+
+mybatis:
+    type-aliases-package: com.zj.bda.persistence.entity
+    mapper-locations: classpath:mapper/*.xml
+    configuration:
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+pagehelper:
+    helperDialect: oracle
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+mapper:
+  mappers: com.zj.bda.persistence.core.mapper.BaseMapper
+  not-empty: false
+  identity: ORACLE
