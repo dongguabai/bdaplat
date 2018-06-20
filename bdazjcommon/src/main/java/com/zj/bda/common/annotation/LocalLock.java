@@ -4,6 +4,7 @@ import java.lang.annotation.*;
 
 /**
  * Created by Dongguabai on 2018-06-20 14:53
+ * 分布式下不可用
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
