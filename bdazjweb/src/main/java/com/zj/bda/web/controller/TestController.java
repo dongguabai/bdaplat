@@ -4,6 +4,7 @@ import com.zj.bda.common.exception.UnLoginException;
 import com.zj.bda.persistence.entity.UnStrTag;
 import com.zj.bda.persistence.mapper.UnStrTagMapper;
 import com.zj.bda.service.TestService;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import java.util.List;
  * Created by Dongguabai on 2018-06-10.
  */
 @RestController
+@Slf4j
 public class TestController {
     private static final Logger logger = LoggerFactory.getLogger(TestController.class);
 
