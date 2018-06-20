@@ -23,6 +23,15 @@ spring:
       transaction-query-timeout: 6000
       remove-abandoned-timeout: 1800
       filters: wall,stat
+      connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=10000
+      stat-view-servlet:
+        login-username: bda
+        login-password: bda
+        url-pattern: /druid/*
+        reset-enable: false
+      web-stat-filter:
+        url-pattern: /*
+        exclusions: "*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*"
 
 mybatis:
     type-aliases-package: com.zj.bda.persistence.entity
@@ -36,6 +45,9 @@ pagehelper:
     supportMethodsArguments: true
     params: count=countSql
 mapper:
-  mappers: com.zj.bda.persistence.core.mapper.BaseMapper
+  mappers: com.zj.bda.persistence.base.BaseMapper
   not-empty: false
   identity: ORACLE
+logging:
+  level:
+    com.zj.bda.persisitence.mapper: DEBUG

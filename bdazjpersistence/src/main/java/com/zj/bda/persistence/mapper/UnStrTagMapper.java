@@ -1,6 +1,6 @@
 package com.zj.bda.persistence.mapper;
 
-import com.zj.bda.persistence.core.mapper.BaseMapper;
+import com.zj.bda.persistence.base.BaseMapper;
 import com.zj.bda.persistence.entity.UnStrTag;
 
 /**
