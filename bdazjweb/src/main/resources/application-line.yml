@@ -10,9 +10,9 @@ spring:
     time-zone: GMT+8
   datasource:
     driver-class-name: oracle.jdbc.driver.OracleDriver
-    url: jdbc:oracle:thin:@10.110.1.35:1521:orcl
-    username: ddqc
-    password:
+    url: jdbc:oracle:thin:@127.0.0.1:1521:xe
+    username: zjbdatag
+    password: admin
     platform: oracle
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
@@ -48,5 +48,3 @@ mapper:
   mappers: com.zj.bda.persistence.base.BaseMapper
   not-empty: false
   identity: ORACLE
-logging:
-  config: classpath:bda-log.xml

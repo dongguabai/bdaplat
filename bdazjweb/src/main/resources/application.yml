@@ -1,3 +1,5 @@
 spring:
   profiles:
     active: local
+#logging:
+#  config: classpath:bda-log.xml
