@@ -13,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolation;
@@ -24,7 +23,7 @@ import java.util.Set;
  *
  * Created by Dongguabai on 2018-06-10.
  */
-@ControllerAdvice(annotations = {Controller.class, RestController.class})
+@ControllerAdvice(annotations = {Controller.class})
 public class BaseExceptionHandler {
     private static final Logger logger = LoggerFactory.getLogger(BaseExceptionHandler.class);
 
