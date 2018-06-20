@@ -48,3 +48,5 @@ mapper:
   mappers: com.zj.bda.persistence.base.BaseMapper
   not-empty: false
   identity: ORACLE
+logging:
+  config: classpath:bda-log.xml
