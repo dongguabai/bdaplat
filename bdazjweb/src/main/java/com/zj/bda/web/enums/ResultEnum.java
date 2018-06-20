@@ -5,6 +5,7 @@ package com.zj.bda.web.enums;
  */
 public enum ResultEnum {
     SUCCESS(1,"操作成功！"),
+    ERROR_NOT_FOUND(-98,"无法找到资源！请检查资源路径！"),
     ERROR_UNKNOW(-99,"系统异常！"),
     ERROR_NO_PERMISSION(-1,"权限不足！"),
     ERROR_UNLOGIN(-2,"未登录！"),

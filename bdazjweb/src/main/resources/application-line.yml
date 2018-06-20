@@ -48,6 +48,3 @@ mapper:
   mappers: com.zj.bda.persistence.base.BaseMapper
   not-empty: false
   identity: ORACLE
-logging:
-  level:
-    com.zj.bda.persisitence.mapper: DEBUG

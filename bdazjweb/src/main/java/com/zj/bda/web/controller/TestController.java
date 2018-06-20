@@ -30,13 +30,13 @@ public class TestController {
      *
      * @return
      */
-    @RequestMapping
-    public Object tets01() {
-        if (1 == 1) {
-            throw new RuntimeException("0000000000000000");
-        }
-        return "aaa";
-    }
+//    @RequestMapping
+//    public Object tets01() {
+//        if (1 == 1) {
+//            throw new RuntimeException("0000000000000000");
+//        }
+//        return "aaa";
+//    }
 
     @RequestMapping("test/b")
     public String test02() {

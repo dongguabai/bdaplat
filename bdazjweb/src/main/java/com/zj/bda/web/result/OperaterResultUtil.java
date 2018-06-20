@@ -6,7 +6,7 @@ import com.zj.bda.web.result.vo.OperaterResultVO;
 /**
  * Created by Dongguabai on 2018-06-10.
  */
-public class ViewResultUtil {
+public class OperaterResultUtil {
 
     /**
      * 成功返回
@@ -65,6 +65,6 @@ public class ViewResultUtil {
         return error(resultEnum.getCode(),resultEnum.getMessage());
     }
 
-    private ViewResultUtil() {
+    private OperaterResultUtil() {
     }
 }
