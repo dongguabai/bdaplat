@@ -10,6 +10,7 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 
 import java.lang.reflect.Method;
 import java.util.concurrent.TimeUnit;
@@ -19,6 +20,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Aspect
 @Configuration
+@Order(0)
 public class LocalLockAspect {
     private static final Cache<String, Object> LOCALLOCK_CACHES = CacheBuilder.newBuilder()
             // 最大缓存 1000 个
