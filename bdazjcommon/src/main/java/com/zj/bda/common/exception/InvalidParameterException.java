@@ -1,4 +1,4 @@
-package com.zj.bda.web.exception;
+package com.zj.bda.common.exception;
 
 /**
  * Created by Dongguabai on 2018-06-14.

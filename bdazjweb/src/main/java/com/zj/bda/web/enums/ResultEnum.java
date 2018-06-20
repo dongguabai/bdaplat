@@ -9,7 +9,8 @@ public enum ResultEnum {
     ERROR_UNKNOW(-99,"系统异常！"),
     ERROR_NO_PERMISSION(-1,"权限不足！"),
     ERROR_UNLOGIN(-2,"未登录！"),
-    ERROR_INVALID(-3,"非法参数！");
+    ERROR_INVALID(-3,"非法参数！"),
+    ERROR_LIMITED_OPERATION(-4,"该操作已被限制！");
 
     //<=0 异常-》   =0可重复请求   >0成功
     private Integer code;

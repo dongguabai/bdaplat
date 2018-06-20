@@ -1,4 +1,4 @@
-package com.zj.bda.web.exception;
+package com.zj.bda.common.exception;
 
 /**
  * 权限不足

@@ -1,13 +1,15 @@
 package com.zj.bda.web.controller;
 
+import com.zj.bda.common.annotation.LocalLock;
+import com.zj.bda.common.exception.UnLoginException;
 import com.zj.bda.persistence.entity.UnStrTag;
 import com.zj.bda.persistence.mapper.UnStrTagMapper;
 import com.zj.bda.service.TestService;
-import com.zj.bda.web.exception.UnLoginException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -46,8 +48,11 @@ public class TestController {
         return "spring boot";
     }
     @RequestMapping("test/c")
-    public Object test03() {
-        List<UnStrTag> unStrTags = unStrTagMapper.selectAll();
+    @LocalLock(key = "testc:args[222]")
+    public Object test03(@RequestParam("name")String name,@RequestParam("password") String password) throws InterruptedException {
+        System.out.println("进入Controller");
+        Thread.sleep(5000);
+         List<UnStrTag> unStrTags = unStrTagMapper.selectAll();
 
         return unStrTags;
     }

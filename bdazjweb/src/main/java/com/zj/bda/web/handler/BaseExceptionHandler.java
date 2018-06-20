@@ -1,10 +1,11 @@
 package com.zj.bda.web.handler;
 
 import com.google.common.base.Joiner;
+import com.zj.bda.common.exception.LimitedOperationException;
+import com.zj.bda.common.exception.NoPermissionException;
+import com.zj.bda.common.exception.NotFoundException;
+import com.zj.bda.common.exception.UnLoginException;
 import com.zj.bda.web.enums.ResultEnum;
-import com.zj.bda.web.exception.NoPermissionException;
-import com.zj.bda.web.exception.NotFoundException;
-import com.zj.bda.web.exception.UnLoginException;
 import com.zj.bda.web.result.OperaterResultUtil;
 import com.zj.bda.web.result.vo.OperaterResultVO;
 import org.slf4j.Logger;
@@ -46,6 +47,13 @@ public class BaseExceptionHandler {
     public OperaterResultVO handler(UnLoginException e) {
         logger.error(ResultEnum.ERROR_UNLOGIN.getMessage(), e);
         return OperaterResultUtil.error(ResultEnum.ERROR_UNLOGIN);
+    }
+
+    @ExceptionHandler(value = LimitedOperationException.class)
+    @ResponseBody
+    public OperaterResultVO handler(LimitedOperationException e) {
+        logger.error(ResultEnum.ERROR_LIMITED_OPERATION.getMessage(), e);
+        return OperaterResultUtil.error(ResultEnum.ERROR_LIMITED_OPERATION);
     }
 
     @ExceptionHandler(value = ConstraintViolationException.class)
