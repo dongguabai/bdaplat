@@ -1,5 +1,17 @@
 spring:
   profiles:
     active: local
-#logging:
-#  config: classpath:bda-log.xml
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 0
+      location:
+      max-file-size: 5MB
+      max-request-size: 10MB
+      resolve-lazily: false
+logging:
+  #config: classpath:bda-log.xml
+  level:
+    java.sql: debug
+    com.apache.ibatis: debug
+    com.zj.bda.persistence.mapper: debug
