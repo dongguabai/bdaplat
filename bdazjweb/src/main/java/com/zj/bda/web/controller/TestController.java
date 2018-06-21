@@ -51,12 +51,18 @@ public class TestController {
     @RequestMapping("test/c")
     public Object test03(@RequestParam("name")String name,@RequestParam("password") String password) throws InterruptedException {
         System.out.println("进入Controller");
-         List<UnStrTag> unStrTags = unStrTagMapper.selectAll();
+        List<UnStrTag> unStrTags = unStrTagMapper.selectAll();
 
         return unStrTags;
     }
     @RequestMapping("test/d")
     public Object test04() {
+       testService.testTrans();
+
+        return "ok";
+    }
+    @RequestMapping("login")
+    public Object test05() {
        testService.testTrans();
 
         return "ok";
