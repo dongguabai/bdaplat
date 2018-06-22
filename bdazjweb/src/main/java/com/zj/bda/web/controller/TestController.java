@@ -1,6 +1,7 @@
 package com.zj.bda.web.controller;
 
 import com.zj.bda.common.exception.UnLoginException;
+import com.zj.bda.common.util.SpringUtil;
 import com.zj.bda.persistence.entity.UnStrTag;
 import com.zj.bda.persistence.mapper.UnStrTagMapper;
 import com.zj.bda.service.TestService;
@@ -61,6 +62,14 @@ public class TestController {
 
         return "ok";
     }
+    @RequestMapping("test/e")
+    public Object test06() {
+        Object test01Controller = SpringUtil.getBean("test01Controller");
+
+
+        return test01Controller.getClass();
+    }
+
     @RequestMapping("login")
     public Object test05() {
        testService.testTrans();
