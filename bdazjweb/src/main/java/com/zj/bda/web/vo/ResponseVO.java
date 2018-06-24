@@ -1,6 +1,6 @@
-package com.zj.bda.web.result.vo;
+package com.zj.bda.web.vo;
 
-import com.zj.bda.web.enums.ResultEnum;
+import com.zj.bda.web.enums.ResponseEnum;
 
 import java.io.Serializable;
 
@@ -8,13 +8,13 @@ import java.io.Serializable;
  * Created by Dongguabai on 2018-06-13.
  * 统一返回对象
  */
-public class OperaterResultVO<T> implements Serializable {
+public class ResponseVO<T> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * 返回消息
-     * @see ResultEnum
+     * @see ResponseEnum
      */
     private String msg = "success";
 
@@ -22,7 +22,7 @@ public class OperaterResultVO<T> implements Serializable {
      * 0   : 成功
      * >0 :未定义异常
      * <0 : 自定义异常
-     * @see ResultEnum
+     * @see ResponseEnum
      */
     private Integer code = 0;
 
@@ -31,18 +31,18 @@ public class OperaterResultVO<T> implements Serializable {
      */
     private T data;
 
-    public OperaterResultVO(Integer code, String msg) {
+    public ResponseVO(Integer code, String msg) {
         this.msg = msg;
         this.code = code;
     }
 
-    public OperaterResultVO(Integer code, String msg, T data) {
+    public ResponseVO(Integer code, String msg, T data) {
         this.msg = msg;
         this.code = code;
         this.data = data;
     }
 
-    public OperaterResultVO() {
+    public ResponseVO() {
         super();
     }
 

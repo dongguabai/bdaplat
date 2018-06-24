@@ -1,15 +1,12 @@
 package com.zj.bda.web.handler;
 
 import com.google.common.base.Joiner;
-import com.zj.bda.common.exception.LimitedOperationException;
-import com.zj.bda.common.exception.NoPermissionException;
-import com.zj.bda.common.exception.NotFoundException;
-import com.zj.bda.common.exception.UnLoginException;
-import com.zj.bda.web.enums.ResultEnum;
-import com.zj.bda.web.result.OperaterResultHelper;
-import com.zj.bda.web.result.vo.OperaterResultVO;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.zj.bda.common.exception.*;
+import com.zj.bda.common.util.CusStringUtil;
+import com.zj.bda.web.enums.ResponseEnum;
+import com.zj.bda.web.helper.ResponseHelper;
+import com.zj.bda.web.vo.ResponseVO;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -21,55 +18,68 @@ import javax.validation.ConstraintViolationException;
 import java.util.Set;
 
 /**
- *
  * Created by Dongguabai on 2018-06-10.
+ * 可优化，但是要考虑Customer问题
  */
 @ControllerAdvice(annotations = {Controller.class})
+@Slf4j
 public class BaseExceptionHandler {
-    private static final Logger logger = LoggerFactory.getLogger(BaseExceptionHandler.class);
 
     @ExceptionHandler(value = NoPermissionException.class)
     @ResponseBody
-    public OperaterResultVO handler(NoPermissionException e) {
-        logger.error(ResultEnum.ERROR_NO_PERMISSION.getMessage(), e);
-        return OperaterResultHelper.error(ResultEnum.ERROR_NO_PERMISSION);
+    public ResponseVO handler(NoPermissionException e) {
+        return responseError(ResponseEnum.ERROR_NO_PERMISSION,e);
     }
 
     @ExceptionHandler(value = NotFoundException.class)
     @ResponseBody
-    public OperaterResultVO handler(NotFoundException e) {
-        logger.error(ResultEnum.ERROR_NOT_FOUND.getMessage(), e);
-        return OperaterResultHelper.error(ResultEnum.ERROR_NOT_FOUND);
+    public ResponseVO handler(NotFoundException e) {
+        return responseError(ResponseEnum.ERROR_NOT_FOUND,e);
     }
 
     @ExceptionHandler(value = UnLoginException.class)
     @ResponseBody
-    public OperaterResultVO handler(UnLoginException e) {
-        logger.error(ResultEnum.ERROR_UNLOGIN.getMessage(), e);
-        return OperaterResultHelper.error(ResultEnum.ERROR_UNLOGIN);
+    public ResponseVO handler(UnLoginException e) {
+        return responseError(ResponseEnum.ERROR_UNLOGIN,e);
     }
 
     @ExceptionHandler(value = LimitedOperationException.class)
     @ResponseBody
-    public OperaterResultVO handler(LimitedOperationException e) {
-        logger.error(ResultEnum.ERROR_LIMITED_OPERATION.getMessage(), e);
-        return OperaterResultHelper.error(ResultEnum.ERROR_LIMITED_OPERATION);
+    public ResponseVO handler(LimitedOperationException e) {
+        return responseError(ResponseEnum.ERROR_LIMITED_OPERATION,e);
+    }
+
+    @ExceptionHandler(value = RequirementExceRption.class)
+    @ResponseBody
+    public ResponseVO handler(RequirementExceRption e) {
+        return responseError(ResponseEnum.ERROR_REQUIREMENT,e,appendErrorMessage(ResponseEnum.ERROR_REQUIREMENT,e.getMessage()));
     }
 
     @ExceptionHandler(value = ConstraintViolationException.class)
     @ResponseBody
-    public OperaterResultVO handler(ConstraintViolationException e) {
+    public ResponseVO handler(ConstraintViolationException e) {
         Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
-        System.out.println(violations.iterator().next().getMessage());
-        String errorMessage=Joiner.on("").join(ResultEnum.ERROR_INVALID.getMessage(),violations.iterator().next().getMessage(),"！");
-        logger.error(errorMessage, e);
-        return OperaterResultHelper.error(ResultEnum.ERROR_INVALID.getCode(),errorMessage);
+        return responseError(ResponseEnum.ERROR_INVALID,e,appendErrorMessage(ResponseEnum.ERROR_INVALID,violations.iterator().next().getMessage()));
     }
 
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
-    public OperaterResultVO defaultErrorHandler(HttpServletRequest request, Exception e) {
-        logger.error(String.format("请求方法[%s]发生异常，错误信息：[%s]",request.getRequestURI(), e.getMessage()), e);
-        return OperaterResultHelper.error(ResultEnum.ERROR_UNKNOW);
+    public ResponseVO defaultErrorHandler(HttpServletRequest request, Exception e) {
+        log.error(String.format("请求方法[%s]发生异常，错误信息：[%s]", request.getRequestURI(), e.getMessage()), e);
+        return ResponseHelper.error(ResponseEnum.ERROR_UNKNOW);
+    }
+
+    private ResponseVO responseError(ResponseEnum re,RuntimeException e){
+        log.error(re.getMessage(), e);
+        return ResponseHelper.error(re);
+    }
+
+    private ResponseVO responseError(ResponseEnum re,RuntimeException e,String cusErrorMessage){
+        log.error(cusErrorMessage, e);
+        return ResponseHelper.error(re.getCode(),cusErrorMessage);
+    }
+
+    private String appendErrorMessage(ResponseEnum re, String cusErrorMessage) {
+        return Joiner.on("").join(re.getMessage(), CusStringUtil.ifNullReturn(cusErrorMessage), "！");
     }
 }

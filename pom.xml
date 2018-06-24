@@ -7,6 +7,7 @@
         <module>bdazjpersistence</module>
         <module>bdazjcommon</module>
         <module>bdazjservice</module>
+        <module>bdazjdgbSecurity</module>
     </modules>
     <modelVersion>4.0.0</modelVersion>
     <developers>

@@ -1,7 +1,7 @@
 package com.zj.bda.web.controller;
 
 import com.zj.bda.common.annotation.ValidatedController;
-import com.zj.bda.web.result.OperaterResultHelper;
+import com.zj.bda.web.helper.ResponseHelper;
 import org.hibernate.validator.constraints.Range;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,7 +22,7 @@ public class Test01Controller {
     @RequestMapping(value = "test01")
     @ResponseBody
     public Object test01() {
-        return OperaterResultHelper.success();
+        return ResponseHelper.success();
     }
 
     /**

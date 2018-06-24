@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration>
+<!--scan:true配置文件发生更改会重新加载（默认）scanPeriod:修改时间间隔，不指定单位默认是毫秒-->
+<configuration scan="true" scanPeriod="60 seconds">
     <!-- 文件输出格式 -->
     <property name="PATTERN" value="[%-12(%d{yyyy-MM-dd HH:mm:ss.SSS}) |-%-5level [%thread] %c [%L] -| %msg%n"/>
     <!-- 文件路径 -->
@@ -36,14 +37,21 @@
 
 
     <springProfile name="line">
-        <!-- 按照每天生成日志文件 -->
+        <!-- 会根据我们的设置对日志文件进行压缩和归档 -->
         <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <!--指定日志名称，${catalina.home}/logs的意思是当tomcat启动的时候会直接定义到tomcat下的logs文件夹下生成info.log文件对应当前appender对应的文件-->
+           <!-- <file>${catalina.home}/logs/info.log</file>-->
+            <!--指定日志文件压缩规则-->
             <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-                <!--日志文件输出的文件名-->
-                <FileNamePattern>${LINE_INFO_PATH}/info.log.%d{yyyy-MM-dd}.log</FileNamePattern>
+                <!--日志文件压缩后输出的文件名,路径可以跟上面的file标签的路径一样的，这里先不那样，一般压缩成gz结尾的-->
+                <FileNamePattern>${LINE_INFO_PATH}/info.log.%d{yyyy-MM-dd}.log.gz</FileNamePattern>
                 <!--日志文件保留天数-->
                 <MaxHistory>30</MaxHistory>
             </rollingPolicy>
+           <!--这个好像也可以指定输出，但是之前的已经可以了，先就这样吧
+           <layout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>${PATTERN}</pattern>
+            </layout>-->
             <encoder>
                 <charset>UTF-8</charset>
                 <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->

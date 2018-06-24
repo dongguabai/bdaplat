@@ -1,5 +1,6 @@
 package com.zj.bda.web.controller;
 
+import com.google.common.base.Preconditions;
 import com.zj.bda.common.exception.UnLoginException;
 import com.zj.bda.common.util.SpringUtil;
 import com.zj.bda.persistence.entity.UnStrTag;
@@ -88,6 +89,7 @@ public class TestController {
 
     @RequestMapping("login")
     public Object test05() {
+        Preconditions.checkNotNull(new String("--"));
        testService.testTrans();
 
         return "ok";
