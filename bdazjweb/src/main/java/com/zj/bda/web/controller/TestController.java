@@ -7,8 +7,6 @@ import com.zj.bda.persistence.mapper.UnStrTagMapper;
 import com.zj.bda.service.TestService;
 import lombok.extern.slf4j.Slf4j;
 import org.n3r.idworker.Sid;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,13 +20,30 @@ import java.util.List;
 @RestController
 @Slf4j
 public class TestController {
-    private static final Logger logger = LoggerFactory.getLogger(TestController.class);
+
+    @Autowired
+    TestService testService;
+
+    @RequestMapping("async2")
+    public void testAsync2(){
+        System.out.println("into   controller---");
+        testService.test();
+        System.out.println("end   controller---");
+    }
+
+
+    @Autowired
+    private TestTaskAsync testTaskAsync;
+
+    @RequestMapping("async")
+    public void testAsync(){
+        System.out.println("before============");
+        testTaskAsync.testAsync03();
+        System.out.println("after============");
+    }
 
     @Autowired
     private UnStrTagMapper unStrTagMapper;
-
-    @Autowired
-    private TestService testService;
 
     /**
      * 主要是用返回主页

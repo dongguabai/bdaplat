@@ -14,6 +14,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 //@ServletComponentScan
 @EnableAsync  //class @Component   method @Async
 @EnableScheduling
+//@EnableAspectJAutoProxy(exposeProxy = true)
 public class BdaplatApplication {
 
     public static void main(String[] args) {

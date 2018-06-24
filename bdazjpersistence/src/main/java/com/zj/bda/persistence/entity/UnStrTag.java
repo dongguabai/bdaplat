@@ -1,5 +1,8 @@
 package com.zj.bda.persistence.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -8,6 +11,8 @@ import java.util.Date;
  */
 
 @Table(name = "BDATAG_TAG_RESULT_UNSTR")
+@NoArgsConstructor
+@AllArgsConstructor
 public class UnStrTag {
 
 	@Id
@@ -50,19 +55,19 @@ public class UnStrTag {
 	@Transient
 	private String formDate;
 	
-	public UnStrTag(){}
+	//public UnStrTag(){}
 	
-	public UnStrTag(Integer tagId, String keyValue, String tagType, String tag, String active, Date actTime,
-			Date inactTime) {
-		super();
-		this.tagId = tagId;
-		this.keyValue = keyValue;
-		this.tagType = tagType;
-		this.tag = tag;
-		this.active = active;
-		this.actTime = actTime;
-		this.inactTime = inactTime;
-	}
+//	public UnStrTag(Integer tagId, String keyValue, String tagType, String tag, String active, Date actTime,
+//			Date inactTime) {
+//		super();
+//		this.tagId = tagId;
+//		this.keyValue = keyValue;
+//		this.tagType = tagType;
+//		this.tag = tag;
+//		this.active = active;
+//		this.actTime = actTime;
+//		this.inactTime = inactTime;
+//	}
 
 
 	public String getFormDate() {
