@@ -1,27 +1,29 @@
 package com.zj.bda.common.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Created by Dongguabai on 2018-06-10.
  */
+@Slf4j
 public class JsonUtil {
 
-    private static final Logger logger = LoggerFactory.getLogger(JsonUtil.class);
-
     private static final ObjectMapper objectMapper = new ObjectMapper();
+    private static final Class STRING_CLASS = String.class;
 
     /**
      * 将 Java 对象转为 JSON 字符串
      */
     public static <T> String toJSON(T obj) {
+        if (obj == null) {
+            return null;
+        }
         String jsonStr;
         try {
-            jsonStr = objectMapper.writeValueAsString(obj);
+            jsonStr = obj instanceof String ? (String) obj : objectMapper.writeValueAsString(obj);
         } catch (Exception e) {
-            logger.error("Java 转 JSON 出错！", e);
+            log.error("Java 转 JSON 出错！", e);
             throw new RuntimeException(e);
         }
         return jsonStr;
@@ -31,13 +33,17 @@ public class JsonUtil {
      * 将 JSON 字符串转为 Java 对象
      */
     public static <T> T fromJSON(String json, Class<T> type) {
+        if (CusObjectUtil.isContainsNull(json, type)) {
+            return null;
+        }
         T obj;
         try {
-            obj = objectMapper.readValue(json, type);
+            obj = type.equals(STRING_CLASS) ? (T) json : objectMapper.readValue(json, type);
         } catch (Exception e) {
-            logger.error("JSON 转 Java 出错！", e);
+            log.error("JSON 转 Java 出错！", e);
             throw new RuntimeException(e);
         }
         return obj;
     }
+
 }

@@ -23,13 +23,13 @@
     <packaging>pom</packaging>
 
     <name>bdaplat</name>
-<!--
-    web-common
-    web-service
+    <!--
+        web-common
+        web-service
 
-    service-common
-    servpersistenceence
--->
+        service-common
+        servpersistenceence
+    -->
 
     <parent>
         <groupId>org.springframework.boot</groupId>

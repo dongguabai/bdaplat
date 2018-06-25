@@ -3,12 +3,14 @@ package com.zj.bda.common.util;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 /**
  * Created by Dongguabai on 2018-06-22 14:44
  */
 @Component
+@Lazy(false)
 public class SpringUtil implements ApplicationContextAware {
 
     private static ApplicationContext applicationContext;
