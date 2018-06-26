@@ -9,14 +9,15 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>bda-zj-service</artifactId>
-    <packaging>jar</packaging>
+    <artifactId>dgb-schedule</artifactId>
+
     <dependencies>
         <dependency>
             <groupId>com.bda</groupId>
             <version>${com.zj.bda}</version>
-            <artifactId>dgb-schedule</artifactId>
+            <artifactId>bda-zj-persistence</artifactId>
         </dependency>
+
     </dependencies>
 
 </project>

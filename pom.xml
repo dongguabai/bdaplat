@@ -8,6 +8,7 @@
         <module>bdazjcommon</module>
         <module>bdazjservice</module>
         <module>dgbsecurity</module>
+        <module>dgbschedule</module>
     </modules>
     <modelVersion>4.0.0</modelVersion>
     <developers>
@@ -49,6 +50,13 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <!-- 移除嵌入式tomcat插件，war用 -->
+           <!-- <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>-->
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -72,7 +80,7 @@
         </dependency>
     </dependencies>
 
-    <build>
+   <!-- <build>
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -85,6 +93,6 @@
                 </plugin>
             </plugins>
         </pluginManagement>
-    </build>
+    </build>-->
 
 </project>

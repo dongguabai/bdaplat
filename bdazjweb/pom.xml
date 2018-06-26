@@ -11,6 +11,8 @@
 
     <artifactId>bda-zj-web</artifactId>
     <packaging>jar</packaging>
+    <!--war用-->
+    <!--<packaging>war</packaging>-->
 
     <dependencies>
         <dependency>
@@ -28,11 +30,12 @@
             <artifactId>annotations</artifactId>
             <version>RELEASE</version>
         </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
+        <!--war用-->
+        <!--<dependency>-->
+            <!--<groupId>javax.servlet</groupId>-->
+            <!--<artifactId>javax.servlet-api</artifactId>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
     </dependencies>
 
     <build>
@@ -52,6 +55,7 @@
                 </executions>
             </plugin>
         </plugins>
+        <finalName>bdaplat</finalName>
     </build>
 
 </project>

@@ -9,6 +9,10 @@ spring:
       max-file-size: 5MB
       max-request-size: 10MB
       resolve-lazily: false
+  security:
+    user:
+      name: bda
+      password: bda
 logging:
   #config: classpath:bda-log.xml
   level:
