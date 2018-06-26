@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.bda</groupId>
-            <version>${project.version}</version>
+            <version>${com.zj.bda}</version>
             <artifactId>bda-zj-persistence</artifactId>
         </dependency>
     </dependencies>

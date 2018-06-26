@@ -16,7 +16,7 @@
 
         <dependency>
             <groupId>com.bda</groupId>
-            <version>${project.version}</version>
+            <version>${com.zj.bda}</version>
             <artifactId>bda-zj-common</artifactId>
         </dependency>
 

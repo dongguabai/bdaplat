@@ -7,7 +7,7 @@
         <module>bdazjpersistence</module>
         <module>bdazjcommon</module>
         <module>bdazjservice</module>
-        <module>bdazjdgbSecurity</module>
+        <module>dgbsecurity</module>
     </modules>
     <modelVersion>4.0.0</modelVersion>
     <developers>
@@ -39,6 +39,7 @@
     </parent>
 
     <properties>
+        <com.zj.bda>1.0.0-SNAPSHOT</com.zj.bda>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>

@@ -15,8 +15,13 @@
     <dependencies>
         <dependency>
             <groupId>com.bda</groupId>
-            <version>${project.version}</version>
+            <version>${com.zj.bda}</version>
             <artifactId>bda-zj-service</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.bda</groupId>
+            <version>${com.zj.bda}</version>
+            <artifactId>dgb-security</artifactId>
         </dependency>
         <dependency>
             <groupId>org.jetbrains</groupId>
