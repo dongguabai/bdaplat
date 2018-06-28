@@ -1,7 +1,7 @@
 package com.zj.bda.web.controller;
 
 import com.zj.bda.common.annotation.ValidatedController;
-import com.zj.bda.web.helper.ResponseHelper;
+import com.zj.bda.web.grace.helper.ResponseHelper;
 import org.hibernate.validator.constraints.Range;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

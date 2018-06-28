@@ -1,6 +1,6 @@
-package com.zj.bda.web.vo;
+package com.zj.bda.web.grace.vo;
 
-import com.zj.bda.web.enums.ResponseEnum;
+import com.zj.bda.web.grace.constant.enums.ResponseEnum;
 
 import java.io.Serializable;
 

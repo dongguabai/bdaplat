@@ -1,7 +1,9 @@
-package com.zj.bda.web.config;
+package com.zj.bda.web.grace.config;
 
-import com.zj.bda.web.interceptor.HttpInterceptor;
+import com.zj.bda.web.grace.converter.DateConverter;
+import com.zj.bda.web.grace.interceptor.HttpInterceptor;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -10,6 +12,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 @Configuration
 public class WebMvcConfiguration implements WebMvcConfigurer {
+
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addConverter(new DateConverter());
+    }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {

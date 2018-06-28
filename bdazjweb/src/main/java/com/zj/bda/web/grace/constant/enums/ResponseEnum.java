@@ -1,4 +1,4 @@
-package com.zj.bda.web.enums;
+package com.zj.bda.web.grace.constant.enums;
 
 /**返回结果Enum
  * Created by Dongguabai on 2018-06-10.

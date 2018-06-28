@@ -9,21 +9,37 @@ import com.zj.bda.service.TestService;
 import lombok.extern.slf4j.Slf4j;
 import org.n3r.idworker.Sid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import tk.mybatis.mapper.entity.Example;
 
+import java.util.Date;
 import java.util.List;
 
 /**
  * Created by Dongguabai on 2018-06-10.
  */
-@RestController
+@Controller
 @Slf4j
 public class TestController {
 
     @Autowired
     TestService testService;
+
+    @RequestMapping("testDate")
+    public void testDate(@RequestParam("test")Date test){
+        String s1 = test.toLocaleString();
+        System.out.println(s1);
+    }
+
+
+
+    @RequestMapping("html")
+    public Object testhtml(){
+       return "register.html";
+    }
+
 
     @RequestMapping("async2")
     public void testAsync2(){
@@ -97,6 +113,7 @@ public class TestController {
 
     @RequestMapping("test/f")
     public Object test07() {
+        Example ep = new Example(UnStrTag.class);
         for (int i = 0; i <200 ; i++) {
             String next = Sid.next();
             System.out.println(next);

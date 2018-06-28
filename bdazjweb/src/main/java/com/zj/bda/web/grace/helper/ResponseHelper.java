@@ -1,7 +1,7 @@
-package com.zj.bda.web.helper;
+package com.zj.bda.web.grace.helper;
 
-import com.zj.bda.web.enums.ResponseEnum;
-import com.zj.bda.web.vo.ResponseVO;
+import com.zj.bda.web.grace.constant.enums.ResponseEnum;
+import com.zj.bda.web.grace.vo.ResponseVO;
 
 /**
  * Created by Dongguabai on 2018-06-10.
