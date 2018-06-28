@@ -23,7 +23,7 @@ import java.util.Set;
  */
 @ControllerAdvice(annotations = {Controller.class})
 @Slf4j
-public class BaseExceptionHandler {
+public class GlobalExceptionHandler {
 
     @ExceptionHandler(value = NoPermissionException.class)
     @ResponseBody
@@ -49,9 +49,9 @@ public class BaseExceptionHandler {
         return responseError(ResponseEnum.ERROR_LIMITED_OPERATION,e);
     }
 
-    @ExceptionHandler(value = RequirementExceRption.class)
+    @ExceptionHandler(value = RequirementException.class)
     @ResponseBody
-    public ResponseVO handler(RequirementExceRption e) {
+    public ResponseVO handler(RequirementException e) {
         return responseError(ResponseEnum.ERROR_REQUIREMENT,e,appendErrorMessage(ResponseEnum.ERROR_REQUIREMENT,e.getMessage()));
     }
 

@@ -1,6 +1,6 @@
 package com.zj.bda.common.util;
 
-import com.zj.bda.common.exception.RequirementExceRption;
+import com.zj.bda.common.exception.RequirementException;
 
 import java.util.Map;
 
@@ -20,7 +20,7 @@ public class RequirementUtil {
      */
     public static void notNull(Object obj, String message) {
         if (obj == null) {
-            throw new RequirementExceRption(message);
+            throw new RequirementException(message);
         }
     }
 
@@ -42,7 +42,7 @@ public class RequirementUtil {
     public static void notEmpty(Map<?, ?> map, String message) {
         notNull(map, message);
         if (map.isEmpty()) {
-            throw new RequirementExceRption(message);
+            throw new RequirementException(message);
         }
     }
 

@@ -5,8 +5,10 @@ package com.zj.bda.common.bean;
  */
 public class PageBean {
 
-    private int currentPage; // 当前页页码
-    private int rows; // 每页显示条数
+    // 当前页页码
+    private int currentPage;
+    // 每页显示条数
+    private int rows;
 
     public int getCurrentPage() {
         return currentPage;

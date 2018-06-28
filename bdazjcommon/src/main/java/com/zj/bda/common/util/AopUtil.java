@@ -9,8 +9,13 @@ import java.lang.reflect.Method;
 /**
  * Created by Dongguabai on 2018-06-15.
  */
-public class AOPUtil {
+public class AopUtil {
 
+    /**
+     * 获取当前方法对象
+     * @param joinPoint
+     * @return
+     */
     public static Method getTargetMethodByJoinPoint(JoinPoint joinPoint){
         Signature signature = joinPoint.getSignature();
         MethodSignature methodSignature = (MethodSignature)signature;
@@ -18,5 +23,5 @@ public class AOPUtil {
         return targetMethod;
     }
 
-    private AOPUtil(){}
+    private AopUtil(){}
 }

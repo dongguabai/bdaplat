@@ -1,7 +1,6 @@
 package com.zj.bda.persistence.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -13,6 +12,9 @@ import java.util.Date;
 @Table(name = "BDATAG_TAG_RESULT_UNSTR")
 @NoArgsConstructor
 @AllArgsConstructor
+@Setter
+@Getter
+@ToString
 public class UnStrTag {
 
 	@Id

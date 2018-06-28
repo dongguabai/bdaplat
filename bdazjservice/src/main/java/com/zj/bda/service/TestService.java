@@ -5,12 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 /**
  * Created by Dongguabai on 2018-06-19 11:15
  */
 @Service
-@Transactional
+@Transactional(rollbackFor = Exception.class)
 public class TestService {
 
     public void test(){
@@ -29,6 +30,7 @@ public class TestService {
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             e.printStackTrace();
         }
         System.out.println("test02执行------------------");

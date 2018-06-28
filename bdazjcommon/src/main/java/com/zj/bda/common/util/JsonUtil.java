@@ -4,12 +4,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * Created by Dongguabai on 2018-06-10.
+ * @author Dongguabai
  */
 @Slf4j
 public class JsonUtil {
 
-    private static final ObjectMapper objectMapper = new ObjectMapper();
+    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
     private static final Class STRING_CLASS = String.class;
 
     /**
@@ -21,7 +21,7 @@ public class JsonUtil {
         }
         String jsonStr;
         try {
-            jsonStr = obj instanceof String ? (String) obj : objectMapper.writeValueAsString(obj);
+            jsonStr = obj instanceof String ? (String) obj : OBJECT_MAPPER.writeValueAsString(obj);
         } catch (Exception e) {
             log.error("Java 转 JSON 出错！", e);
             throw new RuntimeException(e);
@@ -38,7 +38,7 @@ public class JsonUtil {
         }
         T obj;
         try {
-            obj = type.equals(STRING_CLASS) ? (T) json : objectMapper.readValue(json, type);
+            obj = type.equals(STRING_CLASS) ? (T) json : OBJECT_MAPPER.readValue(json, type);
         } catch (Exception e) {
             log.error("JSON 转 Java 出错！", e);
             throw new RuntimeException(e);
