@@ -1,4 +1,4 @@
-package com.zj.bda.common.constant.enums;
+package com.zj.bda.common.cache.constant.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

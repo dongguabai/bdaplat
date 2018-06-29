@@ -1,8 +1,8 @@
 package com.zj.bda.web.controller;
 
-import com.zj.bda.common.annotation.LocalLock;
+import com.zj.bda.common.unspecific.annotation.LocalLock;
 import com.zj.bda.common.exception.UnLoginException;
-import com.zj.bda.common.util.SpringUtil;
+import com.zj.bda.common.unspecific.util.SpringUtil;
 import com.zj.bda.common.verification.util.ValidateUtil;
 import com.zj.bda.persistence.entity.UnStrTag;
 import com.zj.bda.persistence.mapper.UnStrTagMapper;

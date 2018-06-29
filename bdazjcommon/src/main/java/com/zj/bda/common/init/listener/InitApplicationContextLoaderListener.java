@@ -1,4 +1,4 @@
-package com.zj.bda.common.listener;
+package com.zj.bda.common.init.listener;
 
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;

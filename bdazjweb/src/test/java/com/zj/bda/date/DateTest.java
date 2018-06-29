@@ -1,6 +1,6 @@
 package com.zj.bda.date;
 
-import com.zj.bda.common.util.DateUtil;
+import com.zj.bda.common.unspecific.util.DateUtil;
 import org.junit.Test;
 
 import java.time.LocalDate;

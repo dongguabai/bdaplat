@@ -1,4 +1,4 @@
-package com.zj.bda.common.util;
+package com.zj.bda.common.unspecific.util;
 
 import com.zj.bda.common.exception.RequirementException;
 

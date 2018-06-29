@@ -1,4 +1,4 @@
-package com.zj.bda.common.util;
+package com.zj.bda.common.unspecific.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;

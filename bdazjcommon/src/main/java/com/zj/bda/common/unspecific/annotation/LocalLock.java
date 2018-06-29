@@ -1,4 +1,4 @@
-package com.zj.bda.common.annotation;
+package com.zj.bda.common.unspecific.annotation;
 
 import java.lang.annotation.*;
 

@@ -1,4 +1,4 @@
-package com.zj.bda.common.util;
+package com.zj.bda.common.unspecific.util;
 
 /**
  * Created by Dongguabai on 2018-06-24 23:50
