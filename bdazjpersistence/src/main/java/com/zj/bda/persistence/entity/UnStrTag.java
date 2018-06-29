@@ -15,6 +15,7 @@ import java.util.Date;
 @Setter
 @Getter
 @ToString
+@Builder
 public class UnStrTag {
 
 	@Id

@@ -1,8 +1,13 @@
 package com.zj.bda.web.grace.constant.enums;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 /**返回结果Enum
  * Created by Dongguabai on 2018-06-10.
  */
+@AllArgsConstructor
+@Getter
 public enum ResponseEnum {
     /**
      * 操作成功
@@ -41,16 +46,4 @@ public enum ResponseEnum {
     private Integer code;
     private String message;
 
-    ResponseEnum(Integer code, String message) {
-        this.code = code;
-        this.message = message;
-    }
-
-    public Integer getCode() {
-        return code;
-    }
-
-    public String getMessage() {
-        return message;
-    }
 }

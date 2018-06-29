@@ -8,6 +8,10 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import tk.mybatis.spring.annotation.MapperScan;
 
+/**
+ * @author Dongguabai
+ * @date 2018-06-29 19:03
+ */
 @SpringBootApplication
 @ComponentScan(basePackages = {"com.zj.bda"})
 @MapperScan(basePackages = "com.zj.bda.persistence.mapper")

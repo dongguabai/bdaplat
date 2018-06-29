@@ -1,6 +1,7 @@
 package com.zj.bda.web.controller;
 
 import com.google.common.base.Preconditions;
+import com.zj.bda.common.annotation.LocalLock;
 import com.zj.bda.common.exception.UnLoginException;
 import com.zj.bda.common.util.SpringUtil;
 import com.zj.bda.persistence.entity.UnStrTag;
@@ -112,7 +113,9 @@ public class TestController {
     }
 
     @RequestMapping("test/f")
+    @LocalLock(key = "")
     public Object test07() {
+        int i2 = 1/0;
         Example ep = new Example(UnStrTag.class);
         for (int i = 0; i <200 ; i++) {
             String next = Sid.next();

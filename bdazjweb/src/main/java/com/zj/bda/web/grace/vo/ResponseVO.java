@@ -11,19 +11,11 @@ import java.io.Serializable;
  */
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @Setter
 @Getter
 public class ResponseVO<T> implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    /**
-     * 返回消息
-     *
-     * @see ResponseEnum
-     */
-    private String msg;
 
     /**
      * 0   : 成功
@@ -33,6 +25,13 @@ public class ResponseVO<T> implements Serializable {
      * @see ResponseEnum
      */
     private Integer code;
+
+    /**
+     * 返回消息
+     *
+     * @see ResponseEnum
+     */
+    private String msg;
 
     /**
      * 返回数据

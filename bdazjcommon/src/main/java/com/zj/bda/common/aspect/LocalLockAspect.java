@@ -3,6 +3,7 @@ package com.zj.bda.common.aspect;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.zj.bda.common.annotation.LocalLock;
+import com.zj.bda.common.constant.enums.CacheExpireTimeEnum;
 import com.zj.bda.common.exception.LimitedOperationException;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -13,7 +14,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 
 import java.lang.reflect.Method;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Dongguabai on 2018-06-20 14:55
@@ -28,7 +28,7 @@ public class LocalLockAspect {
             //设置并发数为5，即同一时间最多只能有5个线程往cache执行写入操作
             .concurrencyLevel(5)
             // 设置写缓存后 5 秒钟过期
-            .expireAfterWrite(5, TimeUnit.SECONDS)
+            .expireAfterWrite(CacheExpireTimeEnum.LOCAL_LOCK.getTime(),CacheExpireTimeEnum.LOCAL_LOCK.getTimeUnit())
             .build();
 
     @Around("execution(public * *(..)) && @annotation(com.zj.bda.common.annotation.LocalLock)")
@@ -47,7 +47,8 @@ public class LocalLockAspect {
         try {
             return pjp.proceed();
         } catch (Throwable throwable) {
-            throw new LimitedOperationException();
+            throwable.printStackTrace();
+            throw new RuntimeException();
         } finally {
             LOCALLOCK_CACHES.invalidate(key);
         }
@@ -63,4 +64,6 @@ public class LocalLockAspect {
     private String getKey(String keyExpress, Object[] args) {
         return new StringBuilder(StringUtils.join(args,"-")).append(keyExpress).toString();
     }
+
+
 }
