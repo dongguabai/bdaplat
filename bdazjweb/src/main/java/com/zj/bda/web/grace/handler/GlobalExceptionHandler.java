@@ -55,6 +55,22 @@ public class GlobalExceptionHandler {
         return responseError(ResponseEnum.ERROR_REQUIREMENT,e,appendErrorMessage(ResponseEnum.ERROR_REQUIREMENT,e.getMessage()));
     }
 
+    /**
+     * 非法参数
+     * @param e
+     * @return
+     */
+    @ExceptionHandler(value = InvalidParameterException.class)
+    @ResponseBody
+    public ResponseVO handler(InvalidParameterException e) {
+        return responseError(ResponseEnum.ERROR_INVALID,e,appendErrorMessage(ResponseEnum.ERROR_INVALID,e.getMessage()));
+    }
+
+    /**
+     * 非法参数
+     * @param e
+     * @return
+     */
     @ExceptionHandler(value = ConstraintViolationException.class)
     @ResponseBody
     public ResponseVO handler(ConstraintViolationException e) {
@@ -80,6 +96,6 @@ public class GlobalExceptionHandler {
     }
 
     private String appendErrorMessage(ResponseEnum re, String cusErrorMessage) {
-        return Joiner.on("").join(re.getMessage(), CusStringUtil.ifNullReturn(cusErrorMessage), "！");
+        return Joiner.on("").join(re.getMessage(), CusStringUtil.ifNullReturnEmpty(cusErrorMessage), "！");
     }
 }

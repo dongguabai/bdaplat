@@ -9,7 +9,7 @@ public class CusStringUtil {
         return checkedStr==null?re:checkedStr;
     }
 
-    public static String ifNullReturn(String checkedStr){
+    public static String ifNullReturnEmpty(String checkedStr){
         return checkedStr==null?"":checkedStr;
     }
 

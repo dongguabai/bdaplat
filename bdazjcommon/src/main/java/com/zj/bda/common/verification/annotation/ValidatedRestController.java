@@ -1,4 +1,4 @@
-package com.zj.bda.common.annotation;
+package com.zj.bda.common.verification.annotation;
 
 
 import org.springframework.validation.annotation.Validated;

@@ -1,9 +1,9 @@
 package com.zj.bda.web.controller;
 
-import com.google.common.base.Preconditions;
 import com.zj.bda.common.annotation.LocalLock;
 import com.zj.bda.common.exception.UnLoginException;
 import com.zj.bda.common.util.SpringUtil;
+import com.zj.bda.common.verification.util.ValidateUtil;
 import com.zj.bda.persistence.entity.UnStrTag;
 import com.zj.bda.persistence.mapper.UnStrTagMapper;
 import com.zj.bda.service.TestService;
@@ -11,10 +11,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.n3r.idworker.Sid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import tk.mybatis.mapper.entity.Example;
 
+import javax.validation.Valid;
 import java.util.Date;
 import java.util.List;
 
@@ -105,9 +108,14 @@ public class TestController {
     }
 
     @RequestMapping("login")
-    public Object test05() {
-        Preconditions.checkNotNull(new String("--"));
-       testService.testTrans();
+    public Object test05(@Valid User user,BindingResult result) {
+        ValidateUtil.validateModel(result);
+        if(result.hasErrors()){
+            for (ObjectError error : result.getAllErrors()) {
+                System.out.println(error.getDefaultMessage());
+            }
+        }
+     //  testService.testTrans();
 
         return "ok";
     }
