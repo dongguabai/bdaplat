@@ -19,9 +19,9 @@ public class HttpInterceptor implements HandlerInterceptor{
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        System.out.println("pre---------");
+        System.out.println("开始拦截---------");
         String uri = request.getRequestURI();
-        System.out.println(uri);
+        System.out.println("拦截的uri："+uri);
         return true;
     }
 
@@ -30,7 +30,7 @@ public class HttpInterceptor implements HandlerInterceptor{
      */
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, @Nullable ModelAndView modelAndView) throws Exception {
-        System.out.println("after---------");
+        System.out.println("请求完成后---------");
     }
 
     /**

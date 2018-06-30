@@ -1,5 +1,6 @@
 package com.zj.bda.web.grace.config;
 
+import com.google.common.collect.Lists;
 import com.zj.bda.web.grace.converter.DateConverter;
 import com.zj.bda.web.grace.interceptor.HttpInterceptor;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +21,6 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new HttpInterceptor()).addPathPatterns("/**");
+        registry.addInterceptor(new HttpInterceptor()).addPathPatterns("/**").excludePathPatterns(Lists.newArrayList("/css/**", "/img/**", "/js/**","/**/*.html"));
     }
 }
