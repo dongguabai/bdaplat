@@ -5,4 +5,10 @@ package com.zj.bda.async;
  */
 public abstract class ABC {
    public abstract void getAA();
+
+   private static Boolean a;
+
+   public static void main(String[] args) {
+      System.out.println(a);
+   }
 }

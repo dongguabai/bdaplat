@@ -13,11 +13,15 @@ spring:
     user:
       name: bda
       password: bda
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
 #  cache:
 #    type: ehcache
 #    ehcache:
 #      config: classpath:
-
 logging:
   #config: classpath:bda-log.xml
   level:
