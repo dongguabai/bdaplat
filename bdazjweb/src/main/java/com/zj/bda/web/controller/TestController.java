@@ -2,6 +2,7 @@ package com.zj.bda.web.controller;
 
 import com.zj.bda.common.unspecific.annotation.LocalLock;
 import com.zj.bda.common.exception.UnLoginException;
+import com.zj.bda.common.unspecific.util.JsonUtil;
 import com.zj.bda.common.unspecific.util.SpringUtil;
 import com.zj.bda.common.verification.util.ValidateUtil;
 import com.zj.bda.persistence.entity.UnStrTag;
@@ -87,11 +88,11 @@ public class TestController {
         return "spring boot";
     }
     @RequestMapping("test/c")
-    public Object test03(@RequestParam("name")String name,@RequestParam("password") String password) throws InterruptedException {
+    public String test03() {
         System.out.println("进入Controller");
         List<UnStrTag> unStrTags = unStrTagMapper.selectAll();
 
-        return unStrTags;
+        return JsonUtil.toJSON(unStrTags);
     }
     @RequestMapping("test/d")
     public Object test04() {
