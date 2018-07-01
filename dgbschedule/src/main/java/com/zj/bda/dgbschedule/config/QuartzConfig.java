@@ -3,6 +3,7 @@ package com.zj.bda.dgbschedule.config;
 import com.zj.bda.dgbschedule.job.fixedjob.QuartzTest01;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.quartz.CronTriggerFactoryBean;
 import org.springframework.scheduling.quartz.JobDetailFactoryBean;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.scheduling.quartz.SimpleTriggerFactoryBean;
@@ -26,19 +27,53 @@ public class QuartzConfig {
         return jobDetailFactory;
     }
 
+    /**
+     * 设置SimpleTrigger
+     * @param jobDetailFactory
+     * @return
+     */
     @Bean
     public SimpleTriggerFactoryBean simpleTriggerFactoryBean(JobDetailFactoryBean jobDetailFactory){
         SimpleTriggerFactoryBean simpleTriggerFactory = new SimpleTriggerFactoryBean();
         simpleTriggerFactory.setJobDetail(jobDetailFactory.getObject());
+        //设置间隔时间
         simpleTriggerFactory.setRepeatInterval(2000);
+        //设置重复次数
         simpleTriggerFactory.setRepeatCount(20);
         return simpleTriggerFactory;
     }
 
-    @Bean
+    /**
+     * 将SimpleTrigger加入SchedulerFactoryBean
+     * @param simpleTriggerFactory
+     * @return
+     */
+  /*  @Bean
     public SchedulerFactoryBean schedulerFactoryBean(SimpleTriggerFactoryBean simpleTriggerFactory){
         SchedulerFactoryBean schedulerFactory = new SchedulerFactoryBean();
         schedulerFactory.setTriggers(simpleTriggerFactory.getObject());
         return schedulerFactory;
+    }*/
+
+    @Bean
+    public CronTriggerFactoryBean cronTriggerFactoryBean(JobDetailFactoryBean jobDetailFactoryBean){
+        CronTriggerFactoryBean factory = new CronTriggerFactoryBean();
+        factory.setJobDetail(jobDetailFactoryBean.getObject());
+        //设置触发时间，每3秒执行一次
+        factory.setCronExpression("0/3 * * * * ?");
+        return factory;
     }
+
+    /**
+     * 3.创建Scheduler对象
+     */
+    @Bean
+    public SchedulerFactoryBean schedulerFactoryBean(CronTriggerFactoryBean cronTriggerFactoryBean){
+        SchedulerFactoryBean factory = new SchedulerFactoryBean();
+        //关联trigger
+        factory.setTriggers(cronTriggerFactoryBean.getObject());
+
+        return factory;
+    }
+
 }
