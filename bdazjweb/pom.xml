@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>bda-zj-web</artifactId>
+    <!--war注-->
     <packaging>jar</packaging>
     <!--war用-->
     <!--<packaging>war</packaging>-->
@@ -31,11 +32,11 @@
             <version>RELEASE</version>
         </dependency>
         <!--war用-->
-        <!--<dependency>-->
-            <!--<groupId>javax.servlet</groupId>-->
-            <!--<artifactId>javax.servlet-api</artifactId>-->
-            <!--<scope>provided</scope>-->
-        <!--</dependency>-->
+        <!--<dependency>
+           <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>-->
     </dependencies>
 
     <build>
@@ -53,6 +54,14 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
             </plugin>
         </plugins>
         <finalName>bdaplat</finalName>

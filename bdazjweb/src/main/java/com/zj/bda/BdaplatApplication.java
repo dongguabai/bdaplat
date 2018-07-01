@@ -1,6 +1,6 @@
 package com.zj.bda;
 
-import com.zj.bda.common.init.listener.InitApplicationContextLoaderListener;
+import com.zj.bda.web.grace.init.listener.InitApplicationContextLoaderListener;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
@@ -31,8 +31,8 @@ public class BdaplatApplication {
     }
 }
 //war用
-/*
-public class BdaplatApplication extends SpringBootServletInitializer {
+
+/*public class BdaplatApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
 

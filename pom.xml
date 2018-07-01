@@ -24,14 +24,6 @@
     <packaging>pom</packaging>
 
     <name>bdaplat</name>
-    <!--
-        web-common
-        web-service
-
-        service-common
-        servpersistenceence
-    -->
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -51,7 +43,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <!-- 移除嵌入式tomcat插件，war用 -->
-           <!-- <exclusions>
+          <!-- <exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-starter-tomcat</artifactId>
@@ -87,20 +79,5 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-   <!-- <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <configuration>
-                        <source>1.8</source>
-                        <target>1.8</target>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>-->
 
 </project>
