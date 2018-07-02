@@ -1,5 +1,7 @@
 package com.zj.bda.common.unspecific.util;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.reflect.MethodSignature;
@@ -9,6 +11,7 @@ import java.lang.reflect.Method;
 /**
  * Created by Dongguabai on 2018-06-15.
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class AopUtil {
 
     /**
@@ -23,5 +26,4 @@ public class AopUtil {
         return targetMethod;
     }
 
-    private AopUtil(){}
 }

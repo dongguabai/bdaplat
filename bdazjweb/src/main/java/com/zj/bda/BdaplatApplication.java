@@ -3,6 +3,7 @@ package com.zj.bda;
 import com.zj.bda.web.grace.init.listener.InitApplicationContextLoaderListener;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -18,6 +19,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 //@ServletComponentScan
 @EnableAsync  //class @Component   method @Async
 @EnableScheduling
+@EnableCaching  // @Cacheable(value = "localCache",unless="#result == null")    @CacheEvict(value = "localCache",key = "#user.userName",beforeInvocation = false)
 //@EnableAspectJAutoProxy(exposeProxy = true)  开启cglib代理，并且AopContext可以获取代理对象
 public class BdaplatApplication {
 

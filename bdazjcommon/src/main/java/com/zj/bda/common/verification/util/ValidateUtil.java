@@ -1,6 +1,8 @@
 package com.zj.bda.common.verification.util;
 
 import com.zj.bda.common.exception.InvalidParameterException;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.springframework.validation.BindingResult;
 
 /**
@@ -9,6 +11,7 @@ import org.springframework.validation.BindingResult;
  * 主要是拥有校验model参数
  * 类似（@RequestBody @Valid User user,BindingResult result，@Valid User user,BindingResult result)即可
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ValidateUtil {
 
     public static void validateModel(BindingResult result){
@@ -17,6 +20,4 @@ public class ValidateUtil {
         }
     }
 
-    private ValidateUtil() {
-    }
 }

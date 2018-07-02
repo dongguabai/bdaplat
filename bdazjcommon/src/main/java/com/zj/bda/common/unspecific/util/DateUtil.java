@@ -1,20 +1,20 @@
 package com.zj.bda.common.unspecific.util;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
  * Created by Dongguabai on 2018-06-22 16:23
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class DateUtil {
     /**
      * 获取默认时间格式: yyyy-MM-dd HH:mm:ss
      */
     private static final DateTimeFormatter DEFAULT_DATETIME_FORMATTER = TimeFormat.LONG_DATE_PATTERN_LINE.formatter;
-
-    private DateUtil() {
-        // no construct function
-    }
 
     /**
      * String 转时间

@@ -1,5 +1,7 @@
 package com.zj.bda.common.unspecific.util;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Lazy(false)
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class SpringUtil implements ApplicationContextAware {
 
     private static ApplicationContext applicationContext;
@@ -40,8 +43,5 @@ public class SpringUtil implements ApplicationContextAware {
         if (SpringUtil.applicationContext == null) {
             SpringUtil.applicationContext = applicationContext;
         }
-    }
-
-    private SpringUtil() {
     }
 }

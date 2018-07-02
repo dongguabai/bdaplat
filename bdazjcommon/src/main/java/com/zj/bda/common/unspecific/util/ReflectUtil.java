@@ -1,5 +1,7 @@
 package com.zj.bda.common.unspecific.util;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Method;
@@ -9,6 +11,7 @@ import java.lang.reflect.Method;
  * @date 2018-07-01 14:59
  */
 @Slf4j
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ReflectUtil {
 
     /**
@@ -25,6 +28,4 @@ public class ReflectUtil {
         return method;
     }
 
-    private ReflectUtil() {
-    }
 }

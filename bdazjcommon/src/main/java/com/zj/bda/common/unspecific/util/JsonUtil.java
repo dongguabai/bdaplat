@@ -1,12 +1,15 @@
 package com.zj.bda.common.unspecific.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author Dongguabai
  */
 @Slf4j
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class JsonUtil {
 
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();

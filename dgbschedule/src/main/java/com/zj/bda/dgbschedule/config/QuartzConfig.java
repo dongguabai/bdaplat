@@ -3,7 +3,6 @@ package com.zj.bda.dgbschedule.config;
 import com.zj.bda.dgbschedule.job.fixedjob.QuartzTest01;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.scheduling.quartz.CronTriggerFactoryBean;
 import org.springframework.scheduling.quartz.JobDetailFactoryBean;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.scheduling.quartz.SimpleTriggerFactoryBean;
@@ -48,14 +47,14 @@ public class QuartzConfig {
      * @param simpleTriggerFactory
      * @return
      */
-  /*  @Bean
+   @Bean
     public SchedulerFactoryBean schedulerFactoryBean(SimpleTriggerFactoryBean simpleTriggerFactory){
         SchedulerFactoryBean schedulerFactory = new SchedulerFactoryBean();
         schedulerFactory.setTriggers(simpleTriggerFactory.getObject());
         return schedulerFactory;
-    }*/
+    }
 
-    @Bean
+/*    @Bean
     public CronTriggerFactoryBean cronTriggerFactoryBean(JobDetailFactoryBean jobDetailFactoryBean){
         CronTriggerFactoryBean factory = new CronTriggerFactoryBean();
         factory.setJobDetail(jobDetailFactoryBean.getObject());
@@ -64,9 +63,9 @@ public class QuartzConfig {
         return factory;
     }
 
-    /**
+    *//**
      * 3.创建Scheduler对象
-     */
+     *//*
     @Bean
     public SchedulerFactoryBean schedulerFactoryBean(CronTriggerFactoryBean cronTriggerFactoryBean){
         SchedulerFactoryBean factory = new SchedulerFactoryBean();
@@ -74,6 +73,6 @@ public class QuartzConfig {
         factory.setTriggers(cronTriggerFactoryBean.getObject());
 
         return factory;
-    }
+    }*/
 
 }

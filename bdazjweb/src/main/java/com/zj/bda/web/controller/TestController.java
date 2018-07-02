@@ -1,8 +1,7 @@
 package com.zj.bda.web.controller;
 
-import com.zj.bda.common.unspecific.annotation.LocalLock;
 import com.zj.bda.common.exception.UnLoginException;
-import com.zj.bda.common.unspecific.util.JsonUtil;
+import com.zj.bda.common.unspecific.annotation.LocalLock;
 import com.zj.bda.common.unspecific.util.SpringUtil;
 import com.zj.bda.common.verification.util.ValidateUtil;
 import com.zj.bda.persistence.entity.UnStrTag;
@@ -11,31 +10,52 @@ import com.zj.bda.service.TestService;
 import lombok.extern.slf4j.Slf4j;
 import org.n3r.idworker.Sid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import tk.mybatis.mapper.entity.Example;
 
 import javax.validation.Valid;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 /**
  * Created by Dongguabai on 2018-06-10.
  */
-@Controller
+@RestController
 @Slf4j
 public class TestController {
 
     @Autowired
     TestService testService;
 
-    @RequestMapping("testDate")
+    /*@RequestMapping("testDate")
     public void testDate(@RequestParam("test")Date test){
         String s1 = test.toLocaleString();
         System.out.println(s1);
+    }*/
+
+
+    @RequestMapping("test/ahttp")
+    @ResponseBody
+    public Callable<Object> testDate(@RequestParam("test")Date test){
+
+        Callable<Object> callable = ()->{
+            List<UnStrTag> unStrTags = unStrTagMapper.selectAll();
+            log.info(Thread.currentThread().getName() + " 进入call方法");
+            log.info(Thread.currentThread().getName() + " 从helloService方法返回");
+            return unStrTags;
+        };
+
+        log.info(Thread.currentThread().getName() + " 从helloController方法返回");
+        return callable;
+
     }
 
 
@@ -88,11 +108,13 @@ public class TestController {
         return "spring boot";
     }
     @RequestMapping("test/c")
-    public String test03() {
+    @CacheEvict(value = "localCache",key = "#user.userName",beforeInvocation = false)
+    @Cacheable(value = "localCache",unless="#result == null")
+    public Object test03() {
         System.out.println("进入Controller");
         List<UnStrTag> unStrTags = unStrTagMapper.selectAll();
 
-        return JsonUtil.toJSON(unStrTags);
+        return unStrTags;
     }
     @RequestMapping("test/d")
     public Object test04() {

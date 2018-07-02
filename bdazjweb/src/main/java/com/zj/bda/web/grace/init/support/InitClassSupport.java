@@ -2,6 +2,8 @@ package com.zj.bda.web.grace.init.support;
 
 import com.zj.bda.common.init.InitExpand;
 import com.zj.bda.common.unspecific.util.ClassScanUtil;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -10,6 +12,7 @@ import java.util.Set;
  * @author Dongguabai
  * @date 2018-07-01 14:49
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class InitClassSupport {
 
     public static Set<Class<?>> all_classs = new HashSet<>();
@@ -31,5 +34,4 @@ public final class InitClassSupport {
         init_expand_class.remove(INIT_EXPAND_CLASS);
     }
 
-    private InitClassSupport(){}
 }

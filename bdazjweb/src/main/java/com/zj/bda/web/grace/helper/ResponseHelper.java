@@ -2,10 +2,13 @@ package com.zj.bda.web.grace.helper;
 
 import com.zj.bda.web.grace.constant.enums.ResponseEnum;
 import com.zj.bda.web.grace.vo.ResponseVO;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 /**
  * Created by Dongguabai on 2018-06-10.
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ResponseHelper {
 
     /**
@@ -65,6 +68,4 @@ public class ResponseHelper {
         return error(responseEnum.getCode(), responseEnum.getMessage());
     }
 
-    private ResponseHelper() {
-    }
 }

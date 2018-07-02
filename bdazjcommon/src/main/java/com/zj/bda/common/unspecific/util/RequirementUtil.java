@@ -1,12 +1,15 @@
 package com.zj.bda.common.unspecific.util;
 
 import com.zj.bda.common.exception.RequirementException;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import java.util.Map;
 
 /**
  * Created by Dongguabai on 2018-06-24 23:33
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class RequirementUtil {
 
     public static final String CANNOT_NULL = "The Object can't null";
@@ -50,6 +53,4 @@ public class RequirementUtil {
         notEmpty(map, CANNOT_EMPTY);
     }
 
-    private RequirementUtil() {
-    }
 }

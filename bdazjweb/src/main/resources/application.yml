@@ -23,10 +23,10 @@ spring:
       request-timeout: 10000 #async请求的超时时间
 
 
-#  cache:
-#    type: ehcache
-#    ehcache:
-#      config: classpath:
+  cache:
+    type: ehcache
+    ehcache:
+      config: classpath:config/ehcache.xml
 logging:
   #config: classpath:bda-log.xml
   level:

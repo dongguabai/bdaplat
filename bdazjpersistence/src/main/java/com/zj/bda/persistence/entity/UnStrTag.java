@@ -3,6 +3,7 @@ package com.zj.bda.persistence.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -16,7 +17,8 @@ import java.util.Date;
 @Getter
 @ToString
 @Builder
-public class UnStrTag {
+/*@EqualsAndHashCode(of = {"",""})*/
+public class UnStrTag implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "select SEQ_ZJ_UNSTRTAG_ID.nextval from dual")
