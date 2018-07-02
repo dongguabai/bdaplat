@@ -1,4 +1,4 @@
-package com.zj.bda.common.verification.annotation;
+package com.zj.bda.common.validator.annotation;
 
 
 import org.springframework.stereotype.Controller;

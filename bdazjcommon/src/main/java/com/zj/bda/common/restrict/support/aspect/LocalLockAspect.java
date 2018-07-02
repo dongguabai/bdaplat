@@ -1,17 +1,16 @@
-package com.zj.bda.common.unspecific.support.aspect;
+package com.zj.bda.common.restrict.support.aspect;
 
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.zj.bda.common.cache.constant.enums.CacheExpireTimeEnum;
 import com.zj.bda.common.cache.helper.GuaCacheHelper;
 import com.zj.bda.common.exception.LimitedOperationException;
-import com.zj.bda.common.unspecific.annotation.LocalLock;
+import com.zj.bda.common.restrict.annotation.LocalLock;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 
@@ -26,9 +25,6 @@ import java.lang.reflect.Method;
 @Order(0)
 public class LocalLockAspect {
 
-    @Autowired
-    private GuaCacheHelper guaCacheHelper;
-
     private static final Cache<String, Object> LOCALLOCK_CACHES = CacheBuilder.newBuilder()
             // 最大缓存 1000 个
             .maximumSize(1000)
@@ -38,14 +34,14 @@ public class LocalLockAspect {
             .expireAfterWrite(CacheExpireTimeEnum.LOCAL_LOCK.getTime(), CacheExpireTimeEnum.LOCAL_LOCK.getTimeUnit())
             .build();
 
-    @Around("execution(public * *(..)) && @annotation(com.zj.bda.common.unspecific.annotation.LocalLock)")
+    @Around("execution(public * *(..)) && @annotation(com.zj.bda.common.restrict.annotation.LocalLock)")
     public Object interceptor(ProceedingJoinPoint pjp) {
         MethodSignature signature = (MethodSignature) pjp.getSignature();
         Method method = signature.getMethod();
         LocalLock localLock = method.getAnnotation(LocalLock.class);
         String key = getKey(localLock.key(), pjp.getArgs());
         if (StringUtils.isNotEmpty(key)) {
-            if (guaCacheHelper.getIfPresent(LOCALLOCK_CACHES,key) != null) {
+            if (GuaCacheHelper.getIfPresent(LOCALLOCK_CACHES,key) != null) {
                 throw new LimitedOperationException("请勿重复请求");
             }
             // 如果是第一次请求,就将 key 当前对象压入缓存中

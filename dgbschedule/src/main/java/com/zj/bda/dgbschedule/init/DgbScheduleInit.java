@@ -1,7 +1,7 @@
 package com.zj.bda.dgbschedule.init;
 
 
-import com.zj.bda.common.init.InitExpand;
+import com.zj.bda.common.init.condition.InitExpand;
 
 /**
  * @author Dongguabai

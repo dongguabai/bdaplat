@@ -1,7 +1,9 @@
-package com.zj.bda.web.grace.init.executor;
+package com.zj.bda.common.init.executor;
 
+import com.zj.bda.common.init.container.InitExpandClassContainer;
 import com.zj.bda.common.unspecific.util.ReflectUtil;
-import com.zj.bda.web.grace.init.support.InitExpandClassSupport;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.InvocationTargetException;
@@ -15,10 +17,11 @@ import java.util.Set;
  *
  */
 @Slf4j
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class InitExpandExecutor {
 	
 	public static void execute() {
-		Set<Class<?>> classes = InitExpandClassSupport.getInitExpandImplements();
+		Set<Class<?>> classes = InitExpandClassContainer.getInitExpandImplements();
 		try {
 			for (Class<?> clazz : classes) {
 				Method method = ReflectUtil.getMethod(clazz, "init");

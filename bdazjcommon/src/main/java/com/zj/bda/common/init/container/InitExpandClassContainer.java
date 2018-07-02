@@ -1,4 +1,4 @@
-package com.zj.bda.web.grace.init.support;
+package com.zj.bda.common.init.container;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -10,9 +10,9 @@ import java.util.Set;
  * @date 2018-07-01 13:30
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class InitExpandClassSupport {
+public final class InitExpandClassContainer {
     public static Set<Class<?>> getInitExpandImplements() {
-       return InitClassSupport.init_expand_class;
+       return AppContainer.init_expand_class_container;
     }
 
 }

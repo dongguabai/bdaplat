@@ -1,10 +1,10 @@
-package com.zj.bda.common.unspecific.annotation;
+package com.zj.bda.common.restrict.annotation;
 
 import java.lang.annotation.*;
 
 /**
  * Created by Dongguabai on 2018-06-20 14:53
- * 分布式下不可用，不能乱用，否则会出问题，主要是过滤连续请求
+ * 分布式下不可用，不能乱用，否则会出问题，主要是过滤连续表单提交
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

@@ -1,9 +1,9 @@
 package com.zj.bda.web.controller;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.zj.bda.common.exception.UnLoginException;
-import com.zj.bda.common.unspecific.annotation.LocalLock;
-import com.zj.bda.common.unspecific.util.SpringUtil;
-import com.zj.bda.common.verification.util.ValidateUtil;
+import com.zj.bda.common.restrict.annotation.LocalLock;
+import com.zj.bda.common.validator.helper.ValidateHelper;
 import com.zj.bda.persistence.entity.UnStrTag;
 import com.zj.bda.persistence.mapper.UnStrTagMapper;
 import com.zj.bda.service.TestService;
@@ -14,10 +14,7 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import tk.mybatis.mapper.entity.Example;
 
 import javax.validation.Valid;
@@ -31,6 +28,28 @@ import java.util.concurrent.Callable;
 @RestController
 @Slf4j
 public class TestController {
+
+    /**
+     * 指定当前Controller方法返回的是UserDetail指定的视图
+     * @return
+     */
+    @JsonView(User.UserDetail.class)
+    @RequestMapping("/UserDetail")
+    public User getUserDetail(){
+        User user = User.builder().userName("张三").password("123").build();
+        return user;
+    }
+    /**
+     * 指定当前Controller方法返回的是UserDetail指定的视图
+     * @return
+     */
+    @JsonView(User.UserInfo.class)
+    @RequestMapping("/UserInfo")
+    public User getUserInfo(){
+        User user = User.builder().userName("张三").password("123").build();
+        return user;
+    }
+
 
     @Autowired
     TestService testService;
@@ -122,17 +141,15 @@ public class TestController {
 
         return "ok";
     }
-    @RequestMapping("test/e")
-    public Object test06() {
-        Object test01Controller = SpringUtil.getBean("test01Controller");
-
-
-        return test01Controller.getClass();
+    @RequestMapping("test/{id:\\d+}")
+    public Object test06(@PathVariable("id") String id) {
+        System.out.println(id);
+        return id;
     }
 
     @RequestMapping("login")
     public Object test05(@Valid User user,BindingResult result) {
-        ValidateUtil.validateModel(result);
+        ValidateHelper.validateModel(result);
         if(result.hasErrors()){
             for (ObjectError error : result.getAllErrors()) {
                 System.out.println(error.getDefaultMessage());
@@ -153,6 +170,10 @@ public class TestController {
             System.out.println("===================");
         }
         return "ok";
+    }
+
+    public static void main(String[] args) {
+        User user = new User("aa","aa");
     }
 
 

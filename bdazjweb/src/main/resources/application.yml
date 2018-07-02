@@ -9,10 +9,11 @@ spring:
       max-file-size: 5MB
       max-request-size: 10MB
       resolve-lazily: false
-  security:
-    user:
-      name: bda
-      password: bda
+#  security:
+#    user:
+#      name: bda
+#      password: bda
+
   http:
     encoding:
       charset: UTF-8
@@ -28,8 +29,11 @@ spring:
     ehcache:
       config: classpath:config/ehcache.xml
 logging:
-  #config: classpath:bda-log.xml
+  #config: classpath:bda-log.xml   线上用
   level:
     java.sql: debug
     com.apache.ibatis: debug
     com.zj.bda.persistence.mapper: debug
+security:
+  basic:
+    enabled: false

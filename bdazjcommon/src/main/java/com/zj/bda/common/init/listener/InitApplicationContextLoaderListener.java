@@ -1,6 +1,6 @@
-package com.zj.bda.web.grace.init.listener;
+package com.zj.bda.common.init.listener;
 
-import com.zj.bda.web.grace.init.executor.InitExpandExecutor;
+import com.zj.bda.common.init.executor.InitExpandExecutor;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 

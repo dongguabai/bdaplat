@@ -1,6 +1,6 @@
 package com.zj.bda;
 
-import com.zj.bda.web.grace.init.listener.InitApplicationContextLoaderListener;
+import com.zj.bda.common.init.listener.InitApplicationContextLoaderListener;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
