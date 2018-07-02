@@ -3,6 +3,7 @@ package com.zj.bda.common.unspecific.support.aspect;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.zj.bda.common.cache.constant.enums.CacheExpireTimeEnum;
+import com.zj.bda.common.cache.helper.GuaCacheHelper;
 import com.zj.bda.common.exception.LimitedOperationException;
 import com.zj.bda.common.unspecific.annotation.LocalLock;
 import org.apache.commons.lang3.StringUtils;
@@ -10,18 +11,24 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 
 import java.lang.reflect.Method;
 
 /**
- * Created by Dongguabai on 2018-06-20 14:55
+ * @author Dongguabai
+ * @date 2018-07-02 9:07
  */
 @Aspect
 @Configuration
 @Order(0)
 public class LocalLockAspect {
+
+    @Autowired
+    private GuaCacheHelper guaCacheHelper;
+
     private static final Cache<String, Object> LOCALLOCK_CACHES = CacheBuilder.newBuilder()
             // 最大缓存 1000 个
             .maximumSize(1000)
@@ -38,7 +45,7 @@ public class LocalLockAspect {
         LocalLock localLock = method.getAnnotation(LocalLock.class);
         String key = getKey(localLock.key(), pjp.getArgs());
         if (StringUtils.isNotEmpty(key)) {
-            if (getIfPresent(key) != null) {
+            if (guaCacheHelper.getIfPresent(LOCALLOCK_CACHES,key) != null) {
                 throw new LimitedOperationException("请勿重复请求");
             }
             // 如果是第一次请求,就将 key 当前对象压入缓存中
@@ -63,10 +70,6 @@ public class LocalLockAspect {
      */
     private String getKey(String keyExpress, Object[] args) {
         return new StringBuilder(StringUtils.join(args, "-")).append(keyExpress).toString();
-    }
-
-    private Object getIfPresent(String key) {
-       return key==null?null:LOCALLOCK_CACHES.getIfPresent(key);
     }
 
 }
