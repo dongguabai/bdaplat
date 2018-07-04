@@ -5,7 +5,8 @@ import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.ArrayUtils;
 
 /**
- * Created by Dongguabai on 2018-06-25 9:38
+ * @author Dongguabai
+ * @date 2018-07-01 13:30
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class CusObjectUtil {

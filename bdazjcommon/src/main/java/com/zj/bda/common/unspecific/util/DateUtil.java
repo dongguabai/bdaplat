@@ -7,7 +7,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * Created by Dongguabai on 2018-06-22 16:23
+ * @author Dongguabai
+ * @date 2018-07-01 13:30
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class DateUtil {

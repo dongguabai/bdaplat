@@ -16,39 +16,64 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import java.util.Set;
-
 /**
- * Created by Dongguabai on 2018-06-10.
+ * @author Dongguabai
+ * @date 2018-07-01 13:30
  * 可优化，但是要考虑Customer问题
  */
 @ControllerAdvice(annotations = {Controller.class})
 @Slf4j
 public class GlobalExceptionHandler {
 
+    /**
+     * 权限不足
+     * @param e
+     * @return
+     */
     @ExceptionHandler(value = NoPermissionException.class)
     @ResponseBody
     public ResponseVO handler(NoPermissionException e) {
         return responseError(ResponseEnum.ERROR_NO_PERMISSION,e);
     }
 
+    /**
+     * 路径无法匹配
+     * @param e
+     * @return
+     */
     @ExceptionHandler(value = NotFoundException.class)
     @ResponseBody
     public ResponseVO handler(NotFoundException e) {
         return responseError(ResponseEnum.ERROR_NOT_FOUND,e);
     }
 
+    /**
+     * 未登陆
+     * @param e
+     * @return
+     */
     @ExceptionHandler(value = UnLoginException.class)
     @ResponseBody
     public ResponseVO handler(UnLoginException e) {
         return responseError(ResponseEnum.ERROR_UNLOGIN,e);
     }
 
+    /**
+     * 操作受限（如表单重复提交）
+     * @param e
+     * @return
+     */
     @ExceptionHandler(value = LimitedOperationException.class)
     @ResponseBody
     public ResponseVO handler(LimitedOperationException e) {
         return responseError(ResponseEnum.ERROR_LIMITED_OPERATION,e);
     }
 
+    /**
+     * 条件过滤异常
+     * @param e
+     * @return
+     */
     @ExceptionHandler(value = RequirementException.class)
     @ResponseBody
     public ResponseVO handler(RequirementException e) {
@@ -78,6 +103,12 @@ public class GlobalExceptionHandler {
         return responseError(ResponseEnum.ERROR_INVALID,e,appendErrorMessage(ResponseEnum.ERROR_INVALID,violations.iterator().next().getMessage()));
     }
 
+    /**
+     * 默认异常
+     * @param request
+     * @param e
+     * @return
+     */
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
     public ResponseVO defaultErrorHandler(HttpServletRequest request, Exception e) {

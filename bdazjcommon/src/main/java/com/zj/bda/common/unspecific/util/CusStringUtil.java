@@ -4,7 +4,8 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 /**
- * Created by Dongguabai on 2018-06-24 23:50
+ * @author Dongguabai
+ * @date 2018-07-01 13:30
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class CusStringUtil {

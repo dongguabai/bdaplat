@@ -1,15 +1,16 @@
 package com.zj.bda.common.exception;
 
+import lombok.NoArgsConstructor;
+
 /**
  * 权限不足
- * Created by Dongguabai on 2018-06-10.
+ * @author Dongguabai
+ * @date 2018-07-01 13:30
  */
+@NoArgsConstructor
 public class NoPermissionException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
-
-    public NoPermissionException() {
-    }
 
     public NoPermissionException(String message) {
         super(message);

@@ -3,9 +3,9 @@ package com.zj.bda.common.init.listener;
 import com.zj.bda.common.init.executor.InitExpandExecutor;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
-
 /**
- * Created by Dongguabai on 2018-06-14.
+ * @author Dongguabai
+ * @date 2018-07-01 13:30
  */
 public class InitApplicationContextLoaderListener implements ApplicationListener<ContextRefreshedEvent> {
 

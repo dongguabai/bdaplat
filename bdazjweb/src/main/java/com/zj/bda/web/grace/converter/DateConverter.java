@@ -9,7 +9,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by Dongguabai on 2018-06-28 0:23
+ * @author Dongguabai
+ * @date 2018-07-01 13:30
  */
 @Slf4j
 public class DateConverter implements Converter<String,Date> {

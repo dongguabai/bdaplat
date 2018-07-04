@@ -1,14 +1,16 @@
 package com.zj.bda.common.exception;
 
-/**条件过滤异常
- * Created by Dongguabai on 2018-06-10.
+import lombok.NoArgsConstructor;
+
+/**
+ * 条件过滤异常
+ * @author Dongguabai
+ * @date 2018-07-01 13:30
  */
+@NoArgsConstructor
 public class RequirementException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
-
-	public RequirementException() {
-	}
 
 	public RequirementException(String message) {
 		super(message);

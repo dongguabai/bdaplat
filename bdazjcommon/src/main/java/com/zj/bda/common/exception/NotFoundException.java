@@ -1,15 +1,16 @@
 package com.zj.bda.common.exception;
 
+import lombok.NoArgsConstructor;
+
 /**
- *
- * Created by Dongguabai on 2018-06-10.
+ * 当前路径未被找到
+ * @author Dongguabai
+ * @date 2018-07-01 13:30
  */
+@NoArgsConstructor
 public class NotFoundException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
-
-    public NotFoundException() {
-    }
 
     public NotFoundException(String message) {
         super(message);

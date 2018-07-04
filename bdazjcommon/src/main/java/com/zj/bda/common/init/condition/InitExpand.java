@@ -8,6 +8,9 @@ package com.zj.bda.common.init.condition;
  */
 public interface InitExpand {
 
+    /**
+     * 实现此方法，在项目启动时初始化
+     */
     void init();
 
 //  public int order();

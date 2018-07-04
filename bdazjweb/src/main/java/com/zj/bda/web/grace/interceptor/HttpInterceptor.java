@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Created by Dongguabai on 2018-06-25 13:23
+ * @author Dongguabai
+ * @date 2018-07-01 13:30
  */
 @Slf4j
 public class HttpInterceptor implements HandlerInterceptor{

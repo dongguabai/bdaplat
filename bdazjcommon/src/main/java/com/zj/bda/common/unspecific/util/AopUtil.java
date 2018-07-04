@@ -9,7 +9,8 @@ import org.aspectj.lang.reflect.MethodSignature;
 import java.lang.reflect.Method;
 
 /**
- * Created by Dongguabai on 2018-06-15.
+ * @author Dongguabai
+ * @date 2018-07-01 13:30
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class AopUtil {

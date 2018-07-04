@@ -1,7 +1,8 @@
 package com.zj.bda.common.bean;
 
 /**
- * Created by Dongguabai on 2018-06-13.
+ * @author Dongguabai
+ * @date 2018-07-01 13:30
  */
 import lombok.Builder;
 import lombok.Data;

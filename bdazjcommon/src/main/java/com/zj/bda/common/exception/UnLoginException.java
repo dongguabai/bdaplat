@@ -1,14 +1,16 @@
 package com.zj.bda.common.exception;
 
-/**未登录
- * Created by Dongguabai on 2018-06-10.
+import lombok.NoArgsConstructor;
+
+/**
+ * 未登陆
+ * @author Dongguabai
+ * @date 2018-07-01 13:30
  */
+@NoArgsConstructor
 public class UnLoginException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
-
-	public UnLoginException() {
-	}
 
 	public UnLoginException(String message) {
 		super(message);
