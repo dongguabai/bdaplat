@@ -1,4 +1,4 @@
-package com.zj.bda.web.controller;
+package com.zj.bda.web.controller.test;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.zj.bda.common.exception.UnLoginException;

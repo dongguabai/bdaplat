@@ -5,6 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import tk.mybatis.spring.annotation.MapperScan;
@@ -14,6 +15,7 @@ import tk.mybatis.spring.annotation.MapperScan;
  * @date 2018-06-29 19:03
  */
 @SpringBootApplication
+@PropertySource({"classpath:config/dgb-security.properties"})
 @ComponentScan(basePackages = {"com.zj.bda"})
 @MapperScan(basePackages = "com.zj.bda.persistence.mapper")
 //@ServletComponentScan

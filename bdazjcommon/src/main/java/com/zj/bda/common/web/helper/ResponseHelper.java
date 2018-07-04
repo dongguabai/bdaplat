@@ -1,7 +1,7 @@
-package com.zj.bda.web.grace.helper;
+package com.zj.bda.common.web.helper;
 
-import com.zj.bda.web.grace.constant.enums.ResponseEnum;
-import com.zj.bda.web.grace.vo.ResponseVO;
+import com.zj.bda.common.web.constant.enums.ResponseEnum;
+import com.zj.bda.common.web.vo.ResponseVO;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 

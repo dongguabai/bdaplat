@@ -1,4 +1,4 @@
-package com.zj.bda.web.grace.constant.enums;
+package com.zj.bda.common.web.constant.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

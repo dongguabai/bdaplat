@@ -21,8 +21,7 @@ spring:
       force: true
   mvc:
     async:
-      request-timeout: 10000 #async请求的超时时间
-
+      request-timeout: 10000  #async请求的超时时间
 
   cache:
     type: ehcache
@@ -34,6 +33,3 @@ logging:
     java.sql: debug
     com.apache.ibatis: debug
     com.zj.bda.persistence.mapper: debug
-security:
-  basic:
-    enabled: false

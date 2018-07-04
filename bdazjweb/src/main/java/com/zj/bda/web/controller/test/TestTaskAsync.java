@@ -1,4 +1,4 @@
-package com.zj.bda.web.controller;
+package com.zj.bda.web.controller.test;
 
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;

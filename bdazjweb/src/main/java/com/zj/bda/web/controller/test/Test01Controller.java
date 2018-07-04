@@ -1,4 +1,4 @@
-package com.zj.bda.web.controller;
+package com.zj.bda.web.controller.test;
 
 import com.zj.bda.common.validator.annotation.ValidatedController;
 import org.hibernate.validator.constraints.Range;
