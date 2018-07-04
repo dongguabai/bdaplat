@@ -43,9 +43,6 @@ public class WebAuthenticationController {
         SavedRequest savedRequest = requestCache.getRequest(request,response);
         if(savedRequest!=null){
             String redirectUrl = savedRequest.getRedirectUrl();
-            String uri = request.getRequestURI();
-            System.out.println(uri+"]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]");
-            log.info("当前引发跳转的请求为：{}",redirectUrl);
             if (StringUtils.endsWithIgnoreCase(redirectUrl,endWithHtml)){
                 redirectStrategy.sendRedirect(request,response,dgbSecurityProperties.getBrowser().getLoginPage());
                 return null;
