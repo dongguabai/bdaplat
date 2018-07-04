@@ -1,4 +1,4 @@
-package com.zj.bda.dgbsecurity.authorization.userdetails.support;
+package com.zj.bda.dgbsecurity.authentication.userdetails.support;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -7,6 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 /**
+ * UserDetails构造器
  * @author Dongguabai
  * @date 2018-07-03 10:22
  */
@@ -50,6 +51,8 @@ public class UserDetailsConstructor {
      */
 
     public User constructUser(String username){
+        //ToDo  从数据库中获取相应参数，封装成User
+
 
         String password = passwordEncoder.encode("admin");
         System.out.println("password-----:"+password);

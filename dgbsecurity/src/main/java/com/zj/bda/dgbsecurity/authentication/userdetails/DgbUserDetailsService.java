@@ -1,7 +1,7 @@
-package com.zj.bda.dgbsecurity.authorization.userdetails;
+package com.zj.bda.dgbsecurity.authentication.userdetails;
 
 import com.google.common.collect.ImmutableMap;
-import com.zj.bda.dgbsecurity.authorization.userdetails.support.UserDetailsConstructor;
+import com.zj.bda.dgbsecurity.authentication.userdetails.support.UserDetailsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

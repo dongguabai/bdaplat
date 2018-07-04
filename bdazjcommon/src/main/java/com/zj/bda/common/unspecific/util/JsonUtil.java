@@ -36,7 +36,7 @@ public class JsonUtil {
      * 将 JSON 字符串转为 Java 对象
      */
     public static <T> T fromJSON(String json, Class<T> type) {
-        if (CusObjectUtil.isContainsNull(json, type)) {
+        if (CusObjectUtil.isContainsNull(new Object[]{json,type})) {
             return null;
         }
         T obj;

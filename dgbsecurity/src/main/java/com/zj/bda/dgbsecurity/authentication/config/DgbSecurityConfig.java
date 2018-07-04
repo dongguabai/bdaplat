@@ -1,5 +1,7 @@
-package com.zj.bda.dgbsecurity.core.config;
+package com.zj.bda.dgbsecurity.authentication.config;
 
+import com.zj.bda.dgbsecurity.core.properties.DgbSecurityProperties;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,17 +17,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class DgbSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Value("${form.login.page}")
-    private String loginPage;
+    @Autowired
+    private DgbSecurityProperties dgbSecurityProperties;
 
-    @Value("${form.login.allowedPath}")
+    @Value("${dgb.security.allowedPath}")
     private String[] allowedPaths;
-
-    @Value("${form.login.action}")
-    private String loginAction;
-
-    @Value("${form.login.success}")
-    private String success;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -35,17 +31,18 @@ public class DgbSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         //使用表单登陆
-        http.formLogin()      //loginProcessingUrl("/login")  is default  .defaultSuccessUrl("/test.html")
-                .loginPage(loginPage).loginProcessingUrl(loginAction).defaultSuccessUrl(success)
-                .and()
-                .authorizeRequests()
+        http.authorizeRequests()
                 //直接放行的请求
                 .antMatchers(allowedPaths).permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
+                .formLogin()      //loginProcessingUrl("/authentication")  is default  .defaultSuccessUrl("/test.html")
+                .loginPage(dgbSecurityProperties.getBrowser().getLoginUrl())
+                .loginProcessingUrl(dgbSecurityProperties.getBrowser().getLoginAction())
+                .defaultSuccessUrl(dgbSecurityProperties.getBrowser().getLoginSuccessPage())
+                .and()
                 .csrf().disable();
-
     }
 
 

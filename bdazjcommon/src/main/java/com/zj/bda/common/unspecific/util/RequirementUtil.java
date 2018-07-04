@@ -7,7 +7,8 @@ import lombok.NoArgsConstructor;
 import java.util.Map;
 
 /**
- * Created by Dongguabai on 2018-06-24 23:33
+ * @author Dongguabai
+ * @date 2018-07-01 14:59
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class RequirementUtil {

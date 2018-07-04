@@ -11,8 +11,12 @@ import org.apache.commons.lang3.ArrayUtils;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class CusObjectUtil {
 
-    public static Boolean isContainsNull(Object...objs){
-        RequirementUtil.notNull(objs);
+    /**
+     * 数组中是否包含null
+     * @param objs
+     * @return
+     */
+    public static Boolean isContainsNull(Object[] objs){
         return ArrayUtils.contains(objs, null);
     }
 
