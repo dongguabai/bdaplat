@@ -40,7 +40,9 @@ public enum ResponseEnum {
     /**
      * 自定义断言
      */
-    ERROR_REQUIREMENT(-5,"条件过滤异常！");
+    ERROR_REQUIREMENT(-5,"条件过滤异常！"),
+
+    ERROR_LOGIN(-6,"登陆失败");
 
     //<=0 异常-》   =0可重复请求   >0成功
     private Integer code;

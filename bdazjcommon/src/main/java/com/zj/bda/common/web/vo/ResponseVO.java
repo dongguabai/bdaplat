@@ -5,8 +5,9 @@ import lombok.*;
 import java.io.Serializable;
 
 /**
- * Created by Dongguabai on 2018-06-13.
- * 统一返回对象
+ * 登陆成功Handler
+ * @author Dongguabai
+ * @date 2018-07-05 19:33
  */
 @AllArgsConstructor
 @NoArgsConstructor

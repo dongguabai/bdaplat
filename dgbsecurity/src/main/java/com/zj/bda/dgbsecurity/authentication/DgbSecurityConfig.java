@@ -1,6 +1,6 @@
-package com.zj.bda.dgbsecurity.authentication.config;
+package com.zj.bda.dgbsecurity.authentication;
 
-import com.zj.bda.dgbsecurity.core.properties.DgbSecurityProperties;
+import com.zj.bda.dgbsecurity.grace.properties.DgbSecurityProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -9,6 +9,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 /**
  * @author Dongguabai
@@ -19,6 +21,12 @@ public class DgbSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private DgbSecurityProperties dgbSecurityProperties;
+
+    @Autowired
+    private AuthenticationSuccessHandler identityCheckSuccessHandler;
+
+    @Autowired
+    private AuthenticationFailureHandler identityCheckFailureHandler;
 
     @Value("${dgb.security.allowedPath}")
     private String[] allowedPaths;
@@ -40,7 +48,11 @@ public class DgbSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()      //loginProcessingUrl("/authentication")  is default  .defaultSuccessUrl("/test.html")
                 .loginPage(dgbSecurityProperties.getBrowser().getLoginUrl())
                 .loginProcessingUrl(dgbSecurityProperties.getBrowser().getLoginAction())
-                .defaultSuccessUrl(dgbSecurityProperties.getBrowser().getLoginSuccessPage())
+                //成功处理器
+                .successHandler(identityCheckSuccessHandler)
+                //失败处理器
+                .failureHandler(identityCheckFailureHandler)
+                //.defaultSuccessUrl(dgbSecurityProperties.getBrowser().getLoginSuccessPage()) //默认登陆成功页面
                 .and()
                 .csrf().disable();
     }

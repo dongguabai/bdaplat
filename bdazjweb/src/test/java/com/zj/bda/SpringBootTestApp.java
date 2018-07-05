@@ -1,6 +1,6 @@
 package com.zj.bda;
 
-import com.zj.bda.dgbsecurity.core.properties.DgbSecurityProperties;
+import com.zj.bda.dgbsecurity.grace.properties.DgbSecurityProperties;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

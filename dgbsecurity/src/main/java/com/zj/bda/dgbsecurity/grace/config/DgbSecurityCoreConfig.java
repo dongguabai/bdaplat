@@ -1,6 +1,6 @@
-package com.zj.bda.dgbsecurity.core.config;
+package com.zj.bda.dgbsecurity.grace.config;
 
-import com.zj.bda.dgbsecurity.core.properties.DgbSecurityProperties;
+import com.zj.bda.dgbsecurity.grace.properties.DgbSecurityProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 

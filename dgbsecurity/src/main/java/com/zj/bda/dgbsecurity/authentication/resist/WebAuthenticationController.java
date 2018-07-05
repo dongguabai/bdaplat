@@ -1,9 +1,9 @@
-package com.zj.bda.dgbsecurity.authentication.controller;
+package com.zj.bda.dgbsecurity.authentication.resist;
 
 import com.zj.bda.common.web.constant.enums.ResponseEnum;
 import com.zj.bda.common.web.helper.ResponseHelper;
 import com.zj.bda.common.web.vo.ResponseVO;
-import com.zj.bda.dgbsecurity.core.properties.DgbSecurityProperties;
+import com.zj.bda.dgbsecurity.grace.properties.DgbSecurityProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * 处理身份认证
+ * 被拦截---->处理身份认证
  * @author Dongguabai
  * @date 2018-07-04 21:39
  */

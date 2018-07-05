@@ -4,9 +4,10 @@ import com.zj.bda.common.web.constant.enums.ResponseEnum;
 import com.zj.bda.common.web.vo.ResponseVO;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-
 /**
- * Created by Dongguabai on 2018-06-10.
+ * 登陆成功Handler
+ * @author Dongguabai
+ * @date 2018-07-05 19:33
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ResponseHelper {

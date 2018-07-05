@@ -1,4 +1,4 @@
-package com.zj.bda.dgbsecurity.core.properties;
+package com.zj.bda.dgbsecurity.grace.properties;
 
 import lombok.Getter;
 import lombok.Setter;

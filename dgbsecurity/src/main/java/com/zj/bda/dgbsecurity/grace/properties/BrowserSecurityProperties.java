@@ -1,5 +1,6 @@
-package com.zj.bda.dgbsecurity.core.properties;
+package com.zj.bda.dgbsecurity.grace.properties;
 
+import com.zj.bda.dgbsecurity.grace.enums.LoginResponseTypeEnum;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,4 +16,5 @@ public class BrowserSecurityProperties {
     private String loginAction = "/login";
     private String loginUrl = "/authentication/require";
     private String loginSuccessPage;
+    private LoginResponseTypeEnum loginResponseTypeEnum = LoginResponseTypeEnum.JSON;
 }

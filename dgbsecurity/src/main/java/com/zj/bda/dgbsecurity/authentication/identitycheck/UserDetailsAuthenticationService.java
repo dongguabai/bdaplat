@@ -1,7 +1,7 @@
-package com.zj.bda.dgbsecurity.authentication.userdetails;
+package com.zj.bda.dgbsecurity.authentication.identitycheck;
 
 import com.google.common.collect.ImmutableMap;
-import com.zj.bda.dgbsecurity.authentication.userdetails.support.UserDetailsConstructor;
+import com.zj.bda.dgbsecurity.authentication.identitycheck.userdetails.UserDetailsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,12 +12,13 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 /**
+ * 验证用户信息
  * @author Dongguabai
  * @date 2018-07-02 23:55
  */
 @Component
 @Slf4j
-public class DgbUserDetailsService implements UserDetailsService {
+public class UserDetailsAuthenticationService implements UserDetailsService {
 
     @Autowired
     private UserDetailsConstructor userDetailsConstructor;
