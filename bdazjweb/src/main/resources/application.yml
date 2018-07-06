@@ -9,16 +9,13 @@ spring:
       max-file-size: 5MB
       max-request-size: 10MB
       resolve-lazily: false
-#  security:
-#    user:
-#      name: bda
-#      password: bda
 
   http:
     encoding:
       charset: UTF-8
       enabled: true
       force: true
+
   mvc:
     async:
       request-timeout: 10000  #async请求的超时时间
@@ -27,6 +24,9 @@ spring:
     type: ehcache
     ehcache:
       config: classpath:config/ehcache.xml
+
+  session:
+    store-type: none
 logging:
   #config: classpath:bda-log.xml   线上用
   level:
