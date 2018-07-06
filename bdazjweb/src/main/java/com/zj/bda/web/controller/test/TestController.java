@@ -147,7 +147,7 @@ public class TestController {
         return id;
     }
 
-    @RequestMapping("login")
+    @RequestMapping("login1")
     public Object test05(@Valid User user,BindingResult result) {
         ValidateHelper.validateModel(result);
         if(result.hasErrors()){

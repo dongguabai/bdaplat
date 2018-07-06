@@ -1,4 +1,4 @@
-package com.zj.bda.dgbsecurity.grace.enums;
+package com.zj.bda.dgbsecurity.browser.grace.enums;
 
 /**
  * 登陆后返回方式

@@ -1,9 +1,9 @@
-package com.zj.bda.dgbsecurity.authentication.resist;
+package com.zj.bda.dgbsecurity.browser.authentication.resist;
 
 import com.zj.bda.common.web.constant.enums.ResponseEnum;
 import com.zj.bda.common.web.helper.ResponseHelper;
 import com.zj.bda.common.web.vo.ResponseVO;
-import com.zj.bda.dgbsecurity.grace.properties.DgbSecurityProperties;
+import com.zj.bda.dgbsecurity.browser.grace.properties.DgbSecurityProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

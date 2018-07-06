@@ -1,6 +1,6 @@
-package com.zj.bda.dgbsecurity.authentication;
+package com.zj.bda.dgbsecurity.browser.authentication;
 
-import com.zj.bda.dgbsecurity.grace.properties.DgbSecurityProperties;
+import com.zj.bda.dgbsecurity.browser.grace.properties.DgbSecurityProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -46,7 +46,9 @@ public class DgbSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticated()
                 .and()
                 .formLogin()      //loginProcessingUrl("/authentication")  is default  .defaultSuccessUrl("/test.html")
+                //被拦截进入
                 .loginPage(dgbSecurityProperties.getBrowser().getLoginUrl())
+                //处理formLogin username password
                 .loginProcessingUrl(dgbSecurityProperties.getBrowser().getLoginAction())
                 //成功处理器
                 .successHandler(identityCheckSuccessHandler)

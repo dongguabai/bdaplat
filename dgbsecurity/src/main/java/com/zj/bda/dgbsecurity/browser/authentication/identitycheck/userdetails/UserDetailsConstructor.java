@@ -1,4 +1,4 @@
-package com.zj.bda.dgbsecurity.authentication.identitycheck.userdetails;
+package com.zj.bda.dgbsecurity.browser.authentication.identitycheck.userdetails;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;

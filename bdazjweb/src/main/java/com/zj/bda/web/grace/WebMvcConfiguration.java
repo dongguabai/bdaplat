@@ -1,4 +1,4 @@
-package com.zj.bda.web.grace.config;
+package com.zj.bda.web.grace;
 
 import com.google.common.collect.Lists;
 import com.zj.bda.web.grace.converter.DateConverter;
@@ -11,7 +11,8 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
- * Created by Dongguabai on 2018-06-25 13:10
+ * @author Dongguabai
+ * @date 2018-07-04 21:39
  */
 @Configuration
 public class WebMvcConfiguration implements WebMvcConfigurer {

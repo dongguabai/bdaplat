@@ -7,12 +7,10 @@ import com.zj.bda.common.web.constant.enums.ResponseEnum;
 import com.zj.bda.common.web.helper.ResponseHelper;
 import com.zj.bda.common.web.vo.ResponseVO;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolation;
@@ -34,7 +32,6 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(value = NoPermissionException.class)
     @ResponseBody
-    @ResponseStatus(code = HttpStatus.FORBIDDEN)
     public ResponseVO handler(NoPermissionException e) {
         return responseError(ResponseEnum.ERROR_NO_PERMISSION,e);
     }
@@ -44,7 +41,6 @@ public class GlobalExceptionHandler {
      * @param e
      * @return
      */
-    @ResponseStatus(code = HttpStatus.NOT_FOUND)
     @ExceptionHandler(value = NotFoundException.class)
     @ResponseBody
     public ResponseVO handler(NotFoundException e) {
@@ -56,19 +52,17 @@ public class GlobalExceptionHandler {
      * @param e
      * @return
      */
-   /* @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
     @ExceptionHandler(value = UnLoginException.class)
     @ResponseBody
     public ResponseVO handler(UnLoginException e) {
         return responseError(ResponseEnum.ERROR_UNLOGIN,e);
-    }*/
+    }
 
     /**
      * 操作受限（如表单重复提交）
      * @param e
      * @return
      */
-    @ResponseStatus(code = HttpStatus.CONFLICT)
     @ExceptionHandler(value = LimitedOperationException.class)
     @ResponseBody
     public ResponseVO handler(LimitedOperationException e) {
@@ -80,7 +74,6 @@ public class GlobalExceptionHandler {
      * @param e
      * @return
      */
-    @ResponseStatus(code = HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(value = RequirementException.class)
     @ResponseBody
     public ResponseVO handler(RequirementException e) {
@@ -92,7 +85,6 @@ public class GlobalExceptionHandler {
      * @param e
      * @return
      */
-    @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(value = InvalidParameterException.class)
     @ResponseBody
     public ResponseVO handler(InvalidParameterException e) {
@@ -106,7 +98,6 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(value = ConstraintViolationException.class)
     @ResponseBody
-    @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     public ResponseVO handler(ConstraintViolationException e) {
         Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
         return responseError(ResponseEnum.ERROR_INVALID,e,appendErrorMessage(ResponseEnum.ERROR_INVALID,violations.iterator().next().getMessage()));
@@ -118,7 +109,6 @@ public class GlobalExceptionHandler {
      * @param e
      * @return
      */
-    @ResponseStatus(code = HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
     public ResponseVO defaultErrorHandler(HttpServletRequest request, Exception e) {

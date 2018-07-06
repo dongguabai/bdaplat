@@ -1,6 +1,6 @@
-package com.zj.bda.dgbsecurity.grace.properties;
+package com.zj.bda.dgbsecurity.browser.grace.properties;
 
-import com.zj.bda.dgbsecurity.grace.enums.LoginResponseTypeEnum;
+import com.zj.bda.dgbsecurity.browser.grace.enums.LoginResponseTypeEnum;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,7 +1,7 @@
-package com.zj.bda.dgbsecurity.authentication.identitycheck;
+package com.zj.bda.dgbsecurity.browser.authentication.identitycheck;
 
 import com.google.common.collect.ImmutableMap;
-import com.zj.bda.dgbsecurity.authentication.identitycheck.userdetails.UserDetailsConstructor;
+import com.zj.bda.dgbsecurity.browser.authentication.identitycheck.userdetails.UserDetailsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
