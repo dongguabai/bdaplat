@@ -38,13 +38,18 @@ public enum ResponseEnum {
      */
     ERROR_LIMITED_OPERATION(-4,"该操作已被限制！"),
     /**
-     * 自定义断言
+     * 验证码异常
      */
-    ERROR_REQUIREMENT(-5,"条件过滤异常！"),
+    ERROR_GRAPHIC_CAPTCHA_VALIDATE(-5,""),
 
+    /**
+     * 登陆失败
+     */
     ERROR_LOGIN(-6,"登陆失败");
 
-    //<=0 异常-》   =0可重复请求   >0成功
+    /**
+     * <=0 异常-》   =0可重复请求   >0成功
+     */
     private Integer code;
     private String message;
 

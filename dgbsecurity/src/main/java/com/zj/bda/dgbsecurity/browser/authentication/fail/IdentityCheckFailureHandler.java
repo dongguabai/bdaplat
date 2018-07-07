@@ -2,8 +2,9 @@ package com.zj.bda.dgbsecurity.browser.authentication.fail;
 
 import com.zj.bda.common.unspecific.util.WebUtil;
 import com.zj.bda.common.web.constant.enums.ResponseEnum;
-import com.zj.bda.dgbsecurity.browser.grace.enums.LoginResponseTypeEnum;
 import com.zj.bda.dgbsecurity.DgbSecurityProperties;
+import com.zj.bda.dgbsecurity.browser.grace.enums.LoginResponseTypeEnum;
+import com.zj.bda.dgbsecurity.captcha.graphical.grace.GraphicVerificationCodeException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.AuthenticationException;
@@ -30,6 +31,10 @@ public class IdentityCheckFailureHandler extends SimpleUrlAuthenticationFailureH
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
         if (LoginResponseTypeEnum.JSON.equals(dgbSecurityProperties.getBrowser().getLoginResponseTypeEnum())) {
             //注意httpstatus
+            if (exception instanceof GraphicVerificationCodeException){
+                WebUtil.responseErrorJson(response,null, HttpStatus.OK, exception.getMessage(),ResponseEnum.ERROR_GRAPHIC_CAPTCHA_VALIDATE.getCode());
+                return;
+            }
             WebUtil.responseErrorJson(response,null, HttpStatus.OK, ResponseEnum.ERROR_LOGIN.getMessage(),ResponseEnum.ERROR_LOGIN.getCode());
             return;
         }

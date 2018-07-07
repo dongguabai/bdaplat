@@ -16,5 +16,6 @@ public class GraphicVerificationCodeProperties {
     private int codeCount = 4;
     private long expireSeconds = 60;
     private String getImageUrl = "/captcha/graphical";
+    private String inputImageCodeName = "imageCode";
 
 }

@@ -36,4 +36,8 @@ public class ImageCodeBean {
         this.code = code;
         this.expireTime = LocalDateTime.now().plusSeconds(expireSeconds);
     }
+
+    public boolean isExpried() {
+        return LocalDateTime.now().isAfter(expireTime);
+    }
 }

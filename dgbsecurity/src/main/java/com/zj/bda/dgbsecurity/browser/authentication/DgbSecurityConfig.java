@@ -1,6 +1,7 @@
 package com.zj.bda.dgbsecurity.browser.authentication;
 
 import com.zj.bda.dgbsecurity.DgbSecurityProperties;
+import com.zj.bda.dgbsecurity.captcha.graphical.grace.GraphicVerificationCodeFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -11,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
  * @author Dongguabai
@@ -28,6 +30,9 @@ public class DgbSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private AuthenticationFailureHandler identityCheckFailureHandler;
 
+    @Autowired
+    private GraphicVerificationCodeFilter graphicVerificationCodeFilter;
+
     @Value("${dgb.security.allowedPath}")
     private String[] allowedPaths;
 
@@ -38,25 +43,27 @@ public class DgbSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        //使用表单登陆
-        http.authorizeRequests()
-                //直接放行的请求
-                .antMatchers(allowedPaths).permitAll()
-                .anyRequest()
-                .authenticated()
-                .and()
-                .formLogin()      //loginProcessingUrl("/authentication")  is default  .defaultSuccessUrl("/test.html")
-                //被拦截进入
-                .loginPage(dgbSecurityProperties.getBrowser().getLoginUrl())
-                //处理formLogin username password
-                .loginProcessingUrl(dgbSecurityProperties.getBrowser().getLoginAction())
-                //成功处理器
-                .successHandler(identityCheckSuccessHandler)
-                //失败处理器
-                .failureHandler(identityCheckFailureHandler)
-                //.defaultSuccessUrl(dgbSecurityProperties.getBrowser().getLoginSuccessPage()) //默认登陆成功页面
-                .and()
-                .csrf().disable();
+        http
+            .authorizeRequests()
+            //直接放行的请求
+            .antMatchers(allowedPaths).permitAll()
+            .anyRequest()
+            .authenticated()
+            .and()
+            .addFilterBefore(graphicVerificationCodeFilter, UsernamePasswordAuthenticationFilter.class)
+            //使用表单登陆
+            .formLogin()      //loginProcessingUrl("/authentication")  is default  .defaultSuccessUrl("/test.html")
+            //被拦截进入
+            .loginPage(dgbSecurityProperties.getBrowser().getLoginUrl())
+            //处理formLogin username password
+            .loginProcessingUrl(dgbSecurityProperties.getBrowser().getLoginAction())
+            //成功处理器
+            .successHandler(identityCheckSuccessHandler)
+            //失败处理器
+            .failureHandler(identityCheckFailureHandler)
+            //.defaultSuccessUrl(dgbSecurityProperties.getBrowser().getLoginSuccessPage()) //默认登陆成功页面
+            .and()
+            .csrf().disable();
     }
 
 

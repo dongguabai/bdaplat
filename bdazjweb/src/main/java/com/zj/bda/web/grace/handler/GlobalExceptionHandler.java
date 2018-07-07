@@ -70,17 +70,6 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * 条件过滤异常
-     * @param e
-     * @return
-     */
-    @ExceptionHandler(value = RequirementException.class)
-    @ResponseBody
-    public ResponseVO handler(RequirementException e) {
-        return responseError(ResponseEnum.ERROR_REQUIREMENT,e,appendErrorMessage(ResponseEnum.ERROR_REQUIREMENT,e.getMessage()));
-    }
-
-    /**
      * 非法参数
      * @param e
      * @return

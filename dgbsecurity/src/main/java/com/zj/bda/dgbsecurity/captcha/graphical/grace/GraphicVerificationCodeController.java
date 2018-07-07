@@ -1,4 +1,4 @@
-package com.zj.bda.dgbsecurity.captcha.graphical;
+package com.zj.bda.dgbsecurity.captcha.graphical.grace;
 
 import com.zj.bda.dgbsecurity.captcha.graphical.bean.ImageCodeBean;
 import com.zj.bda.dgbsecurity.captcha.graphical.helper.GenerateGraphicVerificationCodeHelper;
@@ -21,8 +21,8 @@ import java.io.IOException;
 @RestController
 public class GraphicVerificationCodeController {
 
-    private final String GRAPHIC_VERIFICATION_CODE_SESSION_KEY = "graphic_verification_code_session_key";
-    private final String IMAGE_FORMAT_NAME = "JPEG";
+    public static final String GRAPHIC_VERIFICATION_CODE_SESSION_KEY = "graphic_verification_code_session_key";
+    private static final String IMAGE_FORMAT_NAME = "JPEG";
 
     private SessionStrategy sessionStrategy = new HttpSessionSessionStrategy();
 
