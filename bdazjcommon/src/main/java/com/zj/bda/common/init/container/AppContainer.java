@@ -1,6 +1,6 @@
 package com.zj.bda.common.init.container;
 
-import com.zj.bda.common.init.condition.InitExpand;
+import com.zj.bda.common.init.InitExpand;
 import com.zj.bda.common.unspecific.util.ClassScanUtil;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
