@@ -1,7 +1,7 @@
-package com.zj.bda.dgbsecurity.captcha.graphical.grace;
+package com.zj.bda.dgbsecurity.captcha.graphical.controller;
 
+import com.zj.bda.dgbsecurity.captcha.CaptchaGenerator;
 import com.zj.bda.dgbsecurity.captcha.graphical.bean.ImageCodeBean;
-import com.zj.bda.dgbsecurity.captcha.graphical.helper.GenerateGraphicVerificationCodeHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.connect.web.HttpSessionSessionStrategy;
 import org.springframework.social.connect.web.SessionStrategy;
@@ -27,12 +27,13 @@ public class GraphicVerificationCodeController {
     private SessionStrategy sessionStrategy = new HttpSessionSessionStrategy();
 
     @Autowired
-    private GenerateGraphicVerificationCodeHelper generateGraphicVerificationCodeHelper;
+    private CaptchaGenerator graphicVerificationCodeGenerator;
 
     @GetMapping("/captcha/graphical")
     public void generateGraphicVerificationCode(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        ImageCodeBean imageCodeBean = generateGraphicVerificationCodeHelper.generateCodeAndPic();
-        sessionStrategy.setAttribute(new ServletWebRequest(request),GRAPHIC_VERIFICATION_CODE_SESSION_KEY,imageCodeBean);
+        ServletWebRequest servletWebRequest = new ServletWebRequest(request);
+        ImageCodeBean imageCodeBean = graphicVerificationCodeGenerator.generateCodeAndPic(servletWebRequest);
+        sessionStrategy.setAttribute(servletWebRequest,GRAPHIC_VERIFICATION_CODE_SESSION_KEY,imageCodeBean);
         ImageIO.write(imageCodeBean.getImage(), IMAGE_FORMAT_NAME, response.getOutputStream());
     }
 }

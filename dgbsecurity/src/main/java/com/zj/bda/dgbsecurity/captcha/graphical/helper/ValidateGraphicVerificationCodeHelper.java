@@ -1,8 +1,8 @@
 package com.zj.bda.dgbsecurity.captcha.graphical.helper;
 
 import com.zj.bda.dgbsecurity.DgbSecurityProperties;
-import com.zj.bda.dgbsecurity.captcha.graphical.grace.GraphicVerificationCodeController;
-import com.zj.bda.dgbsecurity.captcha.graphical.grace.GraphicVerificationCodeException;
+import com.zj.bda.dgbsecurity.captcha.graphical.controller.GraphicVerificationCodeController;
+import com.zj.bda.dgbsecurity.captcha.graphical.exception.GraphicVerificationCodeException;
 import com.zj.bda.dgbsecurity.captcha.graphical.bean.ImageCodeBean;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ public class ValidateGraphicVerificationCodeHelper {
     public void validateGraphicVerificationCode(HttpServletRequest request){
         ServletWebRequest servletWebRequest = new ServletWebRequest(request);
         ImageCodeBean imageCodeBean = (ImageCodeBean)sessionStrategy.getAttribute(servletWebRequest, GraphicVerificationCodeController.GRAPHIC_VERIFICATION_CODE_SESSION_KEY);
-        String inputCode = request.getParameter(dgbSecurityProperties.getGraphicVerificationCode().getInputImageCodeName());
+        String inputCode = request.getParameter(dgbSecurityProperties.getCaptcha().getGraphic().getInputImageCodeName());
         if (StringUtils.isBlank(inputCode)){
             throw new GraphicVerificationCodeException("验证码不能为空！");
         }

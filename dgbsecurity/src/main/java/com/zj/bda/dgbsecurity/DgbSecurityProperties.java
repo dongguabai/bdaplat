@@ -1,7 +1,7 @@
 package com.zj.bda.dgbsecurity;
 
 import com.zj.bda.dgbsecurity.browser.grace.properties.BrowserSecurityProperties;
-import com.zj.bda.dgbsecurity.captcha.graphical.properties.GraphicVerificationCodeProperties;
+import com.zj.bda.dgbsecurity.captcha.CaptchaProperties;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -15,5 +15,5 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "dgb.security")
 public class DgbSecurityProperties {
     BrowserSecurityProperties browser = new BrowserSecurityProperties();
-    GraphicVerificationCodeProperties graphicVerificationCode = new GraphicVerificationCodeProperties();
+    CaptchaProperties captcha = new CaptchaProperties();
 }

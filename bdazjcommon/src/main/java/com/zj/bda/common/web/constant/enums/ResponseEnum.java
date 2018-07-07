@@ -4,7 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**返回结果Enum
- * Created by Dongguabai on 2018-06-10.
+ * @author Dongguabai
+ * @date 2018-07-08 1:42
  */
 @AllArgsConstructor
 @Getter

@@ -1,34 +1,34 @@
-package com.zj.bda.dgbsecurity.captcha.graphical.helper;
+package com.zj.bda.dgbsecurity.captcha.graphical.generator;
 
 import com.zj.bda.dgbsecurity.DgbSecurityProperties;
+import com.zj.bda.dgbsecurity.captcha.CaptchaGenerator;
 import com.zj.bda.dgbsecurity.captcha.graphical.bean.ImageCodeBean;
+import com.zj.bda.dgbsecurity.captcha.graphical.properties.GraphicVerificationCodeProperties;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.web.bind.ServletRequestUtils;
+import org.springframework.web.context.request.ServletWebRequest;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
 /**
+ * 生成图形验证码
  * @author Dongguabai
  * @date 2018-07-07 1:46
  */
-@Component
-public class GenerateGraphicVerificationCodeHelper {
+public class GraphicVerificationCodeGenerator implements CaptchaGenerator {
 
-    private final int xx = 15;
-    private final int fontHeight = 18;
-    private final int codeY = 16;
-    private final char[] codeSequence = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
-            'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
     @Autowired
     private DgbSecurityProperties dgbSecurityProperties;
 
-    public ImageCodeBean generateCodeAndPic() {
-        int width = dgbSecurityProperties.getGraphicVerificationCode().getImageWidth();
-        int height = dgbSecurityProperties.getGraphicVerificationCode().getImageHeight();
-        int codeCount = dgbSecurityProperties.getGraphicVerificationCode().getCodeCount();
-        long expireSeconds = dgbSecurityProperties.getGraphicVerificationCode().getExpireSeconds();
+    @Override
+    public ImageCodeBean generateCodeAndPic(ServletWebRequest request) {
+        GraphicVerificationCodeProperties graphic = dgbSecurityProperties.getCaptcha().getGraphic();
+        int width = ServletRequestUtils.getIntParameter(request.getRequest(),"width",graphic.getImageWidth());
+        int height = ServletRequestUtils.getIntParameter(request.getRequest(),"height",graphic.getImageHeight());
+        int codeCount = graphic.getCodeCount();
+        long expireSeconds = graphic.getExpireSeconds();
 
         BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 

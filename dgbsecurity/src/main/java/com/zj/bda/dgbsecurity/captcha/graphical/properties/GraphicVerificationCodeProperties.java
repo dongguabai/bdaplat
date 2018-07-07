@@ -18,4 +18,6 @@ public class GraphicVerificationCodeProperties {
     private String getImageUrl = "/captcha/graphical";
     private String inputImageCodeName = "imageCode";
 
+    private String checkUrl;
+
 }

@@ -9,9 +9,9 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
-/**
- * Created by Dongguabai on 2018-06-15.
- * 快速失败
+/**快速失败
+ * @author Dongguabai
+ * @date 2018-07-08 1:42
  */
 @Configuration
 public class ValidatorConfiguration {

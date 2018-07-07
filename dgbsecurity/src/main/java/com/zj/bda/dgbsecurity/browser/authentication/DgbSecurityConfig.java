@@ -1,7 +1,7 @@
 package com.zj.bda.dgbsecurity.browser.authentication;
 
 import com.zj.bda.dgbsecurity.DgbSecurityProperties;
-import com.zj.bda.dgbsecurity.captcha.graphical.grace.GraphicVerificationCodeFilter;
+import com.zj.bda.dgbsecurity.captcha.graphical.filter.GraphicVerificationCodeFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

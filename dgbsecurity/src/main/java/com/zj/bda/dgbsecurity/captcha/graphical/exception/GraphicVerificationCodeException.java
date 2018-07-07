@@ -1,4 +1,4 @@
-package com.zj.bda.dgbsecurity.captcha.graphical.grace;
+package com.zj.bda.dgbsecurity.captcha.graphical.exception;
 
 
 import org.springframework.security.core.AuthenticationException;

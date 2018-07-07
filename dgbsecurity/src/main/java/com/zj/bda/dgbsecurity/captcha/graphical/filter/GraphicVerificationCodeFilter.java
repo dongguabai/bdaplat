@@ -1,11 +1,15 @@
-package com.zj.bda.dgbsecurity.captcha.graphical.grace;
+package com.zj.bda.dgbsecurity.captcha.graphical.filter;
 
+import com.google.common.collect.Sets;
 import com.zj.bda.dgbsecurity.DgbSecurityProperties;
 import com.zj.bda.dgbsecurity.browser.authentication.fail.IdentityCheckFailureHandler;
+import com.zj.bda.dgbsecurity.captcha.graphical.exception.GraphicVerificationCodeException;
 import com.zj.bda.dgbsecurity.captcha.graphical.helper.ValidateGraphicVerificationCodeHelper;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.AntPathMatcher;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
@@ -13,6 +17,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Set;
 
 /**
  * 保证每次只被调用一次
@@ -20,7 +25,7 @@ import java.io.IOException;
  * @date 2018-07-07 12:14
  */
 @Component
-public class GraphicVerificationCodeFilter extends OncePerRequestFilter{
+public class GraphicVerificationCodeFilter extends OncePerRequestFilter implements InitializingBean{
 
     @Autowired
     private IdentityCheckFailureHandler identityCheckFailureHandler;
@@ -31,11 +36,20 @@ public class GraphicVerificationCodeFilter extends OncePerRequestFilter{
     @Autowired
     private DgbSecurityProperties dgbSecurityProperties;
 
-    private static final String ALLOWED_METHOD = "POST";
+    private AntPathMatcher antPathMatcher = new AntPathMatcher();
+
+    private Set<String> urls = null;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        if (StringUtils.equals(request.getRequestURI(),dgbSecurityProperties.getBrowser().getLoginAction()) && StringUtils.equalsIgnoreCase(ALLOWED_METHOD,request.getMethod())){
+        Boolean isNeedValidateGraphicVerificationCode = false;
+        for (String url : urls) {
+            if (antPathMatcher.match(url, request.getRequestURI())) {
+                isNeedValidateGraphicVerificationCode = true;
+                break;
+            }
+        }
+        if (isNeedValidateGraphicVerificationCode){
             try {
                 validateGraphicVerificationCodeHelper.validateGraphicVerificationCode(request);
             }catch (GraphicVerificationCodeException e){
@@ -44,5 +58,12 @@ public class GraphicVerificationCodeFilter extends OncePerRequestFilter{
             }
         }
         filterChain.doFilter(request,response);
+    }
+
+    @Override
+    public void afterPropertiesSet() throws ServletException {
+        super.afterPropertiesSet();
+        urls = Sets.newHashSet(StringUtils.splitByWholeSeparatorPreserveAllTokens(dgbSecurityProperties.getCaptcha().getGraphic().getCheckUrl(),","));
+        urls.add(dgbSecurityProperties.getBrowser().getLoginAction());
     }
 }
