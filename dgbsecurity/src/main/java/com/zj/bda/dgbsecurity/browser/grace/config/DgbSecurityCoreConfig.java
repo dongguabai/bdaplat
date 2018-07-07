@@ -1,6 +1,6 @@
 package com.zj.bda.dgbsecurity.browser.grace.config;
 
-import com.zj.bda.dgbsecurity.browser.grace.properties.DgbSecurityProperties;
+import com.zj.bda.dgbsecurity.DgbSecurityProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 

@@ -1,4 +1,4 @@
-package com.zj.bda.dgbsecurity.browser.captcha.graphical.bean;
+package com.zj.bda.dgbsecurity.captcha.graphical.bean;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

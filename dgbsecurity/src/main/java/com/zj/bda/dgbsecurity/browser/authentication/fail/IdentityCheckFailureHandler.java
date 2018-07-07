@@ -3,7 +3,7 @@ package com.zj.bda.dgbsecurity.browser.authentication.fail;
 import com.zj.bda.common.unspecific.util.WebUtil;
 import com.zj.bda.common.web.constant.enums.ResponseEnum;
 import com.zj.bda.dgbsecurity.browser.grace.enums.LoginResponseTypeEnum;
-import com.zj.bda.dgbsecurity.browser.grace.properties.DgbSecurityProperties;
+import com.zj.bda.dgbsecurity.DgbSecurityProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.AuthenticationException;

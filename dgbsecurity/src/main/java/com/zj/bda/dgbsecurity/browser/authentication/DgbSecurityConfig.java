@@ -1,6 +1,6 @@
 package com.zj.bda.dgbsecurity.browser.authentication;
 
-import com.zj.bda.dgbsecurity.browser.grace.properties.DgbSecurityProperties;
+import com.zj.bda.dgbsecurity.DgbSecurityProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

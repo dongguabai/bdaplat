@@ -2,7 +2,7 @@ package com.zj.bda.dgbsecurity.browser.authentication.success;
 
 import com.zj.bda.common.unspecific.util.WebUtil;
 import com.zj.bda.dgbsecurity.browser.grace.enums.LoginResponseTypeEnum;
-import com.zj.bda.dgbsecurity.browser.grace.properties.DgbSecurityProperties;
+import com.zj.bda.dgbsecurity.DgbSecurityProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
