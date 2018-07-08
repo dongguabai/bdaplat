@@ -18,7 +18,7 @@ public class CaptchaBeanConfig {
     private DgbSecurityProperties dgbSecurityProperties;
 
     @Bean
-    @ConditionalOnMissingBean(name = "graphicVerificationCodeGenerator")
+    @ConditionalOnMissingBean(CaptchaGenerator.class)
     public CaptchaGenerator graphicVerificationCodeGenerator(){
         GraphicVerificationCodeGenerator graphicVerificationCodeGenerator = new GraphicVerificationCodeGenerator();
         return graphicVerificationCodeGenerator;

@@ -17,4 +17,6 @@ public class BrowserSecurityProperties {
     private String loginUrl = "/authentication/require";
     private String loginSuccessPage;
     private LoginResponseTypeEnum loginResponseTypeEnum = LoginResponseTypeEnum.JSON;
+
+    private int rememberMeSeconds = 3600;
 }
