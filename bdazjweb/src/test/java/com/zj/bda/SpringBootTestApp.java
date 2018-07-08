@@ -1,11 +1,14 @@
 package com.zj.bda;
 
+import com.zj.bda.common.init.InitExpand;
 import com.zj.bda.dgbsecurity.DgbSecurityProperties;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.Map;
 
 /**
  * @author Dongguabai
@@ -18,10 +21,18 @@ public class SpringBootTestApp {
     @Autowired
     private DgbSecurityProperties dgbSecurityProperties;
 
+    @Autowired
+    private Map<String,InitExpand> map;
+
     @Test
     public void test01(){
         System.out.println(dgbSecurityProperties.getBrowser().getLoginAction());
         System.out.println(dgbSecurityProperties.getBrowser().getLoginUrl());
         System.out.println(dgbSecurityProperties.getBrowser().getLoginPage());
+
+        map.forEach((k,v)->{
+            System.out.println("key:"+k+":value:"+v);
+        });
+
     }
 }

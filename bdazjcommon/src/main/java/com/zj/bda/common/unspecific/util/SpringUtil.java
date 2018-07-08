@@ -1,5 +1,6 @@
 package com.zj.bda.common.unspecific.util;
 
+import com.zj.bda.common.init.InitExpand;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.BeansException;
@@ -7,6 +8,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
+
+import java.util.Map;
 
 /**
  * @author Dongguabai
@@ -39,10 +42,19 @@ public class SpringUtil implements ApplicationContextAware {
         return getApplicationContext().getBean(name, clazz);
     }
 
+    public static <T> Map<String,T> getBeansOfType(Class<T> clazz){
+        return getApplicationContext().getBeansOfType(clazz);
+    }
+
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         if (SpringUtil.applicationContext == null) {
             SpringUtil.applicationContext = applicationContext;
         }
     }
+
+    public static void main(String[] args) {
+        Map<String, InitExpand> beansOfType = applicationContext.getBeansOfType(InitExpand.class);
+    }
+
 }

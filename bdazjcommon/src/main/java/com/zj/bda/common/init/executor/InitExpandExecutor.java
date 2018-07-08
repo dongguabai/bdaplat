@@ -1,14 +1,11 @@
 package com.zj.bda.common.init.executor;
 
-import com.zj.bda.common.init.container.InitExpandClassContainer;
-import com.zj.bda.common.unspecific.util.ReflectUtil;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
+import com.zj.bda.common.init.InitExpand;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Set;
+import java.util.Map;
 
 /**
  * 执行初始化那个接口的方法
@@ -17,22 +14,14 @@ import java.util.Set;
  *
  */
 @Slf4j
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@Component
 public class InitExpandExecutor {
+
+	@Autowired
+	private Map<String,InitExpand> initExpandMap;
 	
-	public static void execute() {
-		Set<Class<?>> classes = InitExpandClassContainer.getInitExpandImplements();
-		try {
-			for (Class<?> clazz : classes) {
-				Method method = ReflectUtil.getMethod(clazz, "init");
-				method.setAccessible(false);
-				method.invoke(clazz.newInstance());
-			}
-		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException
-				| InstantiationException e) {
-			log.error("init invoke method is error",e);
-			throw new RuntimeException(e);
-		}
+	public void execute() {
+		initExpandMap.values().forEach(initExpandImpl -> initExpandImpl.init());
 	}
 
 }
