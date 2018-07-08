@@ -1,6 +1,7 @@
 package com.zj.bda;
 
 import com.zj.bda.common.init.InitExpand;
+import com.zj.bda.common.unspecific.util.SpringUtil;
 import com.zj.bda.dgbsecurity.DgbSecurityProperties;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,6 +32,15 @@ public class SpringBootTestApp {
         System.out.println(dgbSecurityProperties.getBrowser().getLoginPage());
 
         map.forEach((k,v)->{
+            System.out.println("key:"+k+":value:"+v);
+        });
+
+    }
+
+    @Test
+    public void test02(){
+        Map<String, InitExpand> beansOfType = SpringUtil.getBeansOfType(InitExpand.class);
+        beansOfType.forEach((k,v)->{
             System.out.println("key:"+k+":value:"+v);
         });
 
