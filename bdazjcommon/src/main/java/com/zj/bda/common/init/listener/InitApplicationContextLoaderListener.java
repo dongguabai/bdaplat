@@ -1,7 +1,6 @@
 package com.zj.bda.common.init.listener;
 
-import com.zj.bda.common.init.executor.InitExpandExecutor;
-import com.zj.bda.common.unspecific.util.SpringUtil;
+import com.zj.bda.common.init.helper.InitExpandHelper;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 /**
@@ -12,7 +11,7 @@ public class InitApplicationContextLoaderListener implements ApplicationListener
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-        SpringUtil.getBean(InitExpandExecutor.class).execute();
+       InitExpandHelper.execute();
     }
 
 }

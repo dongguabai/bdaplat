@@ -1,6 +1,6 @@
-package com.zj.bda.dgbschedule.config;
+package com.zj.bda.dgbschedule.statics.config;
 
-import com.zj.bda.dgbschedule.job.fixedjob.QuartzTest01;
+import com.zj.bda.dgbschedule.statics.job.fixedjob.QuartzTest01;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.quartz.JobDetailFactoryBean;
@@ -12,7 +12,7 @@ import org.springframework.scheduling.quartz.SimpleTriggerFactoryBean;
  * @date 2018-07-01 17:15
  */
 @Configuration
-public class QuartzConfig {
+public class StaticsQuartzConfig {
 
     /**
      * 将Job放入JobDetailFactoryBean

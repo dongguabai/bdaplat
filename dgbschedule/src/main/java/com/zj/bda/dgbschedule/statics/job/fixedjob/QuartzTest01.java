@@ -1,4 +1,4 @@
-package com.zj.bda.dgbschedule.job.fixedjob;
+package com.zj.bda.dgbschedule.statics.job.fixedjob;
 
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
