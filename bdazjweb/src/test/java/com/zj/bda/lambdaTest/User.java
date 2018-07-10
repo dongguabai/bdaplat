@@ -16,4 +16,8 @@ public class User {
     private String username;
     private String password;
     private Integer age;
+
+    public User(Integer age){
+        this.age = age;
+    }
 }

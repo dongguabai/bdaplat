@@ -1,7 +1,7 @@
 package com.zj.bda.dgbsecurity;
 
 import com.zj.bda.dgbsecurity.browser.grace.properties.BrowserSecurityProperties;
-import com.zj.bda.dgbsecurity.captcha.CaptchaProperties;
+import com.zj.bda.dgbsecurity.captcha.grace.properties.CaptchaProperties;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;

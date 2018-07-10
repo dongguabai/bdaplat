@@ -1,5 +1,6 @@
 package com.zj.bda;
 
+import com.zj.bda.dgbsecurity.captcha.graphical.process.GraphicalCaptchaProcessGor;
 import com.zj.bda.web.controller.test.TestTaskAsync;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,8 +18,14 @@ public class MainTest {
     @Autowired
     TestTaskAsync testTaskAsync;
 
+    @Autowired
+    GraphicalCaptchaProcessGor GraphicalCaptchaProcessGor;
+
     @Test
-    public void testCoreConfig() {
+    public void testCoreConfig() throws Exception {
+        GraphicalCaptchaProcessGor.create(null);
+
+
         System.out.println("before---------");
         testTaskAsync.testAsync03();
         System.out.println("after---------");

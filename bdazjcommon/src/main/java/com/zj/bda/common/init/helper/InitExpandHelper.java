@@ -1,6 +1,6 @@
 package com.zj.bda.common.init.helper;
 
-import com.zj.bda.common.init.InitExpand;
+import com.zj.bda.common.init.IInitExpand;
 import com.zj.bda.common.unspecific.util.SpringUtil;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -16,11 +16,11 @@ import lombok.extern.slf4j.Slf4j;
 public class InitExpandHelper {
    /*
     @Autowired
-    private Map<String,InitExpand> initExpandMap;*/
+    private Map<String,IInitExpand> initExpandMap;*/
 
     public static void execute() {
-        SpringUtil.getBeansOfType(InitExpand.class).values().forEach(initExpand -> {
-            initExpand.init();
+        SpringUtil.getBeansOfType(IInitExpand.class).values().forEach(IInitExpand -> {
+            IInitExpand.init();
         });
     }
 

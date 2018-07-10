@@ -1,7 +1,7 @@
 package com.zj.bda.dgbsecurity.browser.authentication;
 
 import com.zj.bda.dgbsecurity.DgbSecurityProperties;
-import com.zj.bda.dgbsecurity.captcha.graphical.filter.GraphicVerificationCodeFilter;
+import com.zj.bda.dgbsecurity.captcha.graphical.filter.GraphicCaptchaFilter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -38,7 +38,7 @@ public class BrowserAuthenticationConfig extends WebSecurityConfigurerAdapter {
     private AuthenticationFailureHandler identityCheckFailureHandler;
 
     @Autowired
-    private GraphicVerificationCodeFilter graphicVerificationCodeFilter;
+    private GraphicCaptchaFilter graphicCaptchaFilter;
 
     @Autowired
     private DataSource dataSource;
@@ -72,7 +72,7 @@ public class BrowserAuthenticationConfig extends WebSecurityConfigurerAdapter {
                     .anyRequest()
                     .authenticated()
                 .and()
-                .addFilterBefore(graphicVerificationCodeFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(graphicCaptchaFilter, UsernamePasswordAuthenticationFilter.class)
                 //使用表单登陆
                 .formLogin()      //loginProcessingUrl("/authentication")  is default  .defaultSuccessUrl("/test.html")
                     //被拦截进入

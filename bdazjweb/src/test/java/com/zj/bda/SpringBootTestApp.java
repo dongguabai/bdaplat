@@ -1,6 +1,6 @@
 package com.zj.bda;
 
-import com.zj.bda.common.init.InitExpand;
+import com.zj.bda.common.init.IInitExpand;
 import com.zj.bda.common.unspecific.util.SpringUtil;
 import com.zj.bda.dgbsecurity.DgbSecurityProperties;
 import org.junit.Test;
@@ -23,7 +23,7 @@ public class SpringBootTestApp {
     private DgbSecurityProperties dgbSecurityProperties;
 
     @Autowired
-    private Map<String,InitExpand> map;
+    private Map<String,IInitExpand> map;
 
     @Test
     public void test01(){
@@ -39,7 +39,7 @@ public class SpringBootTestApp {
 
     @Test
     public void test02(){
-        Map<String, InitExpand> beansOfType = SpringUtil.getBeansOfType(InitExpand.class);
+        Map<String, IInitExpand> beansOfType = SpringUtil.getBeansOfType(IInitExpand.class);
         beansOfType.forEach((k,v)->{
             System.out.println("key:"+k+":value:"+v);
         });
