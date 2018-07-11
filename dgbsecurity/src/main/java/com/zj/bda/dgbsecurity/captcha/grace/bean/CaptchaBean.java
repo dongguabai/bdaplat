@@ -8,7 +8,7 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 
 /**
- * 验证码基类Bean
+ * 验证码基类
  * @author Dongguabai
  * @date 2018-07-06 15:42
  */

@@ -23,7 +23,7 @@ public class MainTest {
 
     @Test
     public void testCoreConfig() throws Exception {
-        GraphicalCaptchaProcessGor.create(null);
+   //     GraphicalCaptchaProcessGor.create(null);
 
 
         System.out.println("before---------");
