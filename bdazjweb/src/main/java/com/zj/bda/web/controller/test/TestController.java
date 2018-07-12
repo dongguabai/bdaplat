@@ -7,8 +7,10 @@ import com.zj.bda.common.validator.helper.ValidateHelper;
 import com.zj.bda.persistence.entity.UnStrTag;
 import com.zj.bda.persistence.mapper.UnStrTagMapper;
 import com.zj.bda.service.TestService;
+import com.zj.bda.web.controller.TTestAsync;
 import lombok.extern.slf4j.Slf4j;
 import org.n3r.idworker.Sid;
+import org.springframework.aop.framework.AopContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -28,6 +30,18 @@ import java.util.concurrent.Callable;
 @RestController
 @Slf4j
 public class TestController {
+
+    @Autowired
+    private TTestAsync tTestAsync;
+
+    @RequestMapping("/async/test")
+    public void ttttt() throws Exception{
+        System.out.println("前-----");
+        tTestAsync.test1();
+        tTestAsync.test2();
+        System.out.println("后-----");
+
+    }
 
     /**
      * 指定当前Controller方法返回的是UserDetail指定的视图

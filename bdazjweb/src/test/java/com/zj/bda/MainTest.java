@@ -1,6 +1,6 @@
 package com.zj.bda;
 
-import com.zj.bda.dgbsecurity.captcha.graphical.process.GraphicalCaptchaProcessGor;
+import com.zj.bda.web.controller.TTestAsync;
 import com.zj.bda.web.controller.test.TestTaskAsync;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,7 +19,10 @@ public class MainTest {
     TestTaskAsync testTaskAsync;
 
     @Autowired
-    GraphicalCaptchaProcessGor GraphicalCaptchaProcessGor;
+    TTestAsync tTestAsync;
+
+ /*   @Autowired
+    GraphicalCaptchaProcessGor GraphicalCaptchaProcessGor;*/
 
     @Test
     public void testCoreConfig() throws Exception {
@@ -29,6 +32,20 @@ public class MainTest {
         System.out.println("before---------");
         testTaskAsync.testAsync03();
         System.out.println("after---------");
+    }
+
+    @Test
+    public void test02() throws InterruptedException {
+        tTestAsync.test3();
+    }
+
+
+    @Test
+    public void test012() throws InterruptedException {
+        System.out.println("前-----");
+        tTestAsync.test1();
+        tTestAsync.test2();
+        System.out.println("后-----");
     }
 
 }

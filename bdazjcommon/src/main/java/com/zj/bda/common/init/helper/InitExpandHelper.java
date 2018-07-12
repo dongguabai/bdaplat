@@ -14,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class InitExpandHelper {
-   /*
+   /*    本类需为Spring组件，且无法使用静态
     @Autowired
     private Map<String,IInitExpand> initExpandMap;*/
 

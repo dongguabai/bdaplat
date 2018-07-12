@@ -1,5 +1,6 @@
 package com.zj.bda.common.web.vo;
 
+
 import lombok.*;
 
 import java.io.Serializable;
@@ -15,8 +16,6 @@ import java.io.Serializable;
 @Getter
 @ToString
 public class ResponseVO<T> implements Serializable {
-
-    private static final long serialVersionUID = 1L;
 
     /**
      * 0   : 成功

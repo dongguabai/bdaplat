@@ -1,8 +1,9 @@
 package com.zj.bda;
 
 import com.zj.bda.common.init.IInitExpand;
+import com.zj.bda.common.unspecific.util.JsonUtil;
 import com.zj.bda.common.unspecific.util.SpringUtil;
-import com.zj.bda.dgbsecurity.DgbSecurityProperties;
+import com.zj.bda.dgbsecurity.support.user.DgbSecurityUserHelper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,21 +21,21 @@ import java.util.Map;
 public class SpringBootTestApp {
 
     @Autowired
-    private DgbSecurityProperties dgbSecurityProperties;
-
-    @Autowired
     private Map<String,IInitExpand> map;
 
     @Test
     public void test01(){
-        System.out.println(dgbSecurityProperties.getBrowser().getLoginAction());
-        System.out.println(dgbSecurityProperties.getBrowser().getLoginUrl());
-        System.out.println(dgbSecurityProperties.getBrowser().getLoginPage());
 
         map.forEach((k,v)->{
             System.out.println("key:"+k+":value:"+v);
         });
 
+    }
+    @Test
+    public void test03(){
+       Object currentPrincipal = DgbSecurityUserHelper.getCurrentPrincipal();
+        String s = JsonUtil.toJSON(currentPrincipal);
+        System.out.println(s);
     }
 
     @Test
