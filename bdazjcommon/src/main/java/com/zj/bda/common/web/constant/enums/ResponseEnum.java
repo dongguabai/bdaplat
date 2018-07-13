@@ -41,7 +41,7 @@ public enum ResponseEnum {
     /**
      * 验证码异常
      */
-    ERROR_GRAPHIC_CAPTCHA_VALIDATE(-5,""),
+    ERROR_VERIFICATION_CODE(-5,""),
 
     /**
      * 登陆失败

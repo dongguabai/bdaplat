@@ -3,7 +3,7 @@ package com.zj.bda;
 import com.zj.bda.common.init.IInitExpand;
 import com.zj.bda.common.unspecific.util.JsonUtil;
 import com.zj.bda.common.unspecific.util.SpringUtil;
-import com.zj.bda.dgbsecurity.support.user.DgbSecurityUserHelper;
+import wm.dgb.security.support.user.DgbSecurityUserHelper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

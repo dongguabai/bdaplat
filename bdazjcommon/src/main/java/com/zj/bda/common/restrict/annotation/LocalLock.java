@@ -16,7 +16,7 @@ public @interface LocalLock {
     String key();
 
     /**
-     * 过期时间  目前使用guava、ehcache   使用redis该属性有用
+     * 过期时间  目前使用guava、ehcache，该属性无作用   使用redis该属性有用
      *
      */
     int expire() default 5;

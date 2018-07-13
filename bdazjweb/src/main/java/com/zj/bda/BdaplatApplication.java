@@ -16,7 +16,7 @@ import tk.mybatis.spring.annotation.MapperScan;
  */
 @SpringBootApplication
 @PropertySource({"classpath:config/dgb-security.properties"})
-@ComponentScan(basePackages = {"com.zj.bda"})
+@ComponentScan(basePackages = {"com.zj.bda","wm.dgb"})
 @MapperScan(basePackages = "com.zj.bda.persistence.mapper")
 //@ServletComponentScan
 @EnableAsync  //class @Component   method @Async

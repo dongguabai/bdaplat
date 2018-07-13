@@ -1,6 +1,5 @@
 package com.zj.bda.common.unspecific.util;
 
-import com.zj.bda.common.init.IInitExpand;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.BeansException;
@@ -8,7 +7,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 /**
@@ -60,8 +62,22 @@ public class SpringUtil implements ApplicationContextAware {
         return getApplicationContext().getBean(name, clazz);
     }
 
+    /**
+     * 获取子类Map
+     * @param clazz
+     * @param <T>
+     * @return
+     */
     public static <T> Map<String,T> getBeansOfType(Class<T> clazz){
         return getApplicationContext().getBeansOfType(clazz);
+    }
+
+    /**
+     * HttpServletRequest
+     * @return
+     */
+    public static HttpServletRequest getHttpServletRequest(){
+        return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
     }
 
     @Override
@@ -69,10 +85,6 @@ public class SpringUtil implements ApplicationContextAware {
         if (SpringUtil.applicationContext == null) {
             SpringUtil.applicationContext = applicationContext;
         }
-    }
-
-    public static void main(String[] args) {
-        Map<String, IInitExpand> beansOfType = applicationContext.getBeansOfType(IInitExpand.class);
     }
 
 }

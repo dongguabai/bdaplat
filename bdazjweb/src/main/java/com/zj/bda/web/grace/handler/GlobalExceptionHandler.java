@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import wm.dgb.security.anchorhold.verificationcode.exception.VerificationCodeException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolation;
@@ -69,6 +70,16 @@ public class GlobalExceptionHandler {
         return responseError(ResponseEnum.ERROR_LIMITED_OPERATION,e);
     }
 
+    /**
+     * 验证码异常
+     * @param e
+     * @return
+     */
+    @ExceptionHandler(value = VerificationCodeException.class)
+    @ResponseBody
+    public ResponseVO handler(VerificationCodeException e) {
+        return responseError(ResponseEnum.ERROR_VERIFICATION_CODE,e,appendErrorMessage(ResponseEnum.ERROR_VERIFICATION_CODE,e.getMessage()));
+    }
     /**
      * 非法参数
      * @param e
