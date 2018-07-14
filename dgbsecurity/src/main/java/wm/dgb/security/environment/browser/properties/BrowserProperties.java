@@ -1,6 +1,6 @@
 package wm.dgb.security.environment.browser.properties;
 
-import wm.dgb.security.anchorhold.authentication.afterauthentication.enums.AfterAuthenticationResponseTypeEnum;
+import wm.dgb.security.support.authentication.afterauthentication.enums.AfterAuthenticationResponseTypeEnum;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,4 +27,8 @@ public class BrowserProperties {
      */
     private AfterAuthenticationResponseTypeEnum responseType = AfterAuthenticationResponseTypeEnum.JSON;
 
+    /**
+     * 记住我时间（秒）
+     */
+    private int rememberMeSeconds = 3600;
 }

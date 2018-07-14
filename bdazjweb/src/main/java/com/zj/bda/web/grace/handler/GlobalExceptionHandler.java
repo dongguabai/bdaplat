@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
-import wm.dgb.security.anchorhold.verificationcode.exception.VerificationCodeException;
+import wm.dgb.security.support.verificationcode.grace.exception.VerificationCodeException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolation;
