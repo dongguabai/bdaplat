@@ -5,6 +5,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.security.web.session.InvalidSessionStrategy;
 import org.springframework.security.web.session.SessionInformationExpiredStrategy;
@@ -42,6 +43,9 @@ public class BrowserSecurityGrace extends WebSecurityConfigurerAdapter{
     @Autowired
     private InvalidSessionStrategy invalidSessionStrategy;
 
+    @Autowired
+    private LogoutSuccessHandler logoutSuccessHandler;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         //装配验证码Filter
@@ -72,6 +76,14 @@ public class BrowserSecurityGrace extends WebSecurityConfigurerAdapter{
                 .tokenRepository(persistentTokenRepository)
                 .tokenValiditySeconds(dgbSecurityProperties.getBrowser().getRememberMeSeconds())
                 .userDetailsService(userDetailsObtainImpl)
+                .and()
+            .logout()
+                //退出登录action
+                .logoutUrl(dgbSecurityProperties.getBrowser().getLogOut().getAction())
+                //退出成功后跳转的页面
+                //.logoutSuccessUrl("/test")
+                .logoutSuccessHandler(logoutSuccessHandler)
+                .deleteCookies("JSESSIONID")
                 .and()
             .sessionManagement()
                 //session过期处理

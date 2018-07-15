@@ -1,9 +1,10 @@
 package wm.dgb.security.environment.browser.properties;
 
-import wm.dgb.security.environment.browser.session.properties.BrowserSessionProperties;
-import wm.dgb.security.support.authentication.afterauthentication.enums.AfterAuthenticationResponseTypeEnum;
 import lombok.Getter;
 import lombok.Setter;
+import wm.dgb.security.environment.browser.logout.properties.BrowserLogOutProperties;
+import wm.dgb.security.environment.browser.session.properties.BrowserSessionProperties;
+import wm.dgb.security.support.authentication.afterauthentication.enums.AfterAuthenticationResponseTypeEnum;
 
 /**
  * @author Dongguabai
@@ -37,4 +38,9 @@ public class BrowserProperties {
      * session处理
      */
     private BrowserSessionProperties session = new BrowserSessionProperties();
+
+    /**
+     * 退出处理
+     */
+    private BrowserLogOutProperties logOut = new BrowserLogOutProperties();
 }
