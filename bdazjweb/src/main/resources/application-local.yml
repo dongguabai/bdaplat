@@ -45,6 +45,6 @@ pagehelper:
   supportMethodsArguments: true
   params: count=countSql
 mapper:
-  mappers: com.zj.bda.persistence.gracee.BaseMapper
+  mappers: com.zj.bda.persistence.grace.BaseMapper
   not-empty: false
   identity: ORACLE

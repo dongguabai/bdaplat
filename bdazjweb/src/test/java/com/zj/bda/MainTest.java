@@ -27,6 +27,7 @@ public class MainTest {
 
     @Test
     public void testCoreConfig() throws Exception {
+
    //     GraphicalCaptchaProcessGor.create(null);
 
 
@@ -50,4 +51,9 @@ public class MainTest {
         System.out.println("后-----");
     }
 
+
+    public static void main(String[] args) throws ClassNotFoundException {
+        Class<?> aClass = Class.forName("a.b.c");
+        System.out.println(aClass);
+    }
 }
