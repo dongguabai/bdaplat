@@ -1,6 +1,7 @@
 package com.zj.bda.common.unspecific.util;
 
 import com.zj.bda.common.web.helper.ResponseHelper;
+import com.zj.bda.common.web.vo.ResponseVO;
 import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
 
@@ -18,6 +19,12 @@ public class WebUtil {
         response.setStatus(httpStatus.value());
         response.setContentType("application/json;charset=UTF-8");
         response.getWriter().write(JsonUtil.toJSON(ResponseHelper.error(errorCode,message,resData)));
+    }
+
+    public static void responseErrorJson(HttpServletResponse response, HttpStatus httpStatus, ResponseVO result) throws IOException {
+        response.setStatus(httpStatus.value());
+        response.setContentType("application/json;charset=UTF-8");
+        response.getWriter().write(JsonUtil.toJSON(result));
     }
 
     public static void responseOkJson(HttpServletResponse response,Object resData,String message) throws IOException {

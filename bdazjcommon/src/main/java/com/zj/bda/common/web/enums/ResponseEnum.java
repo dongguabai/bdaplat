@@ -1,4 +1,4 @@
-package com.zj.bda.common.web.constant.enums;
+package com.zj.bda.common.web.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -46,7 +46,22 @@ public enum ResponseEnum {
     /**
      * 登陆失败
      */
-    ERROR_LOGIN(-6,"登陆失败");
+    ERROR_LOGIN(-6,"登陆失败，用户名或密码错误！"),
+
+    /**
+     * 账号过期
+     */
+    ERROR_ACCOUNT_EXPIRE(-7,"账号过期，请重新登陆！"),
+
+    /**
+     * 账号多处登陆
+     */
+    ERROR_ACCOUNT_CONCURRENCY(-8,"您的账号在另一设备登陆，您被迫下线！"),
+
+    /**
+     * 账号已经登陆
+     */
+    ERROR_ACCOUNT_ALREADY_LOGIN(-9,"您的账号在另一设备已登陆，当前设备无法登陆！");
 
     /**
      * <=0 异常-》   =0可重复请求   >0成功

@@ -6,6 +6,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+import org.springframework.security.web.session.InvalidSessionStrategy;
+import org.springframework.security.web.session.SessionInformationExpiredStrategy;
 import org.springframework.stereotype.Component;
 import wm.dgb.security.grace.properties.DgbSecurityProperties;
 import wm.dgb.security.support.authentication.afterauthentication.DgbAuthenticationFailureHandler;
@@ -33,6 +35,12 @@ public class BrowserSecurityGrace extends WebSecurityConfigurerAdapter{
 
     @Autowired
     private UserDetailsService userDetailsObtainImpl;
+
+    @Autowired
+    private SessionInformationExpiredStrategy sessionInformationExpiredStrategy;
+
+    @Autowired
+    private InvalidSessionStrategy invalidSessionStrategy;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -64,11 +72,18 @@ public class BrowserSecurityGrace extends WebSecurityConfigurerAdapter{
                 .tokenRepository(persistentTokenRepository)
                 .tokenValiditySeconds(dgbSecurityProperties.getBrowser().getRememberMeSeconds())
                 .userDetailsService(userDetailsObtainImpl)
-            .and()
-            //配置认证
+                .and()
+            .sessionManagement()
+                //session过期处理
+                .invalidSessionStrategy(invalidSessionStrategy)
+                //也可以使用Controller
+                //.invalidSessionUrl("/session/invalid")
+                //session并发处理
+                .maximumSessions(dgbSecurityProperties.getBrowser().getSession().getMaximumSessions())
+                .maxSessionsPreventsLogin(dgbSecurityProperties.getBrowser().getSession().isMaxSessionsPreventsLogin())
+                .expiredSessionStrategy(sessionInformationExpiredStrategy)
+            .and().and()
             .csrf().disable();
-
-
 
     }
 }

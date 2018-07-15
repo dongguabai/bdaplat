@@ -1,6 +1,6 @@
-package wm.dgb.security.support.authentication.controller;
+package wm.dgb.security.environment.browser.controller;
 
-import com.zj.bda.common.web.constant.enums.ResponseEnum;
+import com.zj.bda.common.web.enums.ResponseEnum;
 import com.zj.bda.common.web.helper.ResponseHelper;
 import com.zj.bda.common.web.vo.ResponseVO;
 import wm.dgb.security.grace.properties.DgbSecurityProperties;
@@ -47,4 +47,14 @@ public class BrowserSecurityController {
         }
         return ResponseHelper.error(ResponseEnum.ERROR_UNLOGIN);
     }
+
+    /**
+     * session失效处理
+     * @return
+     */
+  /*  @RequestMapping("/session/invalid")
+    @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
+    public ResponseVO sessionInvalid(){
+        return ResponseHelper.error(ResponseEnum.ERROR_ACCOUNT_EXPIRE);
+    }*/
 }

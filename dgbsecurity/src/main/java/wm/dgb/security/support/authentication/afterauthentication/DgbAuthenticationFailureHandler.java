@@ -1,7 +1,7 @@
 package wm.dgb.security.support.authentication.afterauthentication;
 
 import com.zj.bda.common.unspecific.util.WebUtil;
-import com.zj.bda.common.web.constant.enums.ResponseEnum;
+import com.zj.bda.common.web.enums.ResponseEnum;
 import wm.dgb.security.support.verificationcode.grace.exception.VerificationCodeException;
 import wm.dgb.security.grace.properties.DgbSecurityProperties;
 import wm.dgb.security.support.authentication.afterauthentication.enums.AfterAuthenticationResponseTypeEnum;

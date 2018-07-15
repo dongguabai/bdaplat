@@ -1,6 +1,7 @@
 package com.zj.bda.common.web.vo;
 
 
+import com.zj.bda.common.web.enums.ResponseEnum;
 import lombok.*;
 
 import java.io.Serializable;
@@ -22,14 +23,14 @@ public class ResponseVO<T> implements Serializable {
      * >0 :未定义异常
      * <0 : 自定义异常
      *
-     * @see com.zj.bda.common.web.constant.enums.ResponseEnum
+     * @see ResponseEnum
      */
     private Integer code;
 
     /**
      * 返回消息
      *
-     * @see com.zj.bda.common.web.constant.enums.ResponseEnum
+     * @see ResponseEnum
      */
     private String msg;
 

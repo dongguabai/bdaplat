@@ -1,6 +1,6 @@
 package com.zj.bda.common.web.helper;
 
-import com.zj.bda.common.web.constant.enums.ResponseEnum;
+import com.zj.bda.common.web.enums.ResponseEnum;
 import com.zj.bda.common.web.vo.ResponseVO;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

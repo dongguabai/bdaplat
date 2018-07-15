@@ -1,5 +1,6 @@
 package wm.dgb.security.environment.browser.properties;
 
+import wm.dgb.security.environment.browser.session.properties.BrowserSessionProperties;
 import wm.dgb.security.support.authentication.afterauthentication.enums.AfterAuthenticationResponseTypeEnum;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,4 +32,9 @@ public class BrowserProperties {
      * 记住我时间（秒）
      */
     private int rememberMeSeconds = 3600;
+
+    /**
+     * session处理
+     */
+    private BrowserSessionProperties session = new BrowserSessionProperties();
 }

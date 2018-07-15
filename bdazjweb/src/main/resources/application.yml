@@ -9,7 +9,6 @@ spring:
       max-file-size: 5MB
       max-request-size: 10MB
       resolve-lazily: false
-
   http:
     encoding:
       charset: UTF-8
@@ -34,3 +33,7 @@ logging:
     java.sql: debug
     com.apache.ibatis: debug
     com.zj.bda.persistence.mapper: debug
+server:
+  servlet:
+    session:
+      timeout: 600
