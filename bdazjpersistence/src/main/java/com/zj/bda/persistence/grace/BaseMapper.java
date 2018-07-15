@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  */
 
-package com.zj.bda.persistence.base;
+package com.zj.bda.persistence.grace;
 
 import tk.mybatis.mapper.common.Mapper;
 import tk.mybatis.mapper.common.MySqlMapper;
