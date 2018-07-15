@@ -2,7 +2,9 @@
 
 ## chang here
 SERVICE_DIR=/usr/local/bdaplat
-SERVICE_NAME=bda-zj-web-1.0.0-SNAPSHOT
+#包的名称（可更改）
+SERVICE_NAME=bdaplat
+#默认使用的环境（可更改）
 SPRING_PROFILES_ACTIVE=local
 
 ## java env

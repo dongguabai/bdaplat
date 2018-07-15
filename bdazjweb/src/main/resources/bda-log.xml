@@ -5,8 +5,8 @@
     <property name="PATTERN" value="[%-12(%d{yyyy-MM-dd HH:mm:ss.SSS}) |-%-5level [%thread] %c [%L] -| %msg%n"/>
     <!-- 文件路径 -->
     <!--线上文件路径-->
-    <property name="LINE_ERROR_PATH" value="c:/temp/logs/error" />
-    <property name="LINE_INFO_PATH" value="c:/temp/logs/info" />
+    <property name="LINE_ERROR_PATH" value="/usr/local/bdaplat/logs/error" />
+    <property name="LINE_INFO_PATH" value="/usr/local/bdaplat/logs/info" />
 
     <!-- 控制台输出，本地开发环境 -->
     <springProfile name="local">

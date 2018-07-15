@@ -10,7 +10,7 @@ spring:
     time-zone: GMT+8
   datasource:
     driver-class-name: oracle.jdbc.driver.OracleDriver
-    url: jdbc:oracle:thin:@127.0.0.1:1521:xe
+    url: jdbc:oracle:thin:@192.168.234.1:1521:xe
     username: zjbdatag
     password: admin
     platform: oracle

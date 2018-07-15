@@ -28,7 +28,8 @@ spring:
   session:
     store-type: none
 logging:
-  #config: classpath:bda-log.xml   线上用
+#线上放开用
+  #config: classpath:bda-log.xml
   level:
     java.sql: debug
     com.apache.ibatis: debug

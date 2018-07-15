@@ -10,7 +10,6 @@ import com.zj.bda.service.TestService;
 import com.zj.bda.web.controller.TTestAsync;
 import lombok.extern.slf4j.Slf4j;
 import org.n3r.idworker.Sid;
-import org.springframework.aop.framework.AopContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -145,6 +144,13 @@ public class TestController {
     @Cacheable(value = "localCache",unless="#result == null")
     public Object test03() {
         System.out.println("进入Controller");
+        List<UnStrTag> unStrTags = unStrTagMapper.selectAll();
+
+        return unStrTags;
+    }
+    @RequestMapping("test/c2")
+    public Object test032() {
+        System.out.println("进入Controller2");
         List<UnStrTag> unStrTags = unStrTagMapper.selectAll();
 
         return unStrTags;
