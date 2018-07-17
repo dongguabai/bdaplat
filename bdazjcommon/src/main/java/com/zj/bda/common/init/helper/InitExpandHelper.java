@@ -1,7 +1,7 @@
 package com.zj.bda.common.init.helper;
 
 import com.zj.bda.common.init.IInitExpand;
-import com.zj.bda.common.unspecific.util.SpringUtil;
+import com.zj.bda.common.util.SpringUtil;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

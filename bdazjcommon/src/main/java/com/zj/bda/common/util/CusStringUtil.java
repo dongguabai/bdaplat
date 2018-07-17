@@ -1,4 +1,4 @@
-package com.zj.bda.common.unspecific.util;
+package com.zj.bda.common.util;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

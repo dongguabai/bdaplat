@@ -1,6 +1,6 @@
 package wm.dgb.security.environment.browser.logout;
 
-import com.zj.bda.common.unspecific.util.WebUtil;
+import com.zj.bda.common.util.WebUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.DefaultRedirectStrategy;

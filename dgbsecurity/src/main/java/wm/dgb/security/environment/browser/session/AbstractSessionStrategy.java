@@ -1,6 +1,6 @@
 package wm.dgb.security.environment.browser.session;
 
-import com.zj.bda.common.unspecific.util.WebUtil;
+import com.zj.bda.common.util.WebUtil;
 import com.zj.bda.common.web.enums.ResponseEnum;
 import com.zj.bda.common.web.helper.ResponseHelper;
 import com.zj.bda.common.web.vo.ResponseVO;

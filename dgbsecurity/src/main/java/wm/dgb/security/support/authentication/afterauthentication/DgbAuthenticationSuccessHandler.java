@@ -1,6 +1,6 @@
 package wm.dgb.security.support.authentication.afterauthentication;
 
-import com.zj.bda.common.unspecific.util.WebUtil;
+import com.zj.bda.common.util.WebUtil;
 import wm.dgb.security.grace.properties.DgbSecurityProperties;
 import wm.dgb.security.support.authentication.afterauthentication.enums.AfterAuthenticationResponseTypeEnum;
 import org.springframework.beans.factory.annotation.Autowired;

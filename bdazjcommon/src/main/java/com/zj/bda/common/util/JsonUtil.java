@@ -1,4 +1,4 @@
-package com.zj.bda.common.unspecific.util;
+package com.zj.bda.common.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AccessLevel;

@@ -2,7 +2,7 @@ package com.zj.bda.web.grace.handler;
 
 import com.google.common.base.Joiner;
 import com.zj.bda.common.exception.*;
-import com.zj.bda.common.unspecific.util.CusStringUtil;
+import com.zj.bda.common.util.CusStringUtil;
 import com.zj.bda.common.web.enums.ResponseEnum;
 import com.zj.bda.common.web.helper.ResponseHelper;
 import com.zj.bda.common.web.vo.ResponseVO;

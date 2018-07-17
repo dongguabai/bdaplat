@@ -6,7 +6,7 @@ import com.zj.bda.common.cache.constant.enums.CacheExpireTimeEnum;
 import com.zj.bda.common.cache.helper.GuaCacheHelper;
 import com.zj.bda.common.exception.LimitedOperationException;
 import com.zj.bda.common.restrict.annotation.LocalLock;
-import com.zj.bda.common.unspecific.util.CusAccessUtil;
+import com.zj.bda.common.util.CusAccessUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

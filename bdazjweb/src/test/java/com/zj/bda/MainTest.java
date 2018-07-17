@@ -1,6 +1,6 @@
 package com.zj.bda;
 
-import com.zj.bda.common.unspecific.util.CusAccessUtil;
+import com.zj.bda.common.util.CusAccessUtil;
 import com.zj.bda.web.controller.TTestAsync;
 import com.zj.bda.web.controller.test.TestTaskAsync;
 import org.junit.Test;
@@ -27,13 +27,6 @@ public class MainTest {
 
     @Test
     public void testCoreConfig() throws Exception {
-
-   //     GraphicalCaptchaProcessGor.create(null);
-
-
-        System.out.println("before---------");
-        testTaskAsync.testAsync03();
-        System.out.println("after---------");
     }
 
     @Test

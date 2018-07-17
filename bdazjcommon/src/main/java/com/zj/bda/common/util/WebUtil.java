@@ -1,4 +1,4 @@
-package com.zj.bda.common.unspecific.util;
+package com.zj.bda.common.util;
 
 import com.zj.bda.common.web.helper.ResponseHelper;
 import com.zj.bda.common.web.vo.ResponseVO;

@@ -1,8 +1,8 @@
 package com.zj.bda;
 
 import com.zj.bda.common.init.IInitExpand;
-import com.zj.bda.common.unspecific.util.JsonUtil;
-import com.zj.bda.common.unspecific.util.SpringUtil;
+import com.zj.bda.common.util.JsonUtil;
+import com.zj.bda.common.util.SpringUtil;
 import wm.dgb.security.grace.user.DgbSecurityUserHelper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
