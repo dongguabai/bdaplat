@@ -1,12 +1,16 @@
 package com.zj.bda.web.controller.test;
 
 import com.zj.bda.common.validator.annotation.ValidatedController;
+import com.zj.bda.common.validator.helper.ValidateHelper;
 import org.hibernate.validator.constraints.Range;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
@@ -38,5 +42,16 @@ public class Test01Controller {
                               int classroom) {
         System.out.println(grade + "," + classroom);
         return "aaa";
+    }
+
+    @RequestMapping("login1")
+    public Object test05(@Valid User user, BindingResult result) {
+        ValidateHelper.validateModel(result);
+        if(result.hasErrors()){
+            for (ObjectError error : result.getAllErrors()) {
+                System.out.println(error.getDefaultMessage());
+            }
+        }
+        return "ok";
     }
 }
