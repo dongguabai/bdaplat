@@ -10,8 +10,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.Date;
+import tk.mybatis.mapper.entity.Example;
 
 /**
  * Created by Dongguabai on 2018-06-14.
@@ -59,10 +58,13 @@ public class MainTest {
 
     @Test
     public void test11(){
-        UnStrTag tag = UnStrTag.builder().tagId(null).active("a").tag("tag").keyValue("99").tagType("1").actTime(new Date()).build();
-        int insert = unStrTagMapper.insertSelective(tag);
-        System.out.println(insert);
-
+        Example example = new Example(UnStrTag.class);
+        Example.Criteria criteria01 = example.createCriteria();
+        criteria01.andLike("tag","t%").andEqualTo("tagId","1111");
+        Example.Criteria criteria02 = example.createCriteria();
+        criteria02.andEqualTo("tagId","22").andLike("tag","24");
+        example.or(criteria02);
+        unStrTagMapper.selectByExample(example);
     }
 
 }
