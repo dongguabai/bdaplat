@@ -3,6 +3,7 @@ package com.zj.bda.common.exception;
 import lombok.NoArgsConstructor;
 
 /**
+ * 非法参数
  * @author Dongguabai
  * @date 2018-07-01 13:30
  */

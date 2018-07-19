@@ -1,7 +1,6 @@
 package com.zj.bda.web.controller.test;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import com.zj.bda.common.exception.UnLoginException;
 import com.zj.bda.common.restrict.annotation.LocalLock;
 import com.zj.bda.persistence.entity.UnStrTag;
 import com.zj.bda.persistence.mapper.UnStrTagMapper;
@@ -14,6 +13,7 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 import tk.mybatis.mapper.entity.Example;
+import wm.dgb.security.grace.exception.UnLoginException;
 
 import java.util.Date;
 import java.util.List;

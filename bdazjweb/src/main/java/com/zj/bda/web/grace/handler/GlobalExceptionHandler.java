@@ -1,7 +1,9 @@
 package com.zj.bda.web.grace.handler;
 
 import com.google.common.base.Joiner;
-import com.zj.bda.common.exception.*;
+import com.zj.bda.common.exception.InvalidParameterException;
+import com.zj.bda.common.exception.LimitedOperationException;
+import com.zj.bda.common.exception.NotFoundException;
 import com.zj.bda.common.util.CusStringUtil;
 import com.zj.bda.common.web.enums.ResponseEnum;
 import com.zj.bda.common.web.helper.ResponseHelper;
@@ -11,6 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import wm.dgb.security.grace.exception.NoPermissionException;
+import wm.dgb.security.grace.exception.UnLoginException;
 import wm.dgb.security.support.verificationcode.grace.exception.VerificationCodeException;
 
 import javax.servlet.http.HttpServletRequest;
