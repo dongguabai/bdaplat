@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 /**
+ * 拼接like查询sql工具类
  * @author Dongguabai
  * @date 2018-07-18 15:12
  */

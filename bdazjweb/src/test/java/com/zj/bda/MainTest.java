@@ -5,18 +5,19 @@ import com.zj.bda.persistence.entity.UnStrTag;
 import com.zj.bda.persistence.mapper.UnStrTagMapper;
 import com.zj.bda.web.controller.TTestAsync;
 import com.zj.bda.web.controller.test.TestTaskAsync;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import tk.mybatis.mapper.entity.Example;
 
 /**
  * Created by Dongguabai on 2018-06-14.
  */
 @SpringBootTest
 @RunWith(SpringRunner.class)
+@Slf4j
 public class MainTest {
 
     @Autowired
@@ -58,13 +59,18 @@ public class MainTest {
 
     @Test
     public void test11(){
-        Example example = new Example(UnStrTag.class);
-        Example.Criteria criteria01 = example.createCriteria();
-        criteria01.andLike("tag","t%").andEqualTo("tagId","1111");
-        Example.Criteria criteria02 = example.createCriteria();
-        criteria02.andEqualTo("tagId","22").andLike("tag","24");
-        example.or(criteria02);
-        unStrTagMapper.selectByExample(example);
+        unStrTagMapper.selectAll();
+        log.info("==============================");
+        unStrTagMapper.selectAll();
+        log.info("==============================");
+        unStrTagMapper.updateByPrimaryKeySelective(UnStrTag.builder().tagId("31").build());
+        log.info("==============================");
+
+        unStrTagMapper.selectAll();
+        log.info("==============================");
+        unStrTagMapper.selectAll();
+        log.info("==============================");
+        unStrTagMapper.selectAll();
     }
 
 }
