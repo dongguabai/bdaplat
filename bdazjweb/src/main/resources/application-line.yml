@@ -32,6 +32,8 @@ spring:
       web-stat-filter:
         url-pattern: /*
         exclusions: "*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*"
+      #超时重试次数
+      connection-error-retry-attempts: 3
 
 #具体可看springBoot文件
 mybatis:

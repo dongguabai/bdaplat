@@ -29,7 +29,7 @@ public class DgbSecurityUserController {
      * @param userDetails
      * @return
      */
-    @RequestMapping("/me/userDetails")
+    @RequestMapping("/me/principal")
     public UserDetails getCurrentUser(@AuthenticationPrincipal UserDetails userDetails){
         return userDetails;
     }
