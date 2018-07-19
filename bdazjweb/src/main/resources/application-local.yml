@@ -10,9 +10,12 @@ spring:
     time-zone: GMT+8
   datasource:
     driver-class-name: oracle.jdbc.driver.OracleDriver
-    url: jdbc:oracle:thin:@127.0.0.1:1521:xe
-    username: zjbdatag
-    password: admin
+    #url: jdbc:oracle:thin:@192.168.234.1:1521:xe
+    #username: zjbdatag
+    #password: admin
+    url: DES@eGF6HHsjmEEwJ5h1bBWTUtCths5heQX/ymPlotXlfIVDCyOzYqxOdQ==
+    username: DES@USA+ZYwhtPIZLJTCcl2pvA==
+    password: DES@Rzt+VicLtfw=
     platform: oracle
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
