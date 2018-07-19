@@ -12,6 +12,7 @@ import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.util.UrlUtils;
 import org.springframework.util.Assert;
+import wm.dgb.security.grace.constant.DgbSecurityConstant;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -55,7 +56,7 @@ public class AbstractSessionStrategy {
         String sourceUrl = request.getRequestURI();
         String targetUrl;
 
-        if (StringUtils.endsWithIgnoreCase(sourceUrl, ".html")) {
+        if (StringUtils.endsWithIgnoreCase(sourceUrl, DgbSecurityConstant.END_WITH_HTML)) {
             targetUrl = destinationUrl;
             log.info("session失效,跳转到 {}",targetUrl);
             redirectStrategy.sendRedirect(request, response, targetUrl);

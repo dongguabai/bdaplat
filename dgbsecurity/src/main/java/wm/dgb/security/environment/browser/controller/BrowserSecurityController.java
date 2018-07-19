@@ -3,6 +3,7 @@ package wm.dgb.security.environment.browser.controller;
 import com.zj.bda.common.web.enums.ResponseEnum;
 import com.zj.bda.common.web.helper.ResponseHelper;
 import com.zj.bda.common.web.vo.ResponseVO;
+import wm.dgb.security.grace.constant.DgbSecurityConstant;
 import wm.dgb.security.grace.properties.DgbSecurityProperties;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,6 @@ import java.io.IOException;
 public class BrowserSecurityController {
     private RequestCache requestCache = new HttpSessionRequestCache();
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
-    private static final String END_WITH_HTML = ".html";
 
     @Autowired
     private DgbSecurityProperties dgbSecurityProperties;
@@ -40,7 +40,7 @@ public class BrowserSecurityController {
         SavedRequest savedRequest = requestCache.getRequest(request,response);
         if(savedRequest!=null){
             String redirectUrl = savedRequest.getRedirectUrl();
-            if (StringUtils.endsWithIgnoreCase(redirectUrl,END_WITH_HTML)){
+            if (StringUtils.endsWithIgnoreCase(redirectUrl, DgbSecurityConstant.END_WITH_HTML)){
                 redirectStrategy.sendRedirect(request,response,dgbSecurityProperties.getBrowser().getLoginPage());
                 return null;
             }
