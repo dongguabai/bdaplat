@@ -32,6 +32,6 @@ import tk.mybatis.mapper.common.MySqlMapper;
  * @date 2018-07-01 13:30
  */
 public interface BaseMapper<T> extends Mapper<T>, MySqlMapper<T> {
-    // 特别注意，该接口不能被扫描到，否则会出错
+    // 特别注意，该接口不能被@MapperScan()扫描到，否则会出错
     //批量操作：https://blog.csdn.net/isea533/article/details/80922305
 }
