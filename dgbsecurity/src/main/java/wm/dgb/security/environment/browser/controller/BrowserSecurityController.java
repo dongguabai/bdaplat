@@ -49,7 +49,7 @@ public class BrowserSecurityController {
     }
 
     /**
-     * session失效处理
+     * session失效处理，现在改用handler处理
      * @return
      */
   /*  @RequestMapping("/session/invalid")

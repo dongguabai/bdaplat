@@ -68,6 +68,7 @@ public class BrowserSecurityGrace extends WebSecurityConfigurerAdapter{
             .formLogin()
                 //需要校验登陆至
                 .loginPage("/authentication/require")
+                //登陆action
                 .loginProcessingUrl(dgbSecurityProperties.getBrowser().getLoginAction())
                 .successHandler(dgbAuthenticationSuccessHandler)
                 .failureHandler(dgbAuthenticationFailureHandler)
