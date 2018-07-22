@@ -18,6 +18,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebMvcConfiguration implements WebMvcConfigurer {
 
     @Override
+    public void addViewControllers(ViewControllerRegistry registry){
+        registry.addViewController("/").setViewName("forward:/index.html");
+        registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
+    }
+
+    @Override
     public void addFormatters(FormatterRegistry registry) {
         registry.addConverter(new DateConverter());
     }
@@ -26,12 +32,6 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new HttpInterceptor()).addPathPatterns("/**").excludePathPatterns(Lists.newArrayList("/assets/**","/**/*.html","/druid/**"));
         //registry.addInterceptor(new HttpInterceptor()).addPathPatterns("/**").excludePathPatterns(Lists.newArrayList("/css/**", "/img/**", "/js/**","/**/*.html"));
-    }
-
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry){
-        registry.addViewController("/").setViewName("forward:/index.html");
-        registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
     }
 
 }
