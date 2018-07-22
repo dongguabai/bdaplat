@@ -1,5 +1,6 @@
 package com.zj.bda.web.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
@@ -8,18 +9,19 @@ import org.springframework.stereotype.Service;
  * @date 2018-07-11 22:26
  */
 @Service
+@Slf4j
 public class TTestAsync {
 
-    @Async
+    @Async("asyncTaskExecutor")
     public void test1() throws InterruptedException {
         Thread.sleep(1000);
-        System.out.println("1111111111111111111111");
+        log.info("1111111111111111111111");
     }
 
-    @Async
+    @Async("asyncTaskExecutor")
     public void test2() throws InterruptedException {
         Thread.sleep(2000);
-        System.out.println("2222222");
+        log.info("2222222");
     }
 
     public void test3() throws InterruptedException {
