@@ -5,6 +5,8 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import java.text.SimpleDateFormat;
+
 /**
  * @author Dongguabai
  */
@@ -12,8 +14,13 @@ import lombok.extern.slf4j.Slf4j;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class JsonUtil {
 
-    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+    private static final ObjectMapper OBJECT_MAPPER ;
     private static final Class STRING_CLASS = String.class;
+
+    static {
+        OBJECT_MAPPER = new ObjectMapper();
+        OBJECT_MAPPER.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
+    }
 
     /**
      * 将 Java 对象转为 JSON 字符串
