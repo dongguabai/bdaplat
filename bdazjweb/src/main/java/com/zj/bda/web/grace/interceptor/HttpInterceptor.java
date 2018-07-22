@@ -2,6 +2,7 @@ package com.zj.bda.web.grace.interceptor;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.lang.Nullable;
+import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -20,10 +21,18 @@ public class HttpInterceptor implements HandlerInterceptor{
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        System.out.println("开始拦截---------");
-        String uri = request.getRequestURI();
-        System.out.println("拦截的uri："+uri);
+        //如果是SpringMVC请求
+        if(handler instanceof HandlerMethod){
+            HandlerMethod handlerMethod = (HandlerMethod) handler;
+            log.info("当前拦截的方法为：{}",handlerMethod.getMethod().getName());
+            log.info("当前拦截的方法参数长度为：{}",handlerMethod.getMethod().getParameters().length);
+            log.info("当前拦截的方法为：{}",handlerMethod.getBean().getClass().getName());
+            System.out.println("开始拦截---------");
+            String uri = request.getRequestURI();
+            System.out.println("拦截的uri："+uri);
+        }
         return true;
+
     }
 
     /**
@@ -40,6 +49,7 @@ public class HttpInterceptor implements HandlerInterceptor{
      */
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, @Nullable Exception ex) throws Exception {
+        log.info("Exception：{}",ex);
     }
 
 }
