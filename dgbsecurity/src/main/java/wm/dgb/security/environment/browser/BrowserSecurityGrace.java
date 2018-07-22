@@ -116,7 +116,15 @@ public class BrowserSecurityGrace extends WebSecurityConfigurerAdapter{
                         }
                     }
                     return true;
-                });
+                })
+                .and()
+            //设置允许js来源（csp）
+           /* .headers()
+                .contentSecurityPolicy("script-src http://code.jquery.com/")*/
+           //X-Frame-Options，相同域名才是允许的。
+           .headers().frameOptions().sameOrigin();
+
+
 
     }
 }
