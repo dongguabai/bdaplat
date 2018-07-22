@@ -1,5 +1,6 @@
 package wm.dgb.security.environment.browser;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -7,9 +8,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 import org.springframework.security.web.session.InvalidSessionStrategy;
 import org.springframework.security.web.session.SessionInformationExpiredStrategy;
 import org.springframework.stereotype.Component;
+import org.springframework.util.AntPathMatcher;
 import wm.dgb.security.grace.properties.DgbSecurityProperties;
 import wm.dgb.security.support.authentication.afterauthentication.DgbAuthenticationFailureHandler;
 import wm.dgb.security.support.authentication.afterauthentication.DgbAuthenticationSuccessHandler;
@@ -45,6 +48,8 @@ public class BrowserSecurityGrace extends WebSecurityConfigurerAdapter{
 
     @Autowired
     private LogoutSuccessHandler logoutSuccessHandler;
+
+    private AntPathMatcher pathMatcher = new AntPathMatcher();
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -95,8 +100,23 @@ public class BrowserSecurityGrace extends WebSecurityConfigurerAdapter{
                 .maximumSessions(dgbSecurityProperties.getBrowser().getSession().getMaximumSessions())
                 .maxSessionsPreventsLogin(dgbSecurityProperties.getBrowser().getSession().isMaxSessionsPreventsLogin())
                 .expiredSessionStrategy(sessionInformationExpiredStrategy)
-            .and().and()
-            .csrf().disable();
+                .and().and()
+            .csrf()
+                //.ignoringAntMatchers()
+                .csrfTokenRepository(new HttpSessionCsrfTokenRepository())
+                .requireCsrfProtectionMatcher(httpServletRequest -> {
+                    //POST非幂等性，其他放行
+                    boolean notPost = !StringUtils.equalsIgnoreCase(httpServletRequest.getMethod(), "POST");
+                    if (notPost){
+                        return false;
+                    }
+                    for (String crsf : dgbSecurityProperties.getBrowser().getCsrf()) {
+                        if (pathMatcher.match(crsf,httpServletRequest.getRequestURI())){
+                            return false;
+                        }
+                    }
+                    return true;
+                });
 
     }
 }

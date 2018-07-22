@@ -2,6 +2,7 @@ package com.zj.bda.web.controller.test;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.zj.bda.common.restrict.annotation.LocalLock;
+import com.zj.bda.common.web.helper.ResponseHelper;
 import com.zj.bda.persistence.entity.UnStrTag;
 import com.zj.bda.persistence.mapper.UnStrTagMapper;
 import com.zj.bda.service.TestService;
@@ -150,8 +151,7 @@ public class TestController {
        unStrTagMapper.insertSelective(unStrTag);
        System.out.println("进入Controller2");
         List<UnStrTag> unStrTags = unStrTagMapper.selectAll();
-
-        return unStrTags;
+        return ResponseHelper.success(unStrTags);
     }
     @RequestMapping("test/d")
     public Object test04() {

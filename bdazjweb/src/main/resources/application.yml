@@ -23,9 +23,17 @@ spring:
     type: ehcache
     ehcache:
       config: classpath:config/ehcache.xml
-
+#暂不放入redis
   session:
     store-type: none
+
+  thymeleaf:
+  #热部署静态文件
+    cache: false
+    encoding: UTF-8
+    mode: HTML5
+    prefix: "classpath:/public/"
+
 logging:
 #线上放开用
   #config: classpath:bda-log.xml

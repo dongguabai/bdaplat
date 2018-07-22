@@ -43,4 +43,9 @@ public class BrowserProperties {
      * 退出处理
      */
     private BrowserLogOutProperties logOut = new BrowserLogOutProperties();
+
+    /**
+     * crsfl不拦截路径
+     */
+    private String[] csrf;
 }
