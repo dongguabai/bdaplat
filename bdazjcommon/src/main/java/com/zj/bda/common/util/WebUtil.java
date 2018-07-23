@@ -20,7 +20,7 @@ public class WebUtil {
 
     public static boolean isAjax(HttpServletRequest request){
         boolean isAjaxRequest = false;
-        if(!StringUtils.isBlank(request.getHeader("x-requested-with")) && request.getHeader("x-requested-with").equals("XMLHttpRequest")){
+        if(!StringUtils.isBlank(request.getHeader("x-requested-with")) && StringUtils.equals(request.getHeader("x-requested-with"),"XMLHttpRequest")){
             isAjaxRequest = true;
         }
         return isAjaxRequest;
