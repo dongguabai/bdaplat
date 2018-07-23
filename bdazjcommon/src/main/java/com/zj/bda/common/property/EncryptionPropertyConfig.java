@@ -35,7 +35,7 @@ public class EncryptionPropertyConfig {
 
         private String resolveDESValue(String value) {
             // 自定义DES密文解密
-            return DesUtil.decrypt(value, DesUtil.KEY);
+            return DesUtil.decrypt(value, DesUtil.DescEnum.DATABASE_PROPERTIES_KEY);
         }
 
     }

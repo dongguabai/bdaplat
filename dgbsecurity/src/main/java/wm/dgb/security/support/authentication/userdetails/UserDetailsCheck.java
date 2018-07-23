@@ -57,7 +57,7 @@ public class UserDetailsCheck {
 
      /*   String menuList;
         try {
-            menuList = ServletRequestUtils.getRequiredStringParameter(SpringUtil.getHttpServletRequest(), "menuList");
+            menuList = ServletRequestUtils.getRequiredStringParameter(SpringUtil.getHttpServletRequest(), "_html");
         } catch (ServletRequestBindingException e) {
             log.error("从request中获取用户名或密码错误！",e);
             throw new RuntimeException("从request中获取用户名或密码错误！");
