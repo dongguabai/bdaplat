@@ -90,7 +90,7 @@ public class BrowserSecurityGrace extends WebSecurityConfigurerAdapter{
                 //.logoutSuccessUrl("/test")
                 .logoutSuccessHandler(logoutSuccessHandler)
                 .deleteCookies("JSESSIONID")
-                //让退出登陆可以使用
+                //让退出登陆可以使用GET，不用携带CSRF令牌
                 //.logoutRequestMatcher(new AntPathRequestMatcher(dgbSecurityProperties.getBrowser().getLogOut().getAction()))
                 .and()
             .sessionManagement()
