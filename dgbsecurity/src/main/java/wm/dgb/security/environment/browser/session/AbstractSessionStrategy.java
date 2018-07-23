@@ -2,7 +2,7 @@ package wm.dgb.security.environment.browser.session;
 
 import com.zj.bda.common.util.WebUtil;
 import com.zj.bda.common.web.enums.ResponseEnum;
-import com.zj.bda.common.web.helper.ResponseHelper;
+import com.zj.bda.common.web.util.ResponseUtil;
 import com.zj.bda.common.web.vo.ResponseVO;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -73,9 +73,9 @@ public class AbstractSessionStrategy {
      */
     protected ResponseVO buildResponseContent(HttpServletRequest request) {
         if(isConcurrency()){
-            return ResponseHelper.error(ResponseEnum.ERROR_ACCOUNT_CONCURRENCY);
+            return ResponseUtil.error(ResponseEnum.ERROR_ACCOUNT_CONCURRENCY);
         }
-        return ResponseHelper.error(ResponseEnum.ERROR_ACCOUNT_EXPIRE);
+        return ResponseUtil.error(ResponseEnum.ERROR_ACCOUNT_EXPIRE);
     }
 
     /**

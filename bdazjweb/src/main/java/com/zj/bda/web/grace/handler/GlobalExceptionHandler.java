@@ -6,7 +6,7 @@ import com.zj.bda.common.exception.LimitedOperationException;
 import com.zj.bda.common.exception.NotFoundException;
 import com.zj.bda.common.util.CusStringUtil;
 import com.zj.bda.common.web.enums.ResponseEnum;
-import com.zj.bda.common.web.helper.ResponseHelper;
+import com.zj.bda.common.web.util.ResponseUtil;
 import com.zj.bda.common.web.vo.ResponseVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -117,17 +117,17 @@ public class GlobalExceptionHandler {
     @ResponseBody
     public ResponseVO defaultErrorHandler(HttpServletRequest request, Exception e) {
         log.error(String.format("请求方法[%s]发生异常，错误信息：[%s]", request.getRequestURI(), e.getMessage()), e);
-        return ResponseHelper.error(ResponseEnum.ERROR_UNKNOW);
+        return ResponseUtil.error(ResponseEnum.ERROR_UNKNOW);
     }
 
     private ResponseVO responseError(ResponseEnum re,RuntimeException e){
         log.error(re.getMessage(), e);
-        return ResponseHelper.error(re);
+        return ResponseUtil.error(re);
     }
 
     private ResponseVO responseError(ResponseEnum re,RuntimeException e,String cusErrorMessage){
         log.error(cusErrorMessage, e);
-        return ResponseHelper.error(re.getCode(),cusErrorMessage);
+        return ResponseUtil.error(re.getCode(),cusErrorMessage);
     }
 
     private String appendErrorMessage(ResponseEnum re, String cusErrorMessage) {

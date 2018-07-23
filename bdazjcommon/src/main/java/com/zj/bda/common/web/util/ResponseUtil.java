@@ -1,4 +1,4 @@
-package com.zj.bda.common.web.helper;
+package com.zj.bda.common.web.util;
 
 import com.zj.bda.common.web.enums.ResponseEnum;
 import com.zj.bda.common.web.vo.ResponseVO;
@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
  * @date 2018-07-05 19:33
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class ResponseHelper {
+public class ResponseUtil {
 
     /**
      * 成功返回
