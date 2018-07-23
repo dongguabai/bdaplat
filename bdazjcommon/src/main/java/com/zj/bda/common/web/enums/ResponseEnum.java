@@ -1,5 +1,6 @@
 package com.zj.bda.common.web.enums;
 
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -7,7 +8,7 @@ import lombok.Getter;
  * @author Dongguabai
  * @date 2018-07-08 1:42
  */
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
 public enum ResponseEnum {
     /**

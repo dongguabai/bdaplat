@@ -93,7 +93,7 @@ public class DesUtil {
         System.out.println("password::" + encrypt("admin", DescEnum.CSRF_TOKEN_KEY));
     }
 
-    @AllArgsConstructor
+    @AllArgsConstructor(access = AccessLevel.PRIVATE)
     @Getter
     public enum DescEnum {
         /**
