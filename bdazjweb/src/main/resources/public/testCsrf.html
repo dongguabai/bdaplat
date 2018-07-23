@@ -22,18 +22,18 @@
 <script>
      function aaa() {
 // 获取 CSRF Token
-        var csrfToken = $("meta[name='_csrf']").attr("content");
+        var _tm = $("meta[name='_csrf']").attr("content");
 
-        var csrfHeader = $("meta[name='_csrf_header']").attr("content");
-         console.log(csrfToken);
-         console.log(csrfHeader);
+        var _hm = $("meta[name='_csrf_header']").attr("content");
+         console.log(_tm);
+         console.log(_hm);
 
         $.ajax({
             url: "/test/c2" ,
             type: 'POST',
             beforeSend: function(request) {
-                if(csrfToken && csrfHeader ) {
-                    request.setRequestHeader(csrfHeader, csrfToken); // 添加 CSRF Token
+                if(_tm && _hm ) {
+                    request.setRequestHeader(_hm, _tm); // 添加 CSRF Token
                 } },
             success: function(data){
                alert(data.code+",,"+data.message+",,"+data.data);

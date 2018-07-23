@@ -86,10 +86,12 @@ public class BrowserSecurityGrace extends WebSecurityConfigurerAdapter{
             .logout()
                 //退出登录action
                 .logoutUrl(dgbSecurityProperties.getBrowser().getLogOut().getAction())
-                //退出成功后跳转的页面
+                //退出成功后跳转的页面GET
                 //.logoutSuccessUrl("/test")
                 .logoutSuccessHandler(logoutSuccessHandler)
                 .deleteCookies("JSESSIONID")
+                //让退出登陆可以使用
+                //.logoutRequestMatcher(new AntPathRequestMatcher(dgbSecurityProperties.getBrowser().getLogOut().getAction()))
                 .and()
             .sessionManagement()
                 //session过期处理
