@@ -19,9 +19,8 @@ public class InitExpandHelper {
     private Map<String,IInitExpand> initExpandMap;*/
 
     public static void execute() {
-        SpringUtil.getBeansOfType(IInitExpand.class).values().forEach(IInitExpand -> {
-            IInitExpand.init();
+        SpringUtil.getBeansOfType(IInitExpand.class).values().forEach(initExpandImpl -> {
+            initExpandImpl.init();
         });
     }
-
 }
