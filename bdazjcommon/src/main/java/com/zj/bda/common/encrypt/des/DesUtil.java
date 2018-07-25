@@ -1,4 +1,4 @@
-package com.zj.bda.common.encrypt;
+package com.zj.bda.common.encrypt.des;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

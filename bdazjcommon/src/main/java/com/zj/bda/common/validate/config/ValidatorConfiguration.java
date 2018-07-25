@@ -1,4 +1,4 @@
-package com.zj.bda.common.validator.config;
+package com.zj.bda.common.validate.config;
 
 import org.hibernate.validator.HibernateValidator;
 import org.springframework.context.annotation.Bean;

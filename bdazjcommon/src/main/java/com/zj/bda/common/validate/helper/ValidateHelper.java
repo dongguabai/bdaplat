@@ -1,4 +1,4 @@
-package com.zj.bda.common.validator.helper;
+package com.zj.bda.common.validate.helper;
 
 import com.zj.bda.common.exception.InvalidParameterException;
 import lombok.AccessLevel;

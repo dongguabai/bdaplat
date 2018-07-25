@@ -1,7 +1,7 @@
 package com.zj.bda.web.controller.test;
 
-import com.zj.bda.common.validator.annotation.ValidatedController;
-import com.zj.bda.common.validator.helper.ValidateHelper;
+import com.zj.bda.common.validate.annotation.ValidatedController;
+import com.zj.bda.common.validate.helper.ValidateHelper;
 import org.hibernate.validator.constraints.Range;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;

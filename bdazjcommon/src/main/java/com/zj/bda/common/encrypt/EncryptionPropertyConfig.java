@@ -1,7 +1,7 @@
-package com.zj.bda.common.encrypt.property;
+package com.zj.bda.common.encrypt;
 
 import com.ulisesbocchio.jasyptspringboot.EncryptablePropertyResolver;
-import com.zj.bda.common.encrypt.DesUtil;
+import com.zj.bda.common.encrypt.aes.AesUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,7 +26,7 @@ public class EncryptionPropertyConfig {
                 return value;
             }
             // 值以DES@开头的均为DES加密,需要解密
-            if (value.startsWith("DES@")) {
+            if (value.startsWith("AES@")) {
                 return resolveDESValue(value.substring(4));
             }
             // 不需要解密的值直接返回
@@ -35,7 +35,7 @@ public class EncryptionPropertyConfig {
 
         private String resolveDESValue(String value) {
             // 自定义DES密文解密
-            return DesUtil.decrypt(value, DesUtil.DescEnum.DATABASE_PROPERTIES_KEY);
+            return AesUtil.decryptString(value, AesUtil.AesEnum.DATABASE_PROPERTIES_KEY);
         }
 
     }
