@@ -1,4 +1,4 @@
-package com.zj.bda.common.util;
+package com.zj.bda.common.encrypt;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -19,11 +19,6 @@ import java.security.SecureRandom;
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class DesUtil {
-    /**
-     * 默认key
-     */
-    public final static String KEY = "ScAKC0XhadTHT3Al0QIDAQAB";
-
     /**
      * DES加密
      *

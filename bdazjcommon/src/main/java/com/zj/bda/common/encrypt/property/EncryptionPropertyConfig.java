@@ -1,7 +1,7 @@
-package com.zj.bda.common.property;
+package com.zj.bda.common.encrypt.property;
 
 import com.ulisesbocchio.jasyptspringboot.EncryptablePropertyResolver;
-import com.zj.bda.common.util.DesUtil;
+import com.zj.bda.common.encrypt.DesUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

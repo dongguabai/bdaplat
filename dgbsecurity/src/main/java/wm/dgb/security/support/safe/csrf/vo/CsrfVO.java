@@ -1,7 +1,7 @@
 package wm.dgb.security.support.safe.csrf.vo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.zj.bda.common.util.DesUtil;
+import com.zj.bda.common.encrypt.DesUtil;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.web.csrf.CsrfToken;
