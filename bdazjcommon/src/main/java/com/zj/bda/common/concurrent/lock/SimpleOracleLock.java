@@ -1,8 +1,8 @@
 package com.zj.bda.common.concurrent.lock;
 
-import com.zj.bda.common.concurrent.support.LockDecorator;
-import com.zj.bda.common.concurrent.support.OracleLockEntity;
-import com.zj.bda.common.concurrent.support.OracleLockMapper;
+import com.zj.bda.common.concurrent.lock.support.LockDecorator;
+import com.zj.bda.common.concurrent.lock.support.OracleLockEntity;
+import com.zj.bda.common.concurrent.lock.support.OracleLockMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

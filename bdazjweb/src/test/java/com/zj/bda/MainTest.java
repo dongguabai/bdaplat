@@ -1,7 +1,7 @@
 package com.zj.bda;
 
 import com.zj.bda.common.concurrent.lock.SimpleOracleLock;
-import com.zj.bda.common.concurrent.support.OracleLockMapper;
+import com.zj.bda.common.concurrent.lock.support.OracleLockMapper;
 import com.zj.bda.common.util.CusAccessUtil;
 import com.zj.bda.persistence.mapper.UnStrTagMapper;
 import com.zj.bda.web.controller.TTestAsync;

@@ -1,4 +1,4 @@
-package com.zj.bda.common.async.config;
+package com.zj.bda.common.concurrent.async.config;
 
 import com.google.common.base.Joiner;
 import org.springframework.context.annotation.Bean;

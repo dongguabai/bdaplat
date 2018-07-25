@@ -1,4 +1,4 @@
-package com.zj.bda.common.concurrent.support;
+package com.zj.bda.common.concurrent.lock.support;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
