@@ -68,6 +68,24 @@ public class MainTest {
         t1.start();
     }
 
+
+    @Autowired
+    private OracleLockMapper oracleLockMapper;
+
+    @Test
+    public void testMapper(){
+        oracleLockMapper.insert(SimpleOracleLock.LOCK_ORACLE_ENTITY);
+    }
+
+    @Test
+    public void testMapper2(){
+        oracleLockMapper.deleteByPrimaryKey("1");
+    }
+
+
+
+
+    //分布式锁测试
     @Resource(name = "simpleOracleLock")
     private Lock simpleOracleLock;
 
@@ -110,17 +128,7 @@ public class MainTest {
         }
     }
 
-    @Autowired
-    private OracleLockMapper oracleLockMapper;
 
-    @Test
-    public void testMapper(){
-        oracleLockMapper.insert(SimpleOracleLock.LOCK_ORACLE_ENTITY);
-    }
 
-    @Test
-    public void testMapper2(){
-        oracleLockMapper.deleteByPrimaryKey("1");
-    }
 
 }

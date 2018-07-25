@@ -23,7 +23,7 @@ import java.util.Random;
 @Slf4j
 public class SimpleOracleLock extends LockDecorator {
 
-    public static final String LOCK_ID = "1";
+    private static final String LOCK_ID = "1";
     public static final OracleLockEntity LOCK_ORACLE_ENTITY = new OracleLockEntity(LOCK_ID);
 
     @Autowired
