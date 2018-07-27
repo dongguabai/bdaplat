@@ -140,15 +140,15 @@ public class AesUtil {
 
         System.out.println("url::" + encryptString("jdbc:oracle:thin:@127.0.0.1:1521:xe", AesEnum.DATABASE_PROPERTIES_KEY));
         System.out.println("username::" + encryptString("zjbdatag", AesEnum.DATABASE_PROPERTIES_KEY));
-        System.out.println("password::" + encryptString("admin", AesEnum.DATABASE_PROPERTIES_KEY));
+        System.out.println("password::" + encryptString("root", AesEnum.DATABASE_PROPERTIES_KEY));
         System.out.println("------------===========");
         System.out.println("url::" + encryptString("jdbc:oracle:thin:@127.0.0.1:1521:xe", AesEnum.USERNAME_PASSWORD_LOGIN_KEY));
         System.out.println("username::" + encryptString("zjbdatag", AesEnum.USERNAME_PASSWORD_LOGIN_KEY));
-        System.out.println("password::" + encryptString("admin", AesEnum.USERNAME_PASSWORD_LOGIN_KEY));
+        System.out.println("password::" + encryptString("root", AesEnum.USERNAME_PASSWORD_LOGIN_KEY));
         System.out.println("------------===========");
         System.out.println("url::" + encryptString("jdbc:oracle:thin:@127.0.0.1:1521:xe", AesEnum.CSRF_TOKEN_KEY));
         System.out.println("username::" + encryptString("zjbdatag", AesEnum.CSRF_TOKEN_KEY));
-        System.out.println("password::" + encryptString("admin", AesEnum.CSRF_TOKEN_KEY));
+        System.out.println("password::" + encryptString("root", AesEnum.CSRF_TOKEN_KEY));
     }
 
 }

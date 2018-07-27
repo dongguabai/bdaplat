@@ -15,7 +15,7 @@ spring:
     #password: admin
     url: AES@B0A7C29609CCA90887CA50D842B26097003448F5ABEEDA9AC38A0955082B7A8BB31CA670EE8D1D4C24EFE4F2B90FCFF7
     username: AES@9CB03074452B022459CA7B9B899E0D11
-    password: AES@2B9CAC16B437F5C3B49F7DF66FB675FB
+    password: AES@5BD24BC4D45494B3C2D4D2C5AA78ED3A
     platform: oracle
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
@@ -35,10 +35,19 @@ spring:
       web-stat-filter:
         url-pattern: /*
         exclusions: "*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*"
-      #超时重试次数
+       #超时重试次数
       connection-error-retry-attempts: 3
-      #必须为false
+      #必须为false（失败后会不断请求数据库，请求在TIME-WAIT，在数据库服务重启后，所有等待请求会访问数据库），
+      #为true上面参数才会生效（：true表示pool向数据库上面的重试请求连接此时失败后标记整个pool为block并close，
+      #就算后端数据库恢复正常也不进行重连，客户端对pool的请求都拒绝掉。false表示不会标记 pool为block，新的请求都会尝试去数据库请求connection。
+      #默认为false。因此，如果想让数据库和网络故障恢复之后，pool能继续请求正常资源必须把此项配置设为false）
       break-after-acquire-failure: false
+      #检查连接正常的sql
+      validation-query: select 1 from dual
+      #配置多久检测一次空闲连接（可以选择是否尽早关闭连接，看压力在server还是数据库端）
+      time-between-eviction-runs-millis: 60000
+      #数据库连接最小生存时间
+      min-evictable-idle-time-millis: 300000
 
 mybatis:
   type-aliases-package: com.zj.bda.persistence.entity
