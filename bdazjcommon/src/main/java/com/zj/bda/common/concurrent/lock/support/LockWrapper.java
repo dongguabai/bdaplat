@@ -8,7 +8,7 @@ import java.util.concurrent.locks.Lock;
  * @author Dongguabai
  * @date 2018-07-20 11:13
  */
-public class LockDecorator implements Lock{
+public class LockWrapper implements Lock{
     @Override
     public void lock() {
 

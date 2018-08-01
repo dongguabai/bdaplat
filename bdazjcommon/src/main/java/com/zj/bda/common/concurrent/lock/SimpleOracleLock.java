@@ -1,6 +1,6 @@
 package com.zj.bda.common.concurrent.lock;
 
-import com.zj.bda.common.concurrent.lock.support.LockDecorator;
+import com.zj.bda.common.concurrent.lock.support.LockWrapper;
 import com.zj.bda.common.concurrent.lock.support.OracleLockEntity;
 import com.zj.bda.common.concurrent.lock.support.OracleLockMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +21,7 @@ import java.util.Random;
  */
 @Component("simpleOracleLock")
 @Slf4j
-public class SimpleOracleLock extends LockDecorator {
+public class SimpleOracleLock extends LockWrapper {
 
     private static final String LOCK_ID = "1";
     public static final OracleLockEntity LOCK_ORACLE_ENTITY = new OracleLockEntity(LOCK_ID);
