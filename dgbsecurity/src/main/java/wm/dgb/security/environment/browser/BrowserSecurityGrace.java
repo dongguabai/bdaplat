@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
@@ -52,6 +53,9 @@ public class BrowserSecurityGrace extends WebSecurityConfigurerAdapter{
 
     @Autowired
     private AuthorizeConfigManager authorizeConfigManager;
+
+    @Autowired
+    private AccessDeniedHandler accessDeniedServletHandler;
 
     private AntPathMatcher pathMatcher = new AntPathMatcher();
 
@@ -136,7 +140,8 @@ public class BrowserSecurityGrace extends WebSecurityConfigurerAdapter{
                 .contentSecurityPolicy("script-src http://code.jquery.com/")*/
            //X-Frame-Options，相同域名才是允许的。
            .headers().frameOptions().sameOrigin();
-
+           //指定权限不足处理器
+        http.exceptionHandling().accessDeniedHandler(accessDeniedServletHandler);
         authorizeConfigManager.config(http.authorizeRequests());
 
     }

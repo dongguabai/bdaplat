@@ -7,15 +7,15 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.social.connect.web.HttpSessionSessionStrategy;
 import org.springframework.social.connect.web.SessionStrategy;
-import org.springframework.util.AntPathMatcher;
 import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.filter.OncePerRequestFilter;
+import wm.dgb.security.grace.properties.DgbSecurityProperties;
+import wm.dgb.security.grace.util.AntPathMatcherUtil;
 import wm.dgb.security.support.verificationcode.grace.exception.VerificationCodeException;
 import wm.dgb.security.support.verificationcode.image.bean.ImageVerificationCodeBean;
 import wm.dgb.security.support.verificationcode.image.controller.ImageVerificationCodeGainController;
-import wm.dgb.security.grace.properties.DgbSecurityProperties;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -35,7 +35,6 @@ import java.util.Set;
 public class ImageVerificationCodeFilter extends OncePerRequestFilter implements InitializingBean {
 
     private SessionStrategy sessionStrategy = new HttpSessionSessionStrategy();
-    private AntPathMatcher pathMatcher = new AntPathMatcher();
 
     @Getter
     @Setter
@@ -53,7 +52,7 @@ public class ImageVerificationCodeFilter extends OncePerRequestFilter implements
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         Boolean isNeedValidate = false;
         for (String url : urls) {
-            if (pathMatcher.match(url, request.getRequestURI())) {
+            if (AntPathMatcherUtil.match(url, request.getRequestURI())) {
                 isNeedValidate = true;
                 break;
             }

@@ -1,7 +1,7 @@
 package wm.dgb.security.support.safe.xss;
 
 import com.google.common.collect.Lists;
-import org.springframework.util.AntPathMatcher;
+import wm.dgb.security.grace.util.AntPathMatcherUtil;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -14,8 +14,6 @@ import java.util.List;
  */
 public class XssFilter implements Filter {
 
-    private AntPathMatcher pathMatcher = new AntPathMatcher();
-
     protected static List<String> allowed = Lists.newArrayList("/**/*.ico","/assets/**","*.html","/code/image","/session/invalid");
 
     @Override
@@ -23,7 +21,7 @@ public class XssFilter implements Filter {
        HttpServletRequest httpServletRequest = (HttpServletRequest) request;
        String uri = httpServletRequest.getRequestURI();
         for (String allowedPath : allowed) {
-            if (pathMatcher.match(allowedPath,uri)){
+            if (AntPathMatcherUtil.match(allowedPath,uri)){
                 chain.doFilter(request,response);
                 return;
             }

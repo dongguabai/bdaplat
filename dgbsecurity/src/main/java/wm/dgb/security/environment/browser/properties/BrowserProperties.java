@@ -48,4 +48,8 @@ public class BrowserProperties {
      * crsfl不拦截路径
      */
     private String[] csrf;
+    /**
+     * 权限不足页面
+     */
+    private String noPermissionPage = "/error/403.html";
 }
