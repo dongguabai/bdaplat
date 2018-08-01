@@ -2,7 +2,7 @@ package com.zj.bda;
 
 import com.zj.bda.common.concurrent.lock.SimpleOracleLock;
 import com.zj.bda.common.concurrent.lock.support.OracleLockMapper;
-import com.zj.bda.common.util.CusAccessUtil;
+import com.zj.bda.common.util.IpUtil;
 import com.zj.bda.common.util.HttpClientUtil;
 import com.zj.bda.persistence.mapper.IdCardMapper;
 import com.zj.bda.persistence.mapper.UnStrTagMapper;
@@ -55,7 +55,7 @@ public class MainTest {
 
     @Test
     public void test02() throws InterruptedException {
-        String ipAddress = CusAccessUtil.getIpAddress();
+        String ipAddress = IpUtil.getIpAddress();
         System.out.println("---------" + ipAddress);
     }
 

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
  * @date 2018-07-13 22:56
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class CusAccessUtil {
+public class IpUtil {
 
     /**
      * 获取用户真实ip

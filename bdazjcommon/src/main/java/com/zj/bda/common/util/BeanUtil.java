@@ -12,7 +12,7 @@ import java.util.Map;
  * @date 2018-07-24 13:45
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class CusBeanUtil {
+public class BeanUtil {
 
     public static void copyProperties(Object source, Object target){
         BeanUtils.copyProperties(source, target);

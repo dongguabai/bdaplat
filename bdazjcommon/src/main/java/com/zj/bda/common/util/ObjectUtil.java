@@ -9,7 +9,7 @@ import org.apache.commons.lang3.ArrayUtils;
  * @date 2018-07-01 13:30
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class CusObjectUtil {
+public class ObjectUtil {
 
     /**
      * 数组中是否包含null

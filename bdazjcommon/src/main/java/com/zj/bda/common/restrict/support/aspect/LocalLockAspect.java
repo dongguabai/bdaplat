@@ -6,7 +6,7 @@ import com.zj.bda.common.cache.constant.enums.CacheExpireTimeEnum;
 import com.zj.bda.common.cache.helper.GuaCacheHelper;
 import com.zj.bda.common.exception.LimitedOperationException;
 import com.zj.bda.common.restrict.annotation.LocalLock;
-import com.zj.bda.common.util.CusAccessUtil;
+import com.zj.bda.common.util.IpUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -66,7 +66,7 @@ public class LocalLockAspect {
      * @return 生成的key
      */
     private String getKey(String keyExpress, Object[] args) {
-        return new StringBuilder(StringUtils.join(args, "-")).append(keyExpress).append(CusAccessUtil.getIpAddress()).toString();
+        return new StringBuilder(StringUtils.join(args, "-")).append(keyExpress).append(IpUtil.getIpAddress()).toString();
     }
 
 }

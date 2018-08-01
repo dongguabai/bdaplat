@@ -14,7 +14,7 @@ import java.net.URLDecoder;
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Slf4j
-public final class CusStringUtil {
+public final class StringUtil {
 
     public static String ifNullReturn(String checkedStr,String re){
         return checkedStr==null?re:checkedStr;

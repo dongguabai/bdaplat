@@ -4,7 +4,7 @@ import com.google.common.base.Joiner;
 import com.zj.bda.common.exception.InvalidParameterException;
 import com.zj.bda.common.exception.LimitedOperationException;
 import com.zj.bda.common.exception.NotFoundException;
-import com.zj.bda.common.util.CusStringUtil;
+import com.zj.bda.common.util.StringUtil;
 import com.zj.bda.common.web.enums.ResponseEnum;
 import com.zj.bda.common.web.util.ResponseUtil;
 import com.zj.bda.common.web.vo.ResponseVO;
@@ -131,6 +131,6 @@ public class GlobalExceptionHandler {
     }
 
     private String appendErrorMessage(ResponseEnum re, String cusErrorMessage) {
-        return Joiner.on("").join(re.getMessage(), CusStringUtil.ifNullReturnEmpty(cusErrorMessage), "！");
+        return Joiner.on("").join(re.getMessage(), StringUtil.ifNullReturnEmpty(cusErrorMessage), "！");
     }
 }
