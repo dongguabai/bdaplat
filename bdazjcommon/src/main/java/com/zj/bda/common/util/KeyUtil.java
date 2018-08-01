@@ -41,8 +41,7 @@ public class KeyUtil {
      * @return
      */
     public static synchronized String ge19Num() {
-        Random random = new Random();
-        Integer number = random.nextInt(900000) + 100000;
+        Integer number = new Random().nextInt(900000) + 100000;
         return new StringBuilder(String.valueOf(System.currentTimeMillis())).append(number).toString();
     }
 

@@ -3,6 +3,7 @@ package com.zj.bda.common.util;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.ReflectionUtils;
 
 import java.lang.reflect.Method;
 
@@ -18,14 +19,7 @@ public class ReflectUtil {
      * 获取类的Method
      */
     public static Method getMethod(Class<?> clazz, String methodName, Class<?>... parameterTypes){
-        Method method = null;
-        try {
-            method =  clazz.getMethod(methodName, parameterTypes);
-        } catch (NoSuchMethodException | SecurityException e) {
-            log.error("get Method failure");
-            throw new RuntimeException(e);
-        }
-        return method;
+        return ReflectionUtils.findMethod(clazz,methodName,parameterTypes);
     }
 
 }
