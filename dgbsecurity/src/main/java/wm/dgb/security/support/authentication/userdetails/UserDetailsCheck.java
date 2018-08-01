@@ -83,7 +83,8 @@ public class UserDetailsCheck {
                             isAccountNonExpired(),
                             isRedentialsNonExpired(),
                             isAccountNonLocked(),
-                            AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
+                            //将逗号分隔的字符串转换为List，这里就是用户的权限，区分大小写，这里的ROLE_ADMIN的权限是ADMIN
+                            AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_ADMIN"));
         return user;
     }
 

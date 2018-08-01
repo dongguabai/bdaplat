@@ -16,6 +16,7 @@ import org.springframework.util.AntPathMatcher;
 import wm.dgb.security.grace.properties.DgbSecurityProperties;
 import wm.dgb.security.support.authentication.afterauthentication.DgbAuthenticationFailureHandler;
 import wm.dgb.security.support.authentication.afterauthentication.DgbAuthenticationSuccessHandler;
+import wm.dgb.security.support.authorization.grace.AuthorizeConfigManager;
 import wm.dgb.security.support.verificationcode.image.filter.ImageVerificationCodeFilter;
 
 /**
@@ -49,6 +50,9 @@ public class BrowserSecurityGrace extends WebSecurityConfigurerAdapter{
     @Autowired
     private LogoutSuccessHandler logoutSuccessHandler;
 
+    @Autowired
+    private AuthorizeConfigManager authorizeConfigManager;
+
     private AntPathMatcher pathMatcher = new AntPathMatcher();
 
     @Override
@@ -62,13 +66,19 @@ public class BrowserSecurityGrace extends WebSecurityConfigurerAdapter{
         http
             .addFilterBefore(imageVerificationCodeFilter, UsernamePasswordAuthenticationFilter.class)
             .authorizeRequests()
-            //直接放行的url
+
+            /* -----这里由 authorizeConfigManager 代替
+                //直接放行的url
             .antMatchers(dgbSecurityProperties.getAllowedPaths()).permitAll()
+            //只有拥有ADMIN角色才能访问/test，也可以对方法进行限制，简单权限这么使用，这里只是测试
+            //.antMatchers(HttpMethod.GET,"/test/c2").hasRole("ADMIN")
             //任何请求
             .anyRequest()
             //都需要身份认证
             .authenticated()
+            */
             .and()
+
             //指定认证方式为表单登陆
             .formLogin()
                 //需要校验登陆至
@@ -90,7 +100,7 @@ public class BrowserSecurityGrace extends WebSecurityConfigurerAdapter{
                 //.logoutSuccessUrl("/test")
                 .logoutSuccessHandler(logoutSuccessHandler)
                 .deleteCookies("JSESSIONID")
-                //让退出登陆可以使用GET，不用携带CSRF令牌
+                //下面可以让退出登陆可以使用GET，不用携带CSRF令牌，官方建议使用POST请求退出登陆，并携带CRSF令牌。
                 //.logoutRequestMatcher(new AntPathRequestMatcher(dgbSecurityProperties.getBrowser().getLogOut().getAction()))
                 .and()
             .sessionManagement()
@@ -104,6 +114,7 @@ public class BrowserSecurityGrace extends WebSecurityConfigurerAdapter{
                 .expiredSessionStrategy(sessionInformationExpiredStrategy)
                 .and().and()
             .csrf()
+                //忽略的
                 //.ignoringAntMatchers()
                 .csrfTokenRepository(new HttpSessionCsrfTokenRepository())
                 .requireCsrfProtectionMatcher(httpServletRequest -> {
@@ -126,7 +137,7 @@ public class BrowserSecurityGrace extends WebSecurityConfigurerAdapter{
            //X-Frame-Options，相同域名才是允许的。
            .headers().frameOptions().sameOrigin();
 
-
+        authorizeConfigManager.config(http.authorizeRequests());
 
     }
 }

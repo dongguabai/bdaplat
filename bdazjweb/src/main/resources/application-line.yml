@@ -30,6 +30,11 @@ spring:
       #生产环境中连接的关闭应该靠程序自己保证。
       #先关着
       remove-abandoned: false
+      #必须要remove-abandoned为false才能生效，这样连接出问题的时候，每隔3000秒请求
+      async-init: true
+      time-between-connect-error-millis: 3000
+
+
       #先关着
       log-abandoned: false
       transaction-query-timeout: 6000
