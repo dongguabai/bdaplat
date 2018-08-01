@@ -23,6 +23,15 @@ spring:
       min-idle: 1
       max-active: 20
       query-timeout: 6000
+      #设置removeAbandoned="true"时，当连接池连接数到达(getNumIdle() < 2) and (getNumActive() > getMaxActive() - 3)  [空闲的连接小于2并且活动的连接大于(最大连接-3)] 时便会启动连接回收，
+      #那种活动时间超过removeAbandonedTimeout="1800"的连接将会被回收，
+      #同时如果logAbandoned="true"设置为true,程序在回收连接的同时会打印日志。
+      #removeAbandoned是连接池的高级功能，理论上这中配置不应该出现在实际的生产环境，因为有时应用程序执行长事务，可能这种情况下，会被连接池误回收，该种配置一般在程序测试阶段，为了定位连接泄漏的具体代码位置，被开启。
+      #生产环境中连接的关闭应该靠程序自己保证。
+      #先关着
+      remove-abandoned: false
+      #先关着
+      log-abandoned: false
       transaction-query-timeout: 6000
       remove-abandoned-timeout: 1800
       filters: wall,stat

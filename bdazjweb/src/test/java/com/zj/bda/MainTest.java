@@ -3,10 +3,14 @@ package com.zj.bda;
 import com.zj.bda.common.concurrent.lock.SimpleOracleLock;
 import com.zj.bda.common.concurrent.lock.support.OracleLockMapper;
 import com.zj.bda.common.util.CusAccessUtil;
+import com.zj.bda.common.util.HttpClientUtil;
+import com.zj.bda.persistence.mapper.IdCardMapper;
 import com.zj.bda.persistence.mapper.UnStrTagMapper;
 import com.zj.bda.web.controller.TTestAsync;
 import com.zj.bda.web.controller.test.TestTaskAsync;
+import com.zj.bda.web.controller.test.util.IdCardGenerator;
 import lombok.extern.slf4j.Slf4j;
+import org.json.JSONException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +18,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
+import java.io.UnsupportedEncodingException;
+import java.text.NumberFormat;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.concurrent.locks.Lock;
 
 /**
@@ -67,6 +75,44 @@ public class MainTest {
 
         t1.start();
     }
+
+    @Autowired
+    private IdCardMapper idCardMapper;
+    @Test
+    public void testIdCard() throws JSONException, UnsupportedEncodingException {
+        NumberFormat numberFormat = NumberFormat.getInstance();
+        numberFormat.setMaximumFractionDigits(2);
+
+        List<String> sqlErrorList = new LinkedList<>();
+        List<String> netErrorList = new LinkedList<>();
+       IdCardGenerator idCardGenerator = new IdCardGenerator();
+        int sqlErrorCount = 0;
+        int netErrorCount = 0;
+        int total = 100000;
+        for (int i = 0; i < total; i++) {
+            String checkIdCard = idCardGenerator.generate();
+            int checkResult = idCardMapper.checkIdCardSelect(checkIdCard);
+            if (checkResult!=1){
+                sqlErrorCount++;
+                sqlErrorList.add(checkIdCard);
+                System.out.println("存储函数验证身份证验证出错，当前身份证为："+checkIdCard);
+                continue;
+            }
+            String netResultJson = HttpClientUtil.sendHttpGet("http://www.dffyw.com/sfzcx/query.php?id=" + checkIdCard);
+            if (!netResultJson.contains("\"Error\":\"\"") || !netResultJson.contains("\"Warning\":\"\"")){
+                netErrorList.add(checkIdCard);
+                netErrorCount++;
+                System.out.println("出现存储函数验证身份证正确，但是网站验证身份错误，当前身份证为："+checkIdCard);
+            }
+        }
+        System.out.println("共验证"+total+"次，存储函数验证错误次数为："+sqlErrorCount+"，错误率："+numberFormat.format((float) sqlErrorCount / (float) total * 100)+"%");
+        System.out.println("其中出现存储函数验证身份证正确，但是网站验证身份错误次数为："+netErrorCount);
+
+        System.out.println("存储函数验证错误身份证号为："+sqlErrorList);
+        System.out.println("存储函数验证身份证正确，但是网站验证身份错误身份证号为："+netErrorList);
+    }
+
+
 
 
     @Autowired
@@ -127,6 +173,9 @@ public class MainTest {
             }
         }
     }
+
+
+
 
 
 
