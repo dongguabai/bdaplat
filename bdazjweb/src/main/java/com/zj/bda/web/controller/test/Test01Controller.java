@@ -46,7 +46,7 @@ public class Test01Controller {
 
     @RequestMapping("login1")
     public Object test05(@Valid User user, BindingResult result) {
-        ValidateHelper.validateModel(result);
+        ValidateHelper.validate(result);
         if(result.hasErrors()){
             for (ObjectError error : result.getAllErrors()) {
                 System.out.println(error.getDefaultMessage());

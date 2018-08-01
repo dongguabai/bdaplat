@@ -14,7 +14,7 @@ import org.springframework.validation.BindingResult;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ValidateHelper {
 
-    public static void validateModel(BindingResult... results) {
+    public static void validate(BindingResult... results) {
         for (BindingResult result : results) {
             if (result != null && result.hasErrors()) {
                 throw new InvalidParameterException(result.getAllErrors().get(0).getDefaultMessage());
