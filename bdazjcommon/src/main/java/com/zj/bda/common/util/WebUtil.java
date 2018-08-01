@@ -26,7 +26,6 @@ public class WebUtil {
         return isAjaxRequest;
     }
 
-
     public static void responseErrorJson(HttpServletResponse response,Object resData,HttpStatus httpStatus,String message,Integer errorCode) throws IOException {
         response.setStatus(httpStatus.value());
         response.setContentType("application/json;charset=UTF-8");
