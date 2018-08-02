@@ -13,9 +13,9 @@ spring:
     #url: jdbc:oracle:thin:@192.168.234.1:1521:xe
     #username: zjbdatag
     #password: admin
-    url: AES@B0A7C29609CCA90887CA50D842B26097003448F5ABEEDA9AC38A0955082B7A8BB31CA670EE8D1D4C24EFE4F2B90FCFF7
-    username: AES@9CB03074452B022459CA7B9B899E0D11
-    password: AES@2B9CAC16B437F5C3B49F7DF66FB675FB
+    url: AES@pRGiWkJc76agx0XYtZmejyt+Zu6Cgi7/r2sLvLfgX81gfO5L49l9yZXzeRJkf/Ve
+    username: AES@/oZAZpdTNvfQ04ZlX98cCA==
+    password: AES@NicMvZ3F9Ldwd6q4lfv7xQ==
     platform: oracle
     type: com.alibaba.druid.pool.DruidDataSource
     druid:

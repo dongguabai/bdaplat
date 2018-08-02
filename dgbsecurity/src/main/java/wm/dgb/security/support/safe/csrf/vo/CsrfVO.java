@@ -28,9 +28,9 @@ public class CsrfVO implements Serializable {
     private String zm;
 
     public CsrfVO(CsrfToken token) {
-        this.setHeaderName(AesUtil.encryptString(token.getHeaderName(), AesUtil.AesEnum.CSRF_TOKEN_KEY) );
-        this.setToken(AesUtil.encryptString(token.getToken(),AesUtil.AesEnum.CSRF_TOKEN_KEY));
-        this.wm= AesUtil.encryptString(token.getHeaderName().substring(2),AesUtil.AesEnum.CSRF_TOKEN_KEY);
-        this.zm= AesUtil.encryptString(token.getToken().substring(2),AesUtil.AesEnum.CSRF_TOKEN_KEY);
+        this.setHeaderName(AesUtil.encryptCbc(token.getHeaderName(), AesUtil.AesCbcEnum.CSRF_TOKEN_KEY_IVPARAMETER) );
+        this.setToken(AesUtil.encryptCbc(token.getToken(),AesUtil.AesCbcEnum.CSRF_TOKEN_KEY_IVPARAMETER));
+        this.wm= AesUtil.encryptCbc(token.getHeaderName().substring(2),AesUtil.AesCbcEnum.CSRF_TOKEN_KEY_IVPARAMETER);
+        this.zm= AesUtil.encryptCbc(token.getToken().substring(2),AesUtil.AesCbcEnum.CSRF_TOKEN_KEY_IVPARAMETER);
     }
 }

@@ -1,11 +1,16 @@
 package wm.dgb.security.support.authentication.userdetails;
 
+import com.zj.bda.common.encrypt.aes.AesUtil;
+import com.zj.bda.common.util.SpringUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.ServletRequestBindingException;
+import org.springframework.web.bind.ServletRequestUtils;
 
 /**
  * UserDetails校验
@@ -55,7 +60,7 @@ public class UserDetailsCheck {
 
     public User constructUser(String username)  {
 
-     /*   String menuList;
+        String menuList;
         try {
             menuList = ServletRequestUtils.getRequiredStringParameter(SpringUtil.getHttpServletRequest(), "_html");
         } catch (ServletRequestBindingException e) {
@@ -67,12 +72,14 @@ public class UserDetailsCheck {
             throw new RuntimeException("无法获取用户名和密码信息！");
         }
 
-        //用户名密码加密
-        String decrypt = DesUtil.decrypt(menuList, DesUtil.KEY);
+        //用户名密码解密
+        String decrypt = AesUtil.decryptCbc(menuList, AesUtil.AesCbcEnum.USERNAME_PASSWORD_LOGIN_KEY_IVPARAMETER);
         String[] split = StringUtils.split(decrypt, ",");
         String uname = split[0];
         String pw = split[2];
-*/
+        System.out.println(uname);
+        System.out.println(pw);
+
         /*ToDo  从数据库中获取相应参数，封装成User，目前暂时仅用SpringSecurity自带User，后续根据需求，
         如用户表与User相差不大可以考虑扩展自定义实现UserDetails，如不行就独立创建用户表对象与User进行转换使用*/
         String password = passwordEncoder.encode("admin");

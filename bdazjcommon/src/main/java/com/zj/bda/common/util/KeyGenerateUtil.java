@@ -12,7 +12,7 @@ import java.util.Random;
  * @date 2018/7/27 10:52
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class KeyUtil {
+public class KeyGenerateUtil {
 
     /**
      * 一天最大毫秒86400000，最大占用27比特

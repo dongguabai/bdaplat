@@ -35,7 +35,7 @@ public class EncryptionPropertyConfig {
 
         private String resolveDESValue(String value) {
             // 自定义DES密文解密
-            return AesUtil.decryptString(value, AesUtil.AesEnum.DATABASE_PROPERTIES_KEY);
+            return AesUtil.decryptCbc(value, AesUtil.AesCbcEnum.DATABASE_PROPERTIES_KEY_IVPARAMETER);
         }
 
     }
