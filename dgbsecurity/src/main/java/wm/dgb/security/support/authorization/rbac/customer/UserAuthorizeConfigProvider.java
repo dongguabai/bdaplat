@@ -1,4 +1,4 @@
-package com.zj.bda.web.security;
+package wm.dgb.security.support.authorization.rbac.customer;
 
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
