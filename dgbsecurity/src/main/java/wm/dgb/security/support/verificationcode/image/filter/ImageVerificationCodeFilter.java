@@ -51,8 +51,9 @@ public class ImageVerificationCodeFilter extends OncePerRequestFilter implements
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         Boolean isNeedValidate = false;
+        String requestURI = request.getRequestURI();
         for (String url : urls) {
-            if (AntPathMatcherUtil.match(url, request.getRequestURI())) {
+            if (AntPathMatcherUtil.match(url, requestURI)) {
                 isNeedValidate = true;
                 break;
             }
