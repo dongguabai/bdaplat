@@ -2,8 +2,8 @@ package com.zj.bda;
 
 import com.zj.bda.common.concurrent.lock.SimpleOracleLock;
 import com.zj.bda.common.concurrent.lock.support.OracleLockMapper;
-import com.zj.bda.common.util.IpUtil;
 import com.zj.bda.common.util.HttpClientUtil;
+import com.zj.bda.common.util.IpUtil;
 import com.zj.bda.persistence.mapper.IdCardMapper;
 import com.zj.bda.persistence.mapper.UnStrTagMapper;
 import com.zj.bda.web.controller.TTestAsync;
@@ -15,6 +15,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
@@ -174,6 +175,14 @@ public class MainTest {
         }
     }
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+    @Test
+    public  void  testPasswordEncoder(){
+        String s = "admin";
+        System.out.println(passwordEncoder.encode(s));
+
+    }
 
 
 
