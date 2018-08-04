@@ -43,6 +43,12 @@
         <dependency>
             <groupId>com.bda</groupId>
             <version>${com.zj.bda}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>mybatis</artifactId>
+                    <groupId>org.mybatis</groupId>
+                </exclusion>
+            </exclusions>
             <artifactId>bda-zj-common</artifactId>
         </dependency>
 
