@@ -28,6 +28,8 @@ import java.lang.reflect.Method;
 public class LocalLockAspect {
 
     private final Cache<String, Object> LOCALLOCK_CACHES = CacheBuilder.newBuilder()
+            //初始化容量
+            .initialCapacity(30)
             // 最大缓存 1000 个
             .maximumSize(1000)
             //设置并发数为5，即同一时间最多只能有5个线程往cache执行写入操作
