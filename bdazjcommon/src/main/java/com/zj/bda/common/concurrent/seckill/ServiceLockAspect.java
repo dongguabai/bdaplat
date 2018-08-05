@@ -27,11 +27,11 @@ public class ServiceLockAspect {
     private static Lock lock = new ReentrantLock(true);
 
     @Pointcut("execution(public * *(..)) && @annotation(com.zj.bda.common.concurrent.seckill.Servicelock)")
-    public void ServiceLockAspect() {
+    public void serviceLockAspect() {
 
     }
 
-    @Around("ServiceLockAspect()")
+    @Around("serviceLockAspect()")
     public  Object around(ProceedingJoinPoint joinPoint) {
         lock.lock();
         Object obj = null;
