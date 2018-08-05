@@ -1,6 +1,6 @@
 package wm.dgb.security.support.verificationcode.image.controller;
 
-import com.zj.bda.common.restrict.annotation.LocalLock;
+import com.zj.bda.common.concurrent.restrict.LocalLock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.connect.web.HttpSessionSessionStrategy;
 import org.springframework.social.connect.web.SessionStrategy;
@@ -35,7 +35,7 @@ public class ImageVerificationCodeGainController {
      * @throws IOException
      */
     @GetMapping("/code/image")
-    @LocalLock(key = "createImageCode")
+    @LocalLock(key = "createImageCode",keyGenerate = false)
     public void createImageCode(HttpServletRequest request, HttpServletResponse response) throws IOException {
         ImageVerificationCodeBean imageCode = imageVerificationCodeGenerator.generate(new ServletWebRequest(request));
         sessionStrategy.setAttribute(new ServletWebRequest(request), SESSION_KEY, imageCode);

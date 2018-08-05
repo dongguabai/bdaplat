@@ -1,7 +1,7 @@
 package com.zj.bda.web.controller.test;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import com.zj.bda.common.restrict.annotation.LocalLock;
+import com.zj.bda.common.concurrent.restrict.LocalLock;
 import com.zj.bda.common.web.util.ResponseUtil;
 import com.zj.bda.common.web.vo.ResponseVO;
 import com.zj.bda.persistence.entity.UnStrTag;

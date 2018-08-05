@@ -1,6 +1,6 @@
-package wm.dgb.schedule.statics.config;
+package wm.dgb.schedule.quartz.statics.config;
 
-import wm.dgb.schedule.statics.job.fixedjob.QuartzTest01;
+import wm.dgb.schedule.quartz.statics.job.fixedjob.QuartzTest01;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.quartz.JobDetailFactoryBean;

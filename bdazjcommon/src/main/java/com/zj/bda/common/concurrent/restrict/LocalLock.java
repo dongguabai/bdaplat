@@ -1,4 +1,4 @@
-package com.zj.bda.common.restrict.annotation;
+package com.zj.bda.common.concurrent.restrict;
 
 import java.lang.annotation.*;
 
@@ -14,6 +14,8 @@ public @interface LocalLock {
 
 
     String key();
+
+    boolean keyGenerate() default true;
 
     /**
      * 过期时间  目前使用guava、ehcache，该属性无作用   使用redis该属性有用

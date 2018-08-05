@@ -1,8 +1,10 @@
-package wm.dgb.schedule.statics.job.fixedjob;
+package wm.dgb.schedule.quartz.statics.job.fixedjob;
 
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
+
+import java.time.LocalDateTime;
 
 /**
  * @author Dongguabai
@@ -11,6 +13,6 @@ import org.quartz.JobExecutionException;
 public class QuartzTest01 implements Job{
     @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
-       // System.out.println("执行了Quartz-------" + LocalDateTime.now());
+       System.out.println("执行了QuartzTest01-------" + LocalDateTime.now());
     }
 }
