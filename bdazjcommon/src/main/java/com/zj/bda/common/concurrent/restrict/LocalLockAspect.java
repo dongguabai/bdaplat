@@ -39,7 +39,7 @@ public class LocalLockAspect {
             .build();
 
     @Around("execution(public * *(..)) && @annotation(com.zj.bda.common.concurrent.restrict.LocalLock)")
-    public Object interceptor(ProceedingJoinPoint pjp) throws InterruptedException {
+    public Object interceptor(ProceedingJoinPoint pjp) {
         MethodSignature signature = (MethodSignature) pjp.getSignature();
         Method method = signature.getMethod();
         LocalLock localLock = method.getAnnotation(LocalLock.class);

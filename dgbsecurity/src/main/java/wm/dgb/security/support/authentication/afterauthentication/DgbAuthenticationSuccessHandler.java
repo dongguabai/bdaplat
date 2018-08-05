@@ -11,7 +11,6 @@ import org.springframework.social.connect.web.SessionStrategy;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.ServletWebRequest;
 import wm.dgb.security.grace.properties.DgbSecurityProperties;
-import wm.dgb.security.support.authentication.afterauthentication.enums.AfterAuthenticationResponseTypeEnum;
 import wm.dgb.security.support.safe.csrf.vo.CsrfVO;
 
 import javax.servlet.ServletException;
@@ -36,17 +35,17 @@ public class DgbAuthenticationSuccessHandler extends SavedRequestAwareAuthentica
     /**
      * csrfToken session key
      */
-    private static final String DEFAULT_CSRF_TOKEN_ATTR_NAME = HttpSessionCsrfTokenRepository.class
+    public static final String DEFAULT_CSRF_TOKEN_ATTR_NAME = HttpSessionCsrfTokenRepository.class
             .getName().concat(".CSRF_TOKEN");
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-        if (AfterAuthenticationResponseTypeEnum.JSON.equals(dgbSecurityProperties.getBrowser().getResponseType())) {
+        //if (AfterAuthenticationResponseTypeEnum.JSON.equals(dgbSecurityProperties.getBrowser().getResponseType())) {
             CsrfToken token = (CsrfToken)sessionStrategy.getAttribute(new ServletWebRequest(request, response), DEFAULT_CSRF_TOKEN_ATTR_NAME);
             WebUtil.responseOkJson(response, new CsrfVO(token), "登陆成功！");
-            return;
-        }
+            //return;
+       // }
         //默认继续成功跳转，无需更改
-        super.onAuthenticationSuccess(request, response, authentication);
+        //super.onAuthenticationSuccess(request, response, authentication);
     }
 }
