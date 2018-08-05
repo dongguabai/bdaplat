@@ -1,12 +1,13 @@
 package com.zj.bda.common.web;
 
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
 import java.io.Serializable;
 
 /**
- * 登陆成功Handler
+ * 统一响应对象
  * @author Dongguabai
  * @date 2018-07-05 19:33
  */
@@ -15,6 +16,7 @@ import java.io.Serializable;
 @Setter
 @Getter
 @ToString
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ServerResponse<T> implements Serializable {
 
     /**
