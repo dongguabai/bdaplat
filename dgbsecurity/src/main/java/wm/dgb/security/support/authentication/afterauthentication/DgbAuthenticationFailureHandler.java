@@ -1,7 +1,7 @@
 package wm.dgb.security.support.authentication.afterauthentication;
 
 import com.zj.bda.common.util.WebUtil;
-import com.zj.bda.common.web.enums.ResponseEnum;
+import com.zj.bda.common.web.ServerResponseEnum;
 import wm.dgb.security.support.verificationcode.grace.exception.VerificationCodeException;
 import wm.dgb.security.grace.properties.DgbSecurityProperties;
 import wm.dgb.security.support.authentication.afterauthentication.enums.AfterAuthenticationResponseTypeEnum;
@@ -33,11 +33,11 @@ public class DgbAuthenticationFailureHandler extends SimpleUrlAuthenticationFail
             //注意httpstatus
             //增加验证码异常处理，优先判断验证码
            if (exception instanceof VerificationCodeException){
-                WebUtil.responseErrorJson(response,null, HttpStatus.OK, exception.getMessage(),ResponseEnum.ERROR_VERIFICATION_CODE.getCode());
+                WebUtil.responseErrorJson(response,null, HttpStatus.OK, exception.getMessage(), ServerResponseEnum.ERROR_VERIFICATION_CODE.getCode());
                 return;
             }
            //注意HttpStatus
-            WebUtil.responseErrorJson(response,null, HttpStatus.OK, ResponseEnum.ERROR_LOGIN.getMessage(),ResponseEnum.ERROR_LOGIN.getCode());
+            WebUtil.responseErrorJson(response,null, HttpStatus.OK, ServerResponseEnum.ERROR_LOGIN.getMessage(), ServerResponseEnum.ERROR_LOGIN.getCode());
             return;
         }
         //使用默认失败处理

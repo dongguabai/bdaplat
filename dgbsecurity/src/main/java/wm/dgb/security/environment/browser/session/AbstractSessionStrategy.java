@@ -1,9 +1,9 @@
 package wm.dgb.security.environment.browser.session;
 
 import com.zj.bda.common.util.WebUtil;
-import com.zj.bda.common.web.enums.ResponseEnum;
-import com.zj.bda.common.web.util.ResponseUtil;
-import com.zj.bda.common.web.vo.ResponseVO;
+import com.zj.bda.common.web.ServerResponseEnum;
+import com.zj.bda.common.web.ServerResponseHelper;
+import com.zj.bda.common.web.ServerResponse;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -61,7 +61,7 @@ public class AbstractSessionStrategy {
             log.info("session失效,跳转到 {}",targetUrl);
             redirectStrategy.sendRedirect(request, response, targetUrl);
         }else{
-            ResponseVO result = buildResponseContent(request);
+            ServerResponse result = buildResponseContent(request);
             WebUtil.responseErrorJson(response,HttpStatus.UNAUTHORIZED,result);
         }
 
@@ -71,11 +71,11 @@ public class AbstractSessionStrategy {
      * @param request
      * @return
      */
-    protected ResponseVO buildResponseContent(HttpServletRequest request) {
+    protected ServerResponse buildResponseContent(HttpServletRequest request) {
         if(isConcurrency()){
-            return ResponseUtil.error(ResponseEnum.ERROR_ACCOUNT_CONCURRENCY);
+            return ServerResponseHelper.error(ServerResponseEnum.ERROR_ACCOUNT_CONCURRENCY);
         }
-        return ResponseUtil.error(ResponseEnum.ERROR_ACCOUNT_EXPIRE);
+        return ServerResponseHelper.error(ServerResponseEnum.ERROR_ACCOUNT_EXPIRE);
     }
 
     /**

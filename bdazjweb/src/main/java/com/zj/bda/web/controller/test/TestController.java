@@ -2,8 +2,8 @@ package com.zj.bda.web.controller.test;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.zj.bda.common.concurrent.restrict.LocalLock;
-import com.zj.bda.common.web.util.ResponseUtil;
-import com.zj.bda.common.web.vo.ResponseVO;
+import com.zj.bda.common.web.ServerResponseHelper;
+import com.zj.bda.common.web.ServerResponse;
 import com.zj.bda.persistence.entity.UnStrTag;
 import com.zj.bda.persistence.mapper.UnStrTagMapper;
 import com.zj.bda.service.TestService;
@@ -42,24 +42,24 @@ public class TestController {
     }
 
     @RequestMapping("/async/test01")
-    public ResponseVO asyncTest01() throws Exception {
+    public ServerResponse asyncTest01() throws Exception {
         log.info("开始处理请求--------------");
 
         Thread.sleep(3000);
 
         log.info("请求处理结束--------------");
-        return ResponseUtil.success();
+        return ServerResponseHelper.success();
     }
 
     @RequestMapping("/async/test02")
-    public Callable<ResponseVO> asyncTest02() {
+    public Callable<ServerResponse> asyncTest02() {
         log.info("开始处理请求--------------");
 
-        Callable<ResponseVO> result = ()->{
+        Callable<ServerResponse> result = ()->{
             log.info("副线程-------开始处理请求--------------");
             Thread.sleep(3000);
             log.info("副线程-------请求处理结束--------------");
-            return ResponseUtil.success();
+            return ServerResponseHelper.success();
         };
 
         log.info("请求处理结束--------------");
@@ -176,7 +176,7 @@ public class TestController {
         unStrTagMapper.insertSelective(unStrTag);
         System.out.println("进入Controller2");
         List<UnStrTag> unStrTags = unStrTagMapper.selectAll();
-        return ResponseUtil.success(unStrTags);
+        return ServerResponseHelper.success(unStrTags);
     }
 
     @RequestMapping("test/d")

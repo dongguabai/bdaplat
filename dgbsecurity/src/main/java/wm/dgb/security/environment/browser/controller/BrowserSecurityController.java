@@ -1,8 +1,8 @@
 package wm.dgb.security.environment.browser.controller;
 
-import com.zj.bda.common.web.enums.ResponseEnum;
-import com.zj.bda.common.web.util.ResponseUtil;
-import com.zj.bda.common.web.vo.ResponseVO;
+import com.zj.bda.common.web.ServerResponseEnum;
+import com.zj.bda.common.web.ServerResponseHelper;
+import com.zj.bda.common.web.ServerResponse;
 import wm.dgb.security.grace.constant.DgbSecurityConstant;
 import wm.dgb.security.grace.properties.DgbSecurityProperties;
 import org.apache.commons.lang3.StringUtils;
@@ -36,7 +36,7 @@ public class BrowserSecurityController {
 
     @RequestMapping("/authentication/require")
     @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
-    public ResponseVO requireAuthentication(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public ServerResponse requireAuthentication(HttpServletRequest request, HttpServletResponse response) throws IOException {
         SavedRequest savedRequest = requestCache.getRequest(request,response);
         if(savedRequest!=null){
             String redirectUrl = savedRequest.getRedirectUrl();
@@ -45,7 +45,7 @@ public class BrowserSecurityController {
                 return null;
             }
         }
-        return ResponseUtil.error(ResponseEnum.ERROR_UNLOGIN);
+        return ServerResponseHelper.error(ServerResponseEnum.ERROR_UNLOGIN);
     }
 
     /**
@@ -54,7 +54,7 @@ public class BrowserSecurityController {
      */
   /*  @RequestMapping("/session/invalid")
     @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
-    public ResponseVO sessionInvalid(){
-        return ResponseUtil.error(ResponseEnum.ERROR_ACCOUNT_EXPIRE);
+    public ServerResponse sessionInvalid(){
+        return ServerResponseHelper.error(ServerResponseEnum.ERROR_ACCOUNT_EXPIRE);
     }*/
 }

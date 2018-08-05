@@ -1,4 +1,4 @@
-package com.zj.bda.common.web.enums;
+package com.zj.bda.common.web;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -10,7 +10,7 @@ import lombok.Getter;
  */
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
-public enum ResponseEnum {
+public enum ServerResponseEnum {
     /**
      * 操作成功
      */

@@ -1,7 +1,5 @@
-package com.zj.bda.common.web.util;
+package com.zj.bda.common.web;
 
-import com.zj.bda.common.web.enums.ResponseEnum;
-import com.zj.bda.common.web.vo.ResponseVO;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 /**
@@ -10,7 +8,7 @@ import lombok.NoArgsConstructor;
  * @date 2018-07-05 19:33
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class ResponseUtil {
+public class ServerResponseHelper {
 
     /**
      * 成功返回
@@ -18,8 +16,8 @@ public class ResponseUtil {
      * @param resData  成功返回数据
      * @return
      */
-    public static ResponseVO success(String message, Object resData){
-        return new ResponseVO(ResponseEnum.SUCCESS.getCode(),message,resData);
+    public static ServerResponse success(String message, Object resData){
+        return new ServerResponse(ServerResponseEnum.SUCCESS.getCode(),message,resData);
     }
 
     /**
@@ -27,15 +25,15 @@ public class ResponseUtil {
      * @param resData   成功返回数据
      * @return
      */
-    public static ResponseVO success(Object resData){
-        return success(ResponseEnum.SUCCESS.getMessage(),resData);
+    public static ServerResponse success(Object resData){
+        return success(ServerResponseEnum.SUCCESS.getMessage(),resData);
     }
 
     /**
      * 成功返回（使用默认成功返回信息，无返回数据）
      * @return
      */
-    public static ResponseVO success(){
+    public static ServerResponse success(){
         return success(null);
     }
 
@@ -46,8 +44,8 @@ public class ResponseUtil {
      * @param resData   错误返回数据
      * @return
      */
-    public static ResponseVO error(Integer code, String errorMessage, Object resData){
-        return new ResponseVO(code,errorMessage,resData);
+    public static ServerResponse error(Integer code, String errorMessage, Object resData){
+        return new ServerResponse(code,errorMessage,resData);
     }
 
     /**
@@ -56,17 +54,17 @@ public class ResponseUtil {
      * @param errorMessage  异常信息
      * @return
      */
-    public static ResponseVO error(Integer code, String errorMessage){
+    public static ServerResponse error(Integer code, String errorMessage){
         return error(code,errorMessage,null);
     }
 
     /**
      * 异常返回
-     * @param responseEnum
+     * @param serverResponseEnum
      * @return
      */
-    public static ResponseVO error(ResponseEnum responseEnum){
-        return error(responseEnum.getCode(), responseEnum.getMessage());
+    public static ServerResponse error(ServerResponseEnum serverResponseEnum){
+        return error(serverResponseEnum.getCode(), serverResponseEnum.getMessage());
     }
 
 }

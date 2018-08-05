@@ -1,7 +1,7 @@
 package wm.dgb.security.support.registe.controller;
 
-import com.zj.bda.common.web.util.ResponseUtil;
-import com.zj.bda.common.web.vo.ResponseVO;
+import com.zj.bda.common.web.ServerResponseHelper;
+import com.zj.bda.common.web.ServerResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -19,11 +19,11 @@ public class RegisteController {
     private PasswordEncoder PasswordEncoder;
 
     @PostMapping("/registe")
-    public ResponseVO regist(User user){
+    public ServerResponse regist(User user){
         String username = user.getUsername();
         String password = user.getPassword();
         //todo 密码加密存储
         String encodePassword = PasswordEncoder.encode(password);
-        return ResponseUtil.success();
+        return ServerResponseHelper.success();
     }
 }

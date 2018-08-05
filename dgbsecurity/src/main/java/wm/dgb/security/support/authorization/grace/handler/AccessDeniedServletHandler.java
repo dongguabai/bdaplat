@@ -1,8 +1,8 @@
 package wm.dgb.security.support.authorization.grace.handler;
 
 import com.zj.bda.common.util.WebUtil;
-import com.zj.bda.common.web.enums.ResponseEnum;
-import com.zj.bda.common.web.util.ResponseUtil;
+import com.zj.bda.common.web.ServerResponseEnum;
+import com.zj.bda.common.web.ServerResponseHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
@@ -32,7 +32,7 @@ public class AccessDeniedServletHandler implements AccessDeniedHandler {
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException {
         if (AfterAuthenticationResponseTypeEnum.JSON.equals(dgbSecurityProperties.getBrowser().getResponseType())) {
-            WebUtil.responseErrorJson(response, HttpStatus.FORBIDDEN, ResponseUtil.error(ResponseEnum.ERROR_NO_PERMISSION));
+            WebUtil.responseErrorJson(response, HttpStatus.FORBIDDEN, ServerResponseHelper.error(ServerResponseEnum.ERROR_NO_PERMISSION));
             return;
         }
         redirectStrategy.sendRedirect(request,response,dgbSecurityProperties.getBrowser().getNoPermissionPage());

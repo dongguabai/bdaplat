@@ -5,9 +5,9 @@ import com.zj.bda.common.exception.InvalidParameterException;
 import com.zj.bda.common.exception.LimitedOperationException;
 import com.zj.bda.common.exception.NotFoundException;
 import com.zj.bda.common.util.StringUtil;
-import com.zj.bda.common.web.enums.ResponseEnum;
-import com.zj.bda.common.web.util.ResponseUtil;
-import com.zj.bda.common.web.vo.ResponseVO;
+import com.zj.bda.common.web.ServerResponseEnum;
+import com.zj.bda.common.web.ServerResponseHelper;
+import com.zj.bda.common.web.ServerResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -37,8 +37,8 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(value = NoPermissionException.class)
     @ResponseBody
-    public ResponseVO handler(NoPermissionException e) {
-        return responseError(ResponseEnum.ERROR_NO_PERMISSION,e);
+    public ServerResponse handler(NoPermissionException e) {
+        return responseError(ServerResponseEnum.ERROR_NO_PERMISSION,e);
     }
 
     /**
@@ -48,8 +48,8 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(value = NotFoundException.class)
     @ResponseBody
-    public ResponseVO handler(NotFoundException e) {
-        return responseError(ResponseEnum.ERROR_NOT_FOUND,e);
+    public ServerResponse handler(NotFoundException e) {
+        return responseError(ServerResponseEnum.ERROR_NOT_FOUND,e);
     }
 
     /**
@@ -59,8 +59,8 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(value = UnLoginException.class)
     @ResponseBody
-    public ResponseVO handler(UnLoginException e) {
-        return responseError(ResponseEnum.ERROR_UNLOGIN,e);
+    public ServerResponse handler(UnLoginException e) {
+        return responseError(ServerResponseEnum.ERROR_UNLOGIN,e);
     }
 
     /**
@@ -70,8 +70,8 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(value = LimitedOperationException.class)
     @ResponseBody
-    public ResponseVO handler(LimitedOperationException e) {
-        return responseError(ResponseEnum.ERROR_LIMITED_OPERATION,e);
+    public ServerResponse handler(LimitedOperationException e) {
+        return responseError(ServerResponseEnum.ERROR_LIMITED_OPERATION,e);
     }
 
     /**
@@ -81,8 +81,8 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(value = VerificationCodeException.class)
     @ResponseBody
-    public ResponseVO handler(VerificationCodeException e) {
-        return responseError(ResponseEnum.ERROR_VERIFICATION_CODE,e,appendErrorMessage(ResponseEnum.ERROR_VERIFICATION_CODE,e.getMessage()));
+    public ServerResponse handler(VerificationCodeException e) {
+        return responseError(ServerResponseEnum.ERROR_VERIFICATION_CODE,e,appendErrorMessage(ServerResponseEnum.ERROR_VERIFICATION_CODE,e.getMessage()));
     }
     /**
      * 非法参数
@@ -91,8 +91,8 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(value = InvalidParameterException.class)
     @ResponseBody
-    public ResponseVO handler(InvalidParameterException e) {
-        return responseError(ResponseEnum.ERROR_INVALID,e,appendErrorMessage(ResponseEnum.ERROR_INVALID,e.getMessage()));
+    public ServerResponse handler(InvalidParameterException e) {
+        return responseError(ServerResponseEnum.ERROR_INVALID,e,appendErrorMessage(ServerResponseEnum.ERROR_INVALID,e.getMessage()));
     }
 
     /**
@@ -102,9 +102,9 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(value = ConstraintViolationException.class)
     @ResponseBody
-    public ResponseVO handler(ConstraintViolationException e) {
+    public ServerResponse handler(ConstraintViolationException e) {
         Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
-        return responseError(ResponseEnum.ERROR_INVALID,e,appendErrorMessage(ResponseEnum.ERROR_INVALID,violations.iterator().next().getMessage()));
+        return responseError(ServerResponseEnum.ERROR_INVALID,e,appendErrorMessage(ServerResponseEnum.ERROR_INVALID,violations.iterator().next().getMessage()));
     }
 
     /**
@@ -115,22 +115,22 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
-    public ResponseVO defaultErrorHandler(HttpServletRequest request, Exception e) {
+    public ServerResponse defaultErrorHandler(HttpServletRequest request, Exception e) {
         log.error(String.format("请求方法[%s]发生异常，错误信息：[%s]", request.getRequestURI(), e.getMessage()), e);
-        return ResponseUtil.error(ResponseEnum.ERROR_UNKNOW);
+        return ServerResponseHelper.error(ServerResponseEnum.ERROR_UNKNOW);
     }
 
-    private ResponseVO responseError(ResponseEnum re,RuntimeException e){
+    private ServerResponse responseError(ServerResponseEnum re, RuntimeException e){
         log.error(re.getMessage(), e);
-        return ResponseUtil.error(re);
+        return ServerResponseHelper.error(re);
     }
 
-    private ResponseVO responseError(ResponseEnum re,RuntimeException e,String cusErrorMessage){
+    private ServerResponse responseError(ServerResponseEnum re, RuntimeException e, String cusErrorMessage){
         log.error(cusErrorMessage, e);
-        return ResponseUtil.error(re.getCode(),cusErrorMessage);
+        return ServerResponseHelper.error(re.getCode(),cusErrorMessage);
     }
 
-    private String appendErrorMessage(ResponseEnum re, String cusErrorMessage) {
+    private String appendErrorMessage(ServerResponseEnum re, String cusErrorMessage) {
         return Joiner.on("").join(re.getMessage(), StringUtil.ifNullReturnEmpty(cusErrorMessage), "！");
     }
 }

@@ -1,7 +1,7 @@
 package com.zj.bda.common.util;
 
-import com.zj.bda.common.web.util.ResponseUtil;
-import com.zj.bda.common.web.vo.ResponseVO;
+import com.zj.bda.common.web.ServerResponseHelper;
+import com.zj.bda.common.web.ServerResponse;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
@@ -29,10 +29,10 @@ public class WebUtil {
     public static void responseErrorJson(HttpServletResponse response,Object resData,HttpStatus httpStatus,String message,Integer errorCode) throws IOException {
         response.setStatus(httpStatus.value());
         response.setContentType("application/json;charset=UTF-8");
-        response.getWriter().write(JsonUtil.toJSON(ResponseUtil.error(errorCode,message,resData)));
+        response.getWriter().write(JsonUtil.toJSON(ServerResponseHelper.error(errorCode,message,resData)));
     }
 
-    public static void responseErrorJson(HttpServletResponse response, HttpStatus httpStatus, ResponseVO result) throws IOException {
+    public static void responseErrorJson(HttpServletResponse response, HttpStatus httpStatus, ServerResponse result) throws IOException {
         response.setStatus(httpStatus.value());
         response.setContentType("application/json;charset=UTF-8");
         response.getWriter().write(JsonUtil.toJSON(result));
@@ -40,6 +40,6 @@ public class WebUtil {
 
     public static void responseOkJson(HttpServletResponse response,Object resData,String message) throws IOException {
         response.setContentType("application/json;charset=UTF-8");
-        response.getWriter().write(JsonUtil.toJSON(ResponseUtil.success(message,resData)));
+        response.getWriter().write(JsonUtil.toJSON(ServerResponseHelper.success(message,resData)));
     }
 }
