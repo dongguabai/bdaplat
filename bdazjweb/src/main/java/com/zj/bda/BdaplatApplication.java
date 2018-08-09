@@ -4,7 +4,6 @@ import com.zj.bda.common.init.listener.InitApplicationContextLoaderListener;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -14,9 +13,9 @@ import tk.mybatis.spring.annotation.MapperScan;
  * @author Dongguabai
  * @date 2018-06-29 19:03
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.zj.bda","wm.dgb"})
+//@ComponentScan(basePackages = {"com.zj.bda","wm.dgb"})   //上面可以替代
 @PropertySource({"classpath:config/dgb-security.properties"})
-@ComponentScan(basePackages = {"com.zj.bda","wm.dgb"})
 @MapperScan(basePackages = {"com.zj.bda.persistence.mapper","com.zj.bda.common.concurrent.lock.support"})
 //@ServletComponentScan  扫描Servlet，不需要使用
 @EnableAsync  //class @Component   method @Async
