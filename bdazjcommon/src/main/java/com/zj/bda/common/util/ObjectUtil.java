@@ -20,4 +20,11 @@ public class ObjectUtil {
         return ArrayUtils.contains(objs, null);
     }
 
+    public static Object ifNullReturn(Object candidate,Object re){
+        return candidate==null?re:candidate;
+    }
+
+    public static Object ifNullReturnNull(Object candidate){
+        return ifNullReturn(candidate,null);
+    }
 }

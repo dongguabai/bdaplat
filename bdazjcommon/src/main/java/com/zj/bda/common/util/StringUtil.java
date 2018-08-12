@@ -16,12 +16,12 @@ import java.net.URLDecoder;
 @Slf4j
 public final class StringUtil {
 
-    public static String ifNullReturn(String checkedStr,String re){
-        return checkedStr==null?re:checkedStr;
+    public static String ifNullReturn(String candidate,String re){
+        return candidate==null?re:candidate;
     }
 
-    public static String ifNullReturnEmpty(String checkedStr){
-        return ifNullReturn(checkedStr,"");
+    public static String ifNullReturnEmpty(String candidate){
+        return ifNullReturn(candidate,StringUtils.EMPTY);
     }
 
     public static String decode(String str)  {

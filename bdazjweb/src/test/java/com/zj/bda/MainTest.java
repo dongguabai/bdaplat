@@ -4,8 +4,10 @@ import com.zj.bda.common.concurrent.lock.SimpleOracleLock;
 import com.zj.bda.common.concurrent.lock.support.OracleLockMapper;
 import com.zj.bda.common.util.HttpClientUtil;
 import com.zj.bda.common.util.IpUtil;
+import com.zj.bda.common.util.SpringUtil;
 import com.zj.bda.persistence.mapper.IdCardMapper;
 import com.zj.bda.persistence.mapper.UnStrTagMapper;
+import com.zj.bda.service.TestService;
 import com.zj.bda.web.controller.TTestAsync;
 import com.zj.bda.web.controller.test.TestTaskAsync;
 import com.zj.bda.web.controller.test.util.IdCardGenerator;
@@ -13,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.json.JSONException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.aop.framework.AopProxyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -181,6 +184,29 @@ public class MainTest {
     public  void  testPasswordEncoder(){
         String s = "admin";
         System.out.println(passwordEncoder.encode(s));
+
+    }
+
+    @Autowired
+    private TestService testService;
+
+    @Test
+    public  void  testPasswordEncoder2(){
+        Class<?> aClass = AopProxyUtils.ultimateTargetClass(passwordEncoder);
+        System.out.println(aClass);
+        TestService bean = SpringUtil.getBean(TestService.class);
+        System.out.println(bean.getClass());
+        System.out.println("-----------------------------");
+       /* Object singletonTarget = AopProxyUtils.getSingletonTarget(passwordEncoder);
+        System.out.println(singletonTarget);
+        System.out.println(singletonTarget.getClass());*/
+
+        System.out.println("==============");
+        Object singletonTargetSevice = AopProxyUtils.getSingletonTarget(testService);
+        System.out.println(singletonTargetSevice);
+        System.out.println(singletonTargetSevice.getClass());
+        System.out.println(testService);
+        System.out.println(testService.getClass());
 
     }
 

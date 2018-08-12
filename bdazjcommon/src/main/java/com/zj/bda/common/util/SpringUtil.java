@@ -90,6 +90,10 @@ public class SpringUtil implements ApplicationContextAware {
         return ((ServletWebRequest)RequestContextHolder.getRequestAttributes()).getResponse();
     }
 
+    public static Object getSourceBean(Object candidate) {
+        return ObjectUtil.ifNullReturn(AopUtil.getSingletonTarget(candidate),candidate);
+    }
+
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         if (SpringUtil.applicationContext == null) {
