@@ -90,6 +90,11 @@ public class SpringUtil implements ApplicationContextAware {
         return ((ServletWebRequest)RequestContextHolder.getRequestAttributes()).getResponse();
     }
 
+    /**
+     * 获取原始对象
+     * @param candidate
+     * @return
+     */
     public static Object getSourceBean(Object candidate) {
         return ObjectUtil.ifNullReturn(AopUtil.getSingletonTarget(candidate),candidate);
     }
