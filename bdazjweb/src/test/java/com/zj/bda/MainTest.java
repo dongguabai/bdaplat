@@ -55,6 +55,9 @@ public class MainTest {
 
     @Test
     public void testCoreConfig() throws Exception {
+
+        Object schedulerFactoryBean = SpringUtil.getBean("schedulerFactoryBean");
+        System.out.println(schedulerFactoryBean);
     }
 
     @Test
