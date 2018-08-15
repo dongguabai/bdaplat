@@ -8,12 +8,14 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import tk.mybatis.spring.annotation.MapperScan;
+import wm.dgb.security.grace.scan.DgbSecurityScan;
 
 /**
  * @author Dongguabai
  * @date 2018-06-29 19:03
  */
-@SpringBootApplication(scanBasePackages = {"com.zj.bda","wm.dgb"})
+@SpringBootApplication(scanBasePackages = {"com.zj.bda","wm.dgb.schedule"})
+@DgbSecurityScan
 //@ComponentScan(basePackages = {"com.zj.bda","wm.dgb"})   //上面可以替代
 @PropertySource({"classpath:config/dgb-security.properties"})
 @MapperScan(basePackages = {"com.zj.bda.persistence.mapper","com.zj.bda.common.concurrent.lock.support"})
