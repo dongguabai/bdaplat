@@ -13,7 +13,7 @@
     <dependencies>
         <dependency>
             <groupId>com.bda</groupId>
-            <version>${com.zj.bda}</version>
+            <version>${wm.dgb}</version>
             <artifactId>bda-zj-persistence</artifactId>
         </dependency>
 
