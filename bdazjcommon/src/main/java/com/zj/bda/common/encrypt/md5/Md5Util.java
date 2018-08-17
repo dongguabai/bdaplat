@@ -11,7 +11,7 @@ import java.security.MessageDigest;
  * @author Dongguabai
  * @date 2018-07-19 13:59
  */
-public class MD5Util {
+public class Md5Util {
 
     private static String byteArrayToHexString(byte b[]) {
         StringBuffer resultSb = new StringBuffer();

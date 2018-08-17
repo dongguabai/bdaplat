@@ -42,7 +42,7 @@ public class KeyGenerateUtil {
      */
     public static synchronized String ge19Num() {
         Integer number = new Random().nextInt(900000) + 100000;
-        return new StringBuilder(String.valueOf(System.currentTimeMillis())).append(number).toString();
+        return String.valueOf(System.currentTimeMillis()) + number;
     }
 
 }
