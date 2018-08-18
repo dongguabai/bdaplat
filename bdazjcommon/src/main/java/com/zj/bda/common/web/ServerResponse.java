@@ -22,8 +22,9 @@ import java.io.Serializable;
 public class ServerResponse<T> implements Serializable {
 
     /**
-     * 0   : 成功
-     * >0 :未定义异常
+     *
+     * 0   : 重复请求
+     * >0 :成功
      * <0 : 自定义异常
      *
      * @see ServerResponseEnum
