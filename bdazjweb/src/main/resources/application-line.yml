@@ -70,8 +70,9 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: false
+#这个是打印MyBatis日志的一种方式
 #    configuration:
-#      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#      log-impl: org.apache.ibatis.logging.stdout.StdOutImpll
 
 pagehelper:
   helperDialect: oracle
