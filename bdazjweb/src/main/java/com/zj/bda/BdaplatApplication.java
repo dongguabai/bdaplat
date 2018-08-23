@@ -22,7 +22,7 @@ import wm.dgb.security.grace.scan.DgbSecurityScan;
 //@ServletComponentScan  扫描Servlet，不需要使用
 @EnableAsync  //class @Component   method @Async
 @EnableScheduling
-@EnableCaching  // @Cacheable(value = "localCache",unless="#result == null")    @CacheEvict(value = "localCache",key = "#user.userName",beforeInvocation = false)
+@EnableCaching  // @Cacheable(value = "localCache",unless="#result == null",key="参看"Spring缓存注解@Cacheable、@CacheEvict、@CachePut使用 - fashflying - 博客园"")    @CacheEvict(value = "localCache",key = "#user.userName",beforeInvocation = false)
 //@EnableAspectJAutoProxy(exposeProxy = true)  开启cglib代理，并且AopContext可以获取代理对象
 public class BdaplatApplication {
 
