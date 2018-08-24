@@ -13,8 +13,8 @@ import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 import org.springframework.security.web.session.InvalidSessionStrategy;
 import org.springframework.security.web.session.SessionInformationExpiredStrategy;
 import org.springframework.stereotype.Component;
-import org.springframework.util.AntPathMatcher;
 import wm.dgb.security.grace.properties.DgbSecurityProperties;
+import wm.dgb.security.grace.util.AntPathMatcherUtil;
 import wm.dgb.security.support.authentication.afterauthentication.DgbAuthenticationFailureHandler;
 import wm.dgb.security.support.authentication.afterauthentication.DgbAuthenticationSuccessHandler;
 import wm.dgb.security.support.authorization.grace.AuthorizeConfigManager;
@@ -56,8 +56,6 @@ public class BrowserSecurityGrace extends WebSecurityConfigurerAdapter{
 
     @Autowired
     private AccessDeniedHandler accessDeniedServletHandler;
-
-    private AntPathMatcher pathMatcher = new AntPathMatcher();
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -128,7 +126,7 @@ public class BrowserSecurityGrace extends WebSecurityConfigurerAdapter{
                         return false;
                     }
                     for (String crsf : dgbSecurityProperties.getBrowser().getCsrf()) {
-                        if (pathMatcher.match(crsf,httpServletRequest.getRequestURI())){
+                        if (AntPathMatcherUtil.match(crsf,httpServletRequest.getRequestURI())){
                             return false;
                         }
                     }
@@ -140,6 +138,7 @@ public class BrowserSecurityGrace extends WebSecurityConfigurerAdapter{
                 .contentSecurityPolicy("script-src http://code.jquery.com/")*/
            //X-Frame-Options，相同域名才是允许的。
            .headers().frameOptions().sameOrigin();
+        http.authorizeRequests();
            //指定权限不足处理器
         http.exceptionHandling().accessDeniedHandler(accessDeniedServletHandler);
         authorizeConfigManager.config(http.authorizeRequests());
