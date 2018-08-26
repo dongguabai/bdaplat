@@ -36,7 +36,7 @@ spring:
 
 logging:
 #线上放开用
-  #config: classpath:bda-log.xml
+  config: classpath:bda-log.xml
   level:
     java.sql: debug
     com.apache.ibatis: debug

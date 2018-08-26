@@ -215,6 +215,12 @@ public class MainTest {
 
 
 
+    @Test
+    public void testLogConnectionTransational(){
+        testService.trancationnal();
+        System.out.println("====================================");
+        testService.unTrancationnal();
+    }
 
 
 

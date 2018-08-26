@@ -11,8 +11,20 @@ import org.springframework.transaction.interceptor.TransactionAspectSupport;
  * Created by Dongguabai on 2018-06-19 11:15
  */
 @Service
-@Transactional(rollbackFor = Exception.class)
+//@Transactional(rollbackFor = Exception.class)
 public class TestService {
+
+
+    @Transactional
+    public void trancationnal(){
+        unStrTagMapper.selectAll();
+        System.out.println("执行trancationnal方法--------------");
+    }
+
+    public void unTrancationnal(){
+        unStrTagMapper.selectAll();
+        System.out.println("执行unTrancationnal方法--------------");
+    }
 
     public void test(){
 //        System.out.println("before--test");
