@@ -2,7 +2,6 @@ package com.zj.bda;
 
 import com.zj.bda.common.concurrent.lock.SimpleOracleLock;
 import com.zj.bda.common.concurrent.lock.support.OracleLockMapper;
-import com.zj.bda.common.util.HttpClientUtil;
 import com.zj.bda.common.util.IpUtil;
 import com.zj.bda.common.util.SpringUtil;
 import com.zj.bda.persistence.mapper.IdCardMapper;
@@ -10,7 +9,6 @@ import com.zj.bda.persistence.mapper.UnStrTagMapper;
 import com.zj.bda.service.TestService;
 import com.zj.bda.web.controller.TTestAsync;
 import com.zj.bda.web.controller.test.TestTaskAsync;
-import com.zj.bda.web.controller.test.util.IdCardGenerator;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONException;
 import org.junit.Test;
@@ -23,9 +21,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 import java.io.UnsupportedEncodingException;
-import java.text.NumberFormat;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.concurrent.locks.Lock;
 
 /**
@@ -87,7 +82,7 @@ public class MainTest {
     private IdCardMapper idCardMapper;
     @Test
     public void testIdCard() throws JSONException, UnsupportedEncodingException {
-        NumberFormat numberFormat = NumberFormat.getInstance();
+       /* NumberFormat numberFormat = NumberFormat.getInstance();
         numberFormat.setMaximumFractionDigits(2);
 
         List<String> sqlErrorList = new LinkedList<>();
@@ -116,7 +111,7 @@ public class MainTest {
         System.out.println("其中出现存储函数验证身份证正确，但是网站验证身份错误次数为："+netErrorCount);
 
         System.out.println("存储函数验证错误身份证号为："+sqlErrorList);
-        System.out.println("存储函数验证身份证正确，但是网站验证身份错误身份证号为："+netErrorList);
+        System.out.println("存储函数验证身份证正确，但是网站验证身份错误身份证号为："+netErrorList);*/
     }
 
 

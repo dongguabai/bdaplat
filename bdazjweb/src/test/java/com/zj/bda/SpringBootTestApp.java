@@ -3,13 +3,17 @@ package com.zj.bda;
 import com.zj.bda.common.init.IInitExpand;
 import com.zj.bda.common.util.JsonUtil;
 import com.zj.bda.common.util.SpringUtil;
-import wm.dgb.security.grace.user.DgbSecurityUserHelper;
+import com.zj.bda.persistence.entity.UnStrTag;
+import com.zj.bda.persistence.mapper.IdCardMapper;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import wm.dgb.security.grace.user.DgbSecurityUserHelper;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -21,14 +25,23 @@ import java.util.Map;
 public class SpringBootTestApp {
 
     @Autowired
+    private SqlSessionFactory sqlSessionFactory;
+
+    @Test
+    public void testTestMapper(){
+        IdCardMapper idCardMapper = sqlSessionFactory.openSession().getMapper(IdCardMapper.class);
+        List<UnStrTag> unStrTags = idCardMapper.checkIdCardSelect("123456789");
+    }
+
+    @Autowired(required = false)
     private Map<String,IInitExpand> map;
 
     @Test
     public void test01(){
 
-        map.forEach((k,v)->{
-            System.out.println("key:"+k+":value:"+v);
-        });
+//        map.forEach((k,v)->{
+//            System.out.println("key:"+k+":value:"+v);
+//        });
 
     }
     @Test

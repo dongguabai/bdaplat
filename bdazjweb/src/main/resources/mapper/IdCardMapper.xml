@@ -7,16 +7,16 @@
  -->
 <mapper namespace="com.zj.bda.persistence.mapper.IdCardMapper">
     <!-- statementType 声明指向的是什么类型，其中CALLABLE是执行存储过程和函数的-->
-    <select id="checkIdCard" parameterType="string" statementType="CALLABLE" resultType="string">
+   <!-- <select id="checkIdCard" parameterType="string" statementType="CALLABLE" resultType="string">
        {
               #{p3,mode=OUT,jdbcType=NUMERIC}=call fn_checkidcard(
                   #{idCard,mode=IN,jdbcType=VARCHAR}
               )
           }
-    </select>
+    </select>-->
 
-    <select id="checkIdCardSelect" parameterType="string"  resultType="int">
-      select fn_checkidcard(#{idCard}) from dual
+    <select id="checkIdCardSelect" parameterType="string"  resultType="com.zj.bda.persistence.entity.UnStrTag">
+     SELECT * from BDATAG_TAG_RESULT_UNSTR
     </select>
 <!--    &lt;!&ndash; 定义存储过程 &ndash;&gt;
     <select id="callProcedure" parameterType="map" statementType="CALLABLE" >
