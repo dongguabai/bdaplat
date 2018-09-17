@@ -14,6 +14,13 @@ import java.util.Date;
 import java.util.Locale;
 
 /**
+ * 日期加减
+ *     cd.add(Calendar.DATE, 1);//增加一天
+ //cal.add(Calendar.DATE, -1);      //减一天
+ //cd.add(Calendar.MONTH, 1);//增加一月
+ */
+
+/**
  * @author Dongguabai
  * @date 2018/8/21 16:31
  */
@@ -24,7 +31,7 @@ public class DateUtil3 {
     private static final String DATE_FMT_1 = "yyyy-MM-dd";
 
     /**
-     * 获取本月第一天
+     * 获取上月第一天
      * @return
      */
     public synchronized static String getThisMonth1Day() {
@@ -35,15 +42,31 @@ public class DateUtil3 {
     }
 
     /**
-     * 获取上个月第一天
+     * 获取本月最后一天
+     * @return
+     */
+    public synchronized static String getLastMonthLastDay() {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.DAY_OF_MONTH, 1);
+        cal.add(Calendar.DATE, -1);//减少一天
+        return FORMAT_1.format(cal.getTime());
+    }
+
+    public static void main(String[] args) {
+        System.out.println(getLastMonth1Day());
+    }
+
+    /**
+     * 获取本个月第一天
      * @return
      */
     public synchronized static String getLastMonth1Day() {
         Calendar c = Calendar.getInstance();
-        c.add(Calendar.MONTH, 0);
+        c.add(Calendar.MONTH, -1);
         c.set(Calendar.DAY_OF_MONTH, 1);
         return FORMAT_1.format(c.getTime());
     }
+
 
     /**
      * 获取上周的今天
@@ -272,5 +295,47 @@ public class DateUtil3 {
      */
     public static String getParseMonday(LocalDate localDate){
         return formatLocalDateTimeToString(getMonday(localDate),DATE_FMT_1);
+    }
+
+
+    /**
+     * 获取上周周几的日期
+     * @param dayOfWeek   周日是1
+     * @param weekOffset  周偏移，上周为-1，本周为0，下周为1，以此类推
+     * @return
+     */
+    public static Date getDayOfWeek(int dayOfWeek,int weekOffset){
+        return getDayOfWeek(Calendar.MONDAY,dayOfWeek,weekOffset);
+    }
+
+    /**
+     * 获取上(下)周周几的日期
+     * @param firstDayOfWeek {@link Calendar}
+     * 值范围 <code>SUNDAY</code>,
+     * <code>MONDAY</code>, <code>TUESDAY</code>, <code>WEDNESDAY</code>,
+     * <code>THURSDAY</code>, <code>FRIDAY</code>, and <code>SATURDAY</code>
+     * @param dayOfWeek {@link Calendar}
+     * @param weekOffset  周偏移，上周为-1，本周为0，下周为1，以此类推
+     * @return
+     */
+    public static Date getDayOfWeek(int firstDayOfWeek,int dayOfWeek,int weekOffset){
+        if(dayOfWeek>Calendar.SATURDAY || dayOfWeek<Calendar.SUNDAY){
+            return null;
+        }
+        if(firstDayOfWeek>Calendar.SATURDAY || firstDayOfWeek < Calendar.SUNDAY){
+            return null;
+        }
+        Calendar date=Calendar.getInstance(Locale.CHINA);
+        date.setFirstDayOfWeek(firstDayOfWeek);
+        //周数减一，即上周
+        date.add(Calendar.WEEK_OF_MONTH,weekOffset);
+        //日子设为周几
+        date.set(Calendar.DAY_OF_WEEK, dayOfWeek);
+        //时分秒全部置0
+        date.set(Calendar.HOUR_OF_DAY, 0);
+        date.set(Calendar.MINUTE, 0);
+        date.set(Calendar.SECOND, 0);
+        date.set(Calendar.MILLISECOND, 0);
+        return date.getTime();
     }
 }

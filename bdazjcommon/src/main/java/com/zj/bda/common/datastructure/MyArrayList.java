@@ -86,6 +86,14 @@ public class MyArrayList<E> implements Iterable<E> {
         return elementData(elementData[index]);
     }
 
+    public E getLast(){
+        return get(size-1);
+    }
+
+    public E getFirst(){
+        return get(0);
+    }
+
     private E elementData(Object elementDatum) {
         return (E) elementDatum;
     }
