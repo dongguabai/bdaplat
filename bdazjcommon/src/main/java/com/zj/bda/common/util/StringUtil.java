@@ -65,4 +65,15 @@ public final class StringUtil {
     public static String uncapitalize(String str){
         return WordUtils.uncapitalize(str);
     }
+
+    /**
+     * 指定位置插入
+     * @param source
+     * @param dstoffset
+     * @param charSequence
+     * @return
+     */
+    public static String insert(String source,int dstoffset,CharSequence charSequence){
+        return new StringBuilder(source).insert(dstoffset,charSequence).toString();
+    }
 }

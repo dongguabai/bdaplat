@@ -338,4 +338,16 @@ public class DateUtil3 {
         date.set(Calendar.MILLISECOND, 0);
         return date.getTime();
     }
+
+
+    /**
+     * 获取当前日期偏移日期
+     * @param offset 日期偏移量
+     * @return
+     */
+    public static Date getTheDate(int offset) {
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, offset);
+        return cal.getTime();
+    }
 }
