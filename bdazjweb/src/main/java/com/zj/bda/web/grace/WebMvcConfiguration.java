@@ -40,6 +40,7 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
+        //Spring 5.0之后静态文件会走自定义拦截器
         registry.addInterceptor(new HttpInterceptor()).addPathPatterns("/**").excludePathPatterns(Lists.newArrayList("/assets/**", "/**/*.html", "/druid/**"));
         //registry.addInterceptor(new HttpInterceptor()).addPathPatterns("/**").excludePathPatterns(Lists.newArrayList("/css/**", "/img/**", "/js/**","/**/*.html"));
     }
