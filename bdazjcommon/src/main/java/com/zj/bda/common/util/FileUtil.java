@@ -2,11 +2,14 @@ package com.zj.bda.common.util;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.http.util.ByteArrayBuffer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.*;
+import java.net.URLEncoder;
 import java.text.DecimalFormat;
 
 public class FileUtil {
@@ -250,6 +253,27 @@ public class FileUtil {
     public static FileInputStream openInputStream(File file) throws IOException {
         return FileUtils.openInputStream(file);
     }
+
+    /**
+     * 处理文件名乱码问题
+     * @param fileName
+     * @param request
+     * @return
+     */
+    public static String processFileName(String fileName,HttpServletRequest request){
+        String userAgent = request.getHeader("USER-AGENT");
+        try {
+            if (StringUtils.contains(userAgent, "Mozilla")) {// google,火狐浏览器
+                fileName = new String(fileName.getBytes(), "ISO8859-1");
+            } else {
+                fileName = URLEncoder.encode(fileName, "UTF-8");// 其他浏览器、（windows最新浏览器还是会乱码）
+            }
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return fileName;
+    }
+
 
     /**
      * 文件操作工具类（FileUtils）
