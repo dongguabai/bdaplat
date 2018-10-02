@@ -192,4 +192,28 @@ public final class StringUtil {
         return !match.matches();
     }
 
+    /**
+     * 格式化搜索字符串
+     *
+     * <pre>
+     * StringUtil.keywords(null)          = null
+     * StringUtil.keywords("")            = null
+     * StringUtil.keywords("     ")       = null
+     * StringUtil.keywords("abc")         = "%abc%"
+     * StringUtil.keywords("    abc    ") = "%abc%"
+     * StringUtil.keywords("  a bc  ")    = "%a%bc%"
+     * </pre>
+     *
+     * @param keyword
+     * @return
+     */
+    public static String keywords(String keyword) {
+        keyword = StringUtils.trimToNull(keyword);
+        if (keyword == null || "".equals(keyword.trim())) {
+            return null;
+        }
+        keyword = keyword.replaceAll("\\s+", "%");
+        return "%" + keyword + "%";
+    }
+
 }
