@@ -68,6 +68,7 @@ mybatis:
   type-aliases-package: com.zj.bda.persistence.entity
   mapper-locations: classpath:mapper/*.xml
   configuration:
+  #自动驼峰映射
     map-underscore-to-camel-case: true
     cache-enabled: false
 #这个是打印MyBatis日志的一种方式
