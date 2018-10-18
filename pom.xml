@@ -125,11 +125,12 @@
             <version>1.1.10</version>
         </dependency>
 
+        <!--下面三个都是使用Curator需要的-->
         <!--zookeeper原生API依赖-->
         <dependency>
             <groupId>org.apache.zookeeper</groupId>
             <artifactId>zookeeper</artifactId>
-            <version>3.4.10</version>
+            <version>3.4.11</version>
             <!--在父模块中不要这个，在Service模块中要这个-->
             <!--<exclusions>
                 <exclusion>
@@ -137,6 +138,17 @@
                     <groupId>org.slf4j</groupId>
                 </exclusion>
             </exclusions>-->
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-framework</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-recipes</artifactId>
+            <version>4.0.0</version>
         </dependency>
 
     </dependencies>

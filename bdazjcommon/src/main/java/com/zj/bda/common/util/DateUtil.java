@@ -5,6 +5,10 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 /**
  * @author Dongguabai
@@ -112,5 +116,29 @@ public class DateUtil {
         TimeFormat(String pattern) {
             formatter = DateTimeFormatter.ofPattern(pattern);
         }
+    }
+
+
+    /**
+     * 获取两个日期之间所有日期（包左包右）
+     * @param start
+     * @param end
+     * @return
+     */
+    public static List<Date> getBetweenDates(Date start, Date end) {
+        List<Date> result = new ArrayList<>();
+        Calendar tempStart = Calendar.getInstance();
+        tempStart.setTime(start);
+        tempStart.add(Calendar.DAY_OF_YEAR, 1);
+
+        Calendar tempEnd = Calendar.getInstance();
+        tempEnd.setTime(end);
+        result.add(start);
+        while (tempStart.before(tempEnd)) {
+            result.add(tempStart.getTime());
+            tempStart.add(Calendar.DAY_OF_YEAR, 1);
+        }
+        result.add(end);
+        return result;
     }
 }

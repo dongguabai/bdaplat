@@ -38,4 +38,15 @@ public class ObjectUtil {
     public static String toString(Object obj, ToStringStyle toStringStyle) {
         return ReflectionToStringBuilder.toString(obj, toStringStyle);
     }
+
+    /**
+     * 小于0，小于；大于0，大于。
+     * @param var1
+     * @param var2
+     * @return
+     */
+    public static int compareToInteger(Integer var1,Integer var2){
+        return var1.compareTo(var2);
+    }
+
 }

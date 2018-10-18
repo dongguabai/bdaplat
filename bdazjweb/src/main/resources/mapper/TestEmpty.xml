@@ -5,12 +5,12 @@
 
 <mapper namespace="com.zj.bda.persistence.mapper.TestEmpty">
   <select id="test1" parameterType="string" resultType="string">
-      <if test=" keyword != null and keyword != '' ">
+      <if test=" keyWord != null and keyWord != '' ">
           SELECT ID FROM ORACLE_LOCK
       </if>
   </select>
   <select id="test2" parameterType="string" resultType="string">
-      <if test=" keyword == 0 ">
+      <if test=" keyWord == 0 ">
           SELECT ID FROM ORACLE_LOCK
       </if>
   </select>
