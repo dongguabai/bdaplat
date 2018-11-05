@@ -131,6 +131,6 @@ public class GlobalExceptionHandler {
     }
 
     private String appendErrorMessage(ServerResponseEnum re, String cusErrorMessage) {
-        return Joiner.on("").join(re.getMessage(), StringUtil.ifNullReturnEmpty(cusErrorMessage), "！");
+        return Joiner.on("").join(re.getMessage(), StringUtil.defaultString(cusErrorMessage), "！");
     }
 }

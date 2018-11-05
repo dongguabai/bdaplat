@@ -19,12 +19,20 @@ import java.util.regex.Pattern;
 @Slf4j
 public final class StringUtil {
 
-    public static String ifNullReturn(String candidate, String re) {
-        return candidate == null ? re : candidate;
+    public static String defaultIfNull(String str, String defaultStr) {
+        return str == null ? defaultStr : str;
     }
 
-    public static String ifNullReturnEmpty(String candidate) {
-        return ifNullReturn(candidate, StringUtils.EMPTY);
+    public static String defaultString(String str) {
+        return StringUtils.defaultString(str);
+    }
+
+    public static String defaultString(String str, String defaultStr) {
+        return StringUtils.defaultString(str,defaultStr);
+    }
+
+    public static String defaultIfEmpty(String str, String defaultStr) {
+        return StringUtils.defaultIfEmpty(str,defaultStr);
     }
 
     public static String decode(String str) {
