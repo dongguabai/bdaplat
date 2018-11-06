@@ -40,17 +40,11 @@
 
     <dependencies>
 
-        <dependency>
+       <!-- <dependency>
             <groupId>com.bda</groupId>
             <version>${wm.dgb}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>mybatis</artifactId>
-                    <groupId>org.mybatis</groupId>
-                </exclusion>
-            </exclusions>
             <artifactId>bda-zj-common</artifactId>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

@@ -12,4 +12,12 @@
     <artifactId>bda-zj-persistence</artifactId>
     <packaging>jar</packaging>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.bda</groupId>
+            <version>${wm.dgb}</version>
+            <artifactId>bda-zj-common</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>
