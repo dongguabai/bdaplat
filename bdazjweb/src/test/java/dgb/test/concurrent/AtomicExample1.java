@@ -2,7 +2,7 @@ package dgb.test.concurrent;
 
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author Dongguabai
@@ -11,16 +11,23 @@ import java.util.concurrent.atomic.AtomicReference;
 @Slf4j
 public class AtomicExample1 {
 
-    private static AtomicReference<Integer> count = new AtomicReference<>(0);
+    private static AtomicInteger count = new AtomicInteger(0);
 
-    public static void main(String[] args) {
-        //值是0的时候就赋值为2
-        count.compareAndSet(0,2);
-        count.compareAndSet(0,1);
-        count.compareAndSet(1,4);
-        count.compareAndSet(2,6);
-        count.compareAndSet(5,9);
-
+    public static void main(String[] args) throws InterruptedException {
+        for (int i = 0; i < 100; i++) {
+            final int j = i;
+            new Thread(()->{
+                count.getAndAdd(j);
+            }).start();
+        }
+        Thread.sleep(2000);
         log.info("最终结果：{}",count.get());
+    }
+
+    static class User{
+        private String userName;
+        private String passWord;
+        private Integer age;
+
     }
 }

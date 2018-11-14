@@ -1,6 +1,8 @@
 package com.zj.bda;
 
+import com.zj.bda.common.util.SpringUtil;
 import com.zj.bda.persistence.mapper.TestEmpty;
+import com.zj.bda.web.controller.test.Test01Controller;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,12 +34,8 @@ public class SpringBootSpringTest {
 
     @Test
     public void test1(){
-        System.out.println("测试test1-------------");
-        testEmpty.test1("1");
-        testEmpty.test1("aa");
-        System.out.println("测试test2-------------");
-        testEmpty.test2("");
-        testEmpty.test2(null);
+        Test01Controller bean = SpringUtil.getBean(Test01Controller.class);
+
     }
 
     public static void main(String[] args) {
