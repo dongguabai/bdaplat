@@ -9,14 +9,16 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
   datasource:
-    driver-class-name: oracle.jdbc.driver.OracleDriver
+    driver-class-name: com.mysql.jdbc.Driver
+    #driver-class-name: oracle.jdbc.driver.OracleDriver
     #url: jdbc:oracle:thin:@192.168.234.1:1521:xe
     #username: zjbdatag
     #password: admin
-    url: AES@pRGiWkJc76agx0XYtZmejyt+Zu6Cgi7/r2sLvLfgX81gfO5L49l9yZXzeRJkf/Ve
-    username: AES@/oZAZpdTNvfQ04ZlX98cCA==
+    url: AES@cc4j2IuXty10IcohV/cDrZn6j7jXpTQU4iBI4sdXCWmApNTypSUd/8SHzFVdP3BZ
+    username: AES@NicMvZ3F9Ldwd6q4lfv7xQ==
     password: AES@NicMvZ3F9Ldwd6q4lfv7xQ==
-    platform: oracle
+    platform: mysql
+    #platform: oracle
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       initial-size: 5
@@ -81,4 +83,5 @@ pagehelper:
 mapper:
   mappers: com.zj.bda.persistence.grace.BaseMapper
   not-empty: false
-  identity: ORACLE
+  identity: MYSQL
+  #identity: ORACLE
