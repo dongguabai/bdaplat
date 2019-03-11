@@ -26,7 +26,7 @@ public class ServiceLockAspect {
 
     private static Lock lock = new ReentrantLock(true);
 
-    @Pointcut("execution(public * *(..)) && @annotation(com.zj.bda.common.concurrent.seckill.Servicelock)")
+    @Pointcut("execution(public * *(..)) && @annotation(com.zj.bda.common.concurrent.seckill.ServiceLock)")
     public void serviceLockAspect() {
 
     }
