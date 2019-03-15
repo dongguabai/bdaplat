@@ -13,7 +13,9 @@ spring:
     #driver-class-name: oracle.jdbc.driver.OracleDriver    #url: jdbc:oracle:thin:@192.168.234.1:1521:xe
     #username: zjbdatag
     #password: admin
-    url: AES@pRGiWkJc76agx0XYtZmejyt+Zu6Cgi7/r2sLvLfgX81gfO5L49l9yZXzeRJkf/Ve
+
+    #使用的数据库是Demo1
+    url: AES@cc4j2IuXty10IcohV/cDrZn6j7jXpTQU4iBI4sdXCWn4Y0sByMRrp3Qc6KxdTDQx
     username: AES@/oZAZpdTNvfQ04ZlX98cCA==
     password: AES@NicMvZ3F9Ldwd6q4lfv7xQ==
     platform: mysql

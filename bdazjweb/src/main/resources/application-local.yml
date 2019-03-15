@@ -14,7 +14,8 @@ spring:
     #url: jdbc:oracle:thin:@192.168.234.1:1521:xe
     #username: zjbdatag
     #password: admin
-    url: AES@cc4j2IuXty10IcohV/cDrZn6j7jXpTQU4iBI4sdXCWmApNTypSUd/8SHzFVdP3BZ
+      #使用的数据库是Demo1
+    url: AES@cc4j2IuXty10IcohV/cDrZn6j7jXpTQU4iBI4sdXCWn4Y0sByMRrp3Qc6KxdTDQx
     username: AES@NicMvZ3F9Ldwd6q4lfv7xQ==
     password: AES@NicMvZ3F9Ldwd6q4lfv7xQ==
     platform: mysql
