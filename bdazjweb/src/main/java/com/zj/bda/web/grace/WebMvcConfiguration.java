@@ -27,6 +27,10 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
     @Resource(name = "mvcAsyncExecutor")
     private AsyncTaskExecutor mvcAsyncExecutor;
 
+    /**
+     * 在项目开发过程中，经常会涉及页面跳转问题，而且这个页面跳转没有任何业务逻辑过程，只是单纯的路由过程 ( 点击一个按钮跳转到一个页面 ) 。
+     * @param registry
+     */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("forward:/index2.html");
