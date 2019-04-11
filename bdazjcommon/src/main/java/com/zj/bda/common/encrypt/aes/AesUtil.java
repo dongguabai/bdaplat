@@ -17,6 +17,8 @@ import javax.crypto.spec.SecretKeySpec;
 /**
  * @author Dongguabai
  * @date 2018-07-25 23:44
+ *
+ * 本项目使用的加密方式
  */
 @Slf4j
 public class AesUtil {
@@ -239,7 +241,7 @@ public class AesUtil {
         System.out.println("username::" + decryptCbc("/oZAZpdTNvfQ04ZlX98cCA==", AesCbcEnum.DATABASE_PROPERTIES_KEY_IVPARAMETER));
         System.out.println("password::" + decryptCbc("NicMvZ3F9Ldwd6q4lfv7xQ==", AesCbcEnum.DATABASE_PROPERTIES_KEY_IVPARAMETER));
         System.out.println("=====================CBC  MYSQL===================================");
-        System.out.println("url::" + encryptCbc("jdbc:mysql://172.16.140.135:3306/Demo1", AesCbcEnum.DATABASE_PROPERTIES_KEY_IVPARAMETER));
+        System.out.println("url::" + encryptCbc("jdbc:mysql://172.16.140.142:3306/Demo1", AesCbcEnum.DATABASE_PROPERTIES_KEY_IVPARAMETER));
         System.out.println("username::" + encryptCbc("root", AesCbcEnum.DATABASE_PROPERTIES_KEY_IVPARAMETER));
         System.out.println("password::" + encryptCbc("root", AesCbcEnum.DATABASE_PROPERTIES_KEY_IVPARAMETER));
        // System.out.println("url::" + decryptCbc("pRGiWkJc76agx0XYtZmejyt+Zu6Cgi7/r2sLvLfgX81gfO5L49l9yZXzeRJkf/Ve", AesCbcEnum.DATABASE_PROPERTIES_KEY_IVPARAMETER));

@@ -49,6 +49,8 @@ public class HttpInterceptor implements HandlerInterceptor{
      */
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, @Nullable Exception ex) throws Exception {
+        ex.printStackTrace();
+        System.out.println("afterCompletion。。。。。。。。。");
         log.info("Exception：{}",ex);
     }
 

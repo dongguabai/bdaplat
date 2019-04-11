@@ -1,6 +1,7 @@
 package com.zj.bda.service;
 
 import com.zj.bda.persistence.mapper.UnStrTagMapper;
+import org.springframework.aop.framework.AopContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -15,15 +16,23 @@ import org.springframework.transaction.interceptor.TransactionAspectSupport;
 public class TestService {
 
 
-    @Transactional
+   @Async
     public void trancationnal(){
-        unStrTagMapper.selectAll();
-        System.out.println("执行trancationnal方法--------------");
-    }
+       System.out.println("开始执行异步耗时方法----");
+       try {
+           Thread.sleep(10000);
+       } catch (InterruptedException e) {
+           e.printStackTrace();
+       }
+       System.out.println("耗时方法执行完毕----");
+   }
 
     public void unTrancationnal(){
-        unStrTagMapper.selectAll();
-        System.out.println("执行unTrancationnal方法--------------");
+        System.out.println("普通方法开始执行");
+        TestService o = (TestService) AopContext.currentProxy();
+        o.trancationnal();
+        System.out.println("普通方法执行完毕.....");
+
     }
 
     public void test(){
@@ -58,14 +67,4 @@ public class TestService {
         System.out.println("test03执行------------------");
     }
 
-
-    @Autowired
-    private UnStrTagMapper unStrTagMapper;
-
-
-    public void testTrans(){
-        int i = unStrTagMapper.deleteByPrimaryKey(31);
-        int o = 1/0;
-        System.out.println(i);
-    }
 }

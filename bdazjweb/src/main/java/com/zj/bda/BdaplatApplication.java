@@ -4,6 +4,7 @@ import com.zj.bda.common.init.listener.InitApplicationContextLoaderListener;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -23,7 +24,7 @@ import wm.dgb.security.grace.scan.DgbSecurityScan;
 @EnableAsync  //class @Component   method @Async
 @EnableScheduling
 @EnableCaching  // @Cacheable(value = "localCache",unless="#result == null",key="参看"Spring缓存注解@Cacheable、@CacheEvict、@CachePut使用 - fashflying - 博客园"")    @CacheEvict(value = "localCache",key = "#user.userName",beforeInvocation = false)
-//@EnableAspectJAutoProxy(exposeProxy = true)  开启cglib代理，并且AopContext可以获取代理对象
+//@EnableAspectJAutoProxy(exposeProxy = true) // 开启cglib代理，并且AopContext可以获取代理对象
 public class BdaplatApplication{
 
     public static void main(String[] args) {

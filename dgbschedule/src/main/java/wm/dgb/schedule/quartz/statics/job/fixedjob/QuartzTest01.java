@@ -13,6 +13,6 @@ import java.time.LocalDateTime;
 public class QuartzTest01 implements Job{
     @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
-       System.out.println("执行了QuartzTest01-------" + LocalDateTime.now());
+      // System.out.println("执行了QuartzTest01-------" + LocalDateTime.now());
     }
 }

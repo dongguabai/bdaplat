@@ -179,12 +179,7 @@ public class TestController {
         return ServerResponseHelper.success(unStrTags);
     }
 
-    @RequestMapping("test/d")
-    public Object test04() {
-        testService.testTrans();
 
-        return "ok";
-    }
 
     @RequestMapping("test/{id:\\d+}")
     public Object test06(@PathVariable("id") String id) {

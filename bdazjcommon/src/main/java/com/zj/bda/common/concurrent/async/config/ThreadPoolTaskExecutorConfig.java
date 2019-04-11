@@ -1,11 +1,15 @@
 package com.zj.bda.common.concurrent.async.config;
 
 import com.google.common.base.Joiner;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.AsyncTaskExecutor;
+import org.springframework.scheduling.annotation.AsyncConfigurer;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
+import java.lang.reflect.Method;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ThreadPoolExecutor;
 
@@ -14,7 +18,8 @@ import java.util.concurrent.ThreadPoolExecutor;
  * @date 2018-07-22 20:29
  */
 @Configuration
-public class ThreadPoolTaskExecutorConfig {
+@Slf4j
+public class ThreadPoolTaskExecutorConfig  implements AsyncConfigurer {
 
     /**
      * url:springboot\ThreadPoolTaskExecutor
@@ -92,4 +97,16 @@ public class ThreadPoolTaskExecutorConfig {
         return Joiner.on("").join("《", threadName, "-");
     }
 
+
+    //异步注解异常处理（具体可看移动硬盘：grace\spring boot\@Async注解和多线程异步执行\springboot异步调用@Async%20-%20个人文章%20-%20SegmentFault%20思否.mhtml）
+    @Override
+    public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
+        return new AsyncUncaughtExceptionHandler() {
+            @Override
+            public void handleUncaughtException(Throwable throwable, Method method, Object... objects) {
+                log.info("pppppppp"+"发生了异常");
+                log.error("发生了异常,{}，方法名称:{}",throwable,method.getName());
+            }
+        };
+    }
 }

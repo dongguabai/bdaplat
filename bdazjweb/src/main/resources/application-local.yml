@@ -15,7 +15,8 @@ spring:
     #username: zjbdatag
     #password: admin
       #使用的数据库是Demo1
-    url: AES@cc4j2IuXty10IcohV/cDrZn6j7jXpTQU4iBI4sdXCWn4Y0sByMRrp3Qc6KxdTDQx
+      #加密看这个方法：com.zj.bda.common.encrypt.aes.AesUtil.main
+    url: AES@cc4j2IuXty10IcohV/cDreEngORXT9CyF0OnecTEGtD8YzO9sW//FW8z0vymZox1
     username: AES@NicMvZ3F9Ldwd6q4lfv7xQ==
     password: AES@NicMvZ3F9Ldwd6q4lfv7xQ==
     platform: mysql
