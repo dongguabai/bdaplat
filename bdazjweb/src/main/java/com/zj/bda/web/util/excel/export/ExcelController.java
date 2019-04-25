@@ -29,7 +29,6 @@ public class ExcelController {
         list.add(new Person("赵六","125","南京","12345678900"));
         list.add(new Person("田其","126","广州","12345678900"));
         ByteArrayOutputStream outputStream = ExcelUtil.genExcelStream("电话回访明细报表", list, Person.class, null, null, false);
-        response.reset();
         response.setContentType("application/vnd.ms-excel;charset=utf-8");
         response.setHeader("Content-Disposition", "attachment;filename="
                 + new String(("电话回访明细报表-"+ System.currentTimeMillis()+".xls").getBytes(), "iso-8859-1"));
