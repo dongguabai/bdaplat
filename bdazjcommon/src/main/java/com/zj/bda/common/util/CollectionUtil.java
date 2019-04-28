@@ -2,12 +2,16 @@ package com.zj.bda.common.util;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-import org.apache.commons.collections.Bag;
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.collections.bag.HashBag;
 import org.apache.commons.collections.list.TreeList;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author Dongguabai
@@ -17,16 +21,38 @@ import java.util.*;
 public class CollectionUtil {
 
     /**
-     * 获取集合中相同的元素
+     * 获取集合中某个相同元素的个数
      *
-     * @param coll
-     * @param e
+     * @param c
+     * @param o
      * @param <E>
      * @return
      */
-    public static <E> int getElementCount(Collection<E> coll, E e) {
-        Bag bag = new HashBag(coll);
-        return bag.getCount("a");
+    public static <E> int frequency(Collection<?> c, Object o) {
+        return Collections.frequency(c, o);
+    }
+
+
+    /**
+     * java统计List集合中每个元素出现的次数
+     * 例如frequencyOfListElements(["111","111","222"])
+     * ->
+     * 则返回Map {"111"=2,"222"=1}
+     *
+     * @param items
+     * @return Map<String   ,   Integer>
+     * @author wuqx
+     */
+    public static Map<String, Integer> frequencyMap(List<String> items) {
+        if (items == null || items.size() == 0) {
+            return null;
+        }
+        Map<String, Integer> map = new HashMap<>();
+        for (String temp : items) {
+            Integer count = map.get(temp);
+            map.put(temp, (count == null) ? 1 : count + 1);
+        }
+        return map;
     }
 
     /**
@@ -44,7 +70,7 @@ public class CollectionUtil {
      * 求两个集合之间不是交集的部分，把两个集合丢到Set中，再removeAll其中一个
      * list1中不是交集的部分
      */
-    public static <T>  List notUnionAll(List<T> notUnionList,List<T> list){
+    public static <T> List notUnionAll(List<T> notUnionList, List<T> list) {
         HashSet<T> set = new HashSet<>(notUnionList);
         set.addAll(list);
         set.removeAll(notUnionList);
@@ -54,12 +80,13 @@ public class CollectionUtil {
 
     /**
      * 获取两个集合的交集
+     *
      * @param list1
      * @param list2
      * @param <T>
      * @return
      */
-    public static <T>  List retainAll(List<T> list1,List<T> list2){
+    public static <T> List retainAll(List<T> list1, List<T> list2) {
         TreeList treeList = new TreeList(list1);
         treeList.retainAll(list2);
         return new ArrayList(treeList);
@@ -67,12 +94,13 @@ public class CollectionUtil {
 
     /**
      * 获取集合下一个元素
+     *
      * @param set
      * @param <E>
      * @return
      */
     public static <E> E getNextElementFromSet(Collection<E> set) {
-        if (CollectionUtils.isEmpty(set)){
+        if (CollectionUtils.isEmpty(set)) {
             return null;
         }
         return set.iterator().next();
@@ -80,6 +108,7 @@ public class CollectionUtil {
 
     /**
      * 返回一个不可变的List
+     *
      * @param list
      * @param <T>
      * @return
