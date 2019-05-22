@@ -2,6 +2,9 @@ package com.zj.bda.persistence.mapper;
 
 import com.zj.bda.persistence.entity.UserAccount;
 import com.zj.bda.persistence.grace.BaseMapper;
+import com.zj.bda.persistence.query.UserQuery;
+
+import java.util.Map;
 
 /**
  * @author dongguabai
@@ -14,4 +17,6 @@ import com.zj.bda.persistence.grace.BaseMapper;
  *
  */
 public interface UserAccountMapper extends BaseMapper<UserAccount> {
+
+    Map<String,String> testType(UserQuery query);
 }

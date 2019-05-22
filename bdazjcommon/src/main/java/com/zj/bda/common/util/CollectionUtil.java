@@ -117,4 +117,63 @@ public class CollectionUtil {
         return Collections.unmodifiableList(list);
     }
 
+
+    /**
+     * public static void main(String[] args) {
+     * 		Set<Integer> sets = Sets.newHashSet(1, 2, 3, 4, 5, 6);
+     * 		Set<Integer> sets2 = Sets.newHashSet(3, 4, 5, 6, 7, 8, 9);
+     * 		// 交集
+     * 		System.out.println("交集为：");
+     * 		SetView<Integer> intersection = Sets.intersection(sets, sets2);
+     * 		for (Integer temp : intersection) {
+     * 			System.out.println(temp);
+     *                }
+     * 		// 差集
+     * 		System.out.println("差集为：");
+     * 		SetView<Integer> diff = Sets.difference(sets, sets2);
+     * 		for (Integer temp : diff) {
+     * 			System.out.println(temp);
+     *        }
+     * 		// 并集
+     * 		System.out.println("并集为：");
+     * 		SetView<Integer> union = Sets.union(sets, sets2);
+     * 		for (Integer temp : union) {
+     * 			System.out.println(temp);
+     *        }* 	}
+     *
+     *
+     *
+     *        union两个集合：
+     *        CollectionUtils.union
+     */
+
+    /**
+     * 批次处理
+     *
+     *     public static void main(String[] args) {
+     *         List<Integer> list = new ArrayList<>();
+     *         for (int i = 0; i < 61; i++) {
+     *             list.add(i);
+     *         }
+     *
+     *         int f = 20;
+     *
+     *         int end=0;
+     *         int start=0;
+     *         int size = list.size();
+     *         int num = size % 30 == 0 ? (size / 30) : (size / 30 + 1);// 按每30条记录查询
+     *
+     *         List<Integer> a;
+     *         for (int i = 1; i <= num; i++) {
+     *             end=(i*30)> size ? size :(i*30);
+     *             start=(i-1)*30;
+     *             System.out.println(end+"--"+start);
+     *             a=list.subList(start,end);
+     *             System.out.println("输出数据-bbb--"+a.toString());
+     *         }
+     *
+     *     }
+     *
+     */
+
 }

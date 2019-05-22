@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zj.bda.persistence.mapper.UserAccountMapper">
+
+
+    <resultMap id="mapResult" type="java.util.HashMap">
+        <result property="key" column="a"/>
+        <result property="value" column="b" />
+    </resultMap>
+
+    <select id="testType" parameterType="com.zj.bda.persistence.query.UserQuery" resultMap="mapResult">
+        select username a ,balance b from user_account where username = #{username} and balance = #{balance}
+
+    </select>
+
+</mapper>

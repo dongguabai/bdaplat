@@ -11,6 +11,9 @@ import java.net.URLDecoder;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static java.lang.Math.floor;
+import static java.lang.Math.log;
+
 /**
  * @author Dongguabai
  * @date 2018-07-01 13:30
@@ -222,6 +225,22 @@ public final class StringUtil {
         }
         keyword = keyword.replaceAll("\\s+", "%");
         return "%" + keyword + "%";
+    }
+
+
+    /**
+     * 输入序号，输出对应字母
+     * @param n
+     * @return
+     */
+    private static String getString(int n) {
+        char[] buf = new char[(int) floor(log(25 * (n + 1)) / log(26))];
+        for (int i = buf.length - 1; i >= 0; i--) {
+            n--;
+            buf[i] = (char) ('A' + n % 26);
+            n /= 26;
+        }
+        return new String(buf);
     }
 
 }

@@ -18,6 +18,8 @@ import java.io.Serializable;
 @Setter
 @Getter
 @ToString
+////将该标记放在属性上，如果该属性为NULL则不参与序列化
+////如果放在类上边,那对这个类的全部属性起作用
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ServerResponse<T> implements Serializable {
 
