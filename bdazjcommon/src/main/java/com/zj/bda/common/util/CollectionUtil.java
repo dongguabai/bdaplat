@@ -174,6 +174,19 @@ public class CollectionUtil {
      *
      *     }
      *
+     * int end;
+     *         int start;
+     *         int size = data.size();
+     *         int num = size % Constants.DEFAULT_BATCH_SIZE == 0 ? (size / Constants.DEFAULT_BATCH_SIZE) : (size / Constants.DEFAULT_BATCH_SIZE + 1);
+     *         List<OfflineExam> temp;
+     *         for (int i = 1; i <= num; i++) {
+     *             end=(i*Constants.DEFAULT_BATCH_SIZE)> size ? size :(i*Constants.DEFAULT_BATCH_SIZE);
+     *             start=(i-1)*Constants.DEFAULT_BATCH_SIZE;
+     *             temp=data.subList(start,end);
+     *             offlineExamMapper.insertOfflineExamList(temp, currentLogin.getUserId(), new Date(), batchNo, currentLogin.getRegion());
+     *         }
+     *
+     *
      */
 
 }
