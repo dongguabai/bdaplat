@@ -6,6 +6,7 @@ import org.springframework.context.event.ContextRefreshedEvent;
 /**
  * @author Dongguabai
  * @date 2018-07-01 13:30
+ * 监听 ContextRefreshedEvent 事件
  */
 public class InitApplicationContextLoaderListener implements ApplicationListener<ContextRefreshedEvent> {
 

@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author Dongguabai
@@ -186,7 +187,49 @@ public class CollectionUtil {
      *             offlineExamMapper.insertOfflineExamList(temp, currentLogin.getUserId(), new Date(), batchNo, currentLogin.getRegion());
      *         }
      *
+     *分页处理
+     *  qbmInMiliao.sort((qb1,qb2)->qb2.getCreateDate().compareTo(qb1.getCreateDate()));
+     *         int size = qbmInMiliao.size();
+     *         int fromIndex = pageSize * (pageNum - 1);
+     *         int toIndex = fromIndex + pageSize;
+     *         if (toIndex >= size) {
+     *             toIndex = size;
+     *         }
+     *         List<QuestionBank> questionBanks = qbmInMiliao.subList(fromIndex, toIndex);
      *
      */
 
+    /**
+     * 将集合按照没 pageSize进行分组
+     * @param srcList
+     * @param pageSize
+     * @param <T>
+     * @return
+     */
+    public static <T> List<List<T>> split(List<T> srcList, int pageSize) {
+        List<List<T>> outList = new ArrayList<>();
+        int start = 0;
+        int end = pageSize ;
+        for (;start < srcList.size(); start = end, end += pageSize) {
+            end = Math.min(end, srcList.size());
+            outList.add(srcList.subList(start, end));
+        }
+        return outList;
+    }
+
+
+    public static void main(String[] args) {
+      User user = new User("a",1);
+      User user2 = new User("a",1);
+      User user3 = new User("a",1);
+      User user4 = new User("b",1);
+      User user5 = new User("b",1);
+      List<User> list = new ArrayList<>();
+      list.add(user);
+      list.add(user2);
+      list.add(user3);
+      list.add(user4);
+      list.add(user5);
+        Map<String, List<User>> collect = list.stream().collect(Collectors.groupingBy(User::getName));
+    }
 }
