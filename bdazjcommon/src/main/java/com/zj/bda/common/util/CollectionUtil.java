@@ -199,64 +199,7 @@ public class CollectionUtil {
      */
 
 
-    /**
-     * 数据库分批
-     */
-/*    public void execute() {
-        // 1.分批次获取需要插入或更新的考试指派Id
-        int currentPage = 1;
-        PageHelper.startPage(currentPage, DEFAULT_BATCH_NUM);
-        List<ExamData> examDatas = examDataManager.selectExamAssignToUpdate();
-        PageInfo pageInfo = new PageInfo(examDatas);
-        if (CollectionUtils.isEmpty(examDatas)) {
-            return;
-        }
-        List<Long> assignIds = examDatas.stream().map(a -> a.getAssignId()).collect(Collectors.toList());
-        List<Integer> totalAssignNumList = null;
-        List<Integer> takeNumList = null;
-        List<Integer> unTakeNumList = null;
-        List<Integer> passedNumList = null;
-        List<Integer> unPassNumList = null;
-        List<Integer> minScoreList = null;
-        List<Integer> maxScoreList = null;
-        List<Integer> totalScoreList = null;
-        Date now = new Date();
-        do {
-            totalAssignNumList = examPaperResultManager.getExamAssignNumBatch(assignIds);
-            takeNumList = examPaperResultManager.getNumByResultBatch(assignIds, ExamResultEnum.getTakeExamEnums());
-            unTakeNumList = examPaperResultManager.getNumByResultBatch(assignIds, ExamResultEnum.getUnTakeExamEnums());
-            passedNumList = examPaperResultManager.getNumByResultBatch(assignIds, ExamResultEnum.getPassedExamEnums());
-            unPassNumList = examPaperResultManager.getNumByResultBatch(assignIds, ExamResultEnum.getNotPassExamEnums());
-            maxScoreList = examPaperResultManager.getExamMaxScoreBatch(assignIds);
-            minScoreList = examPaperResultManager.getExamMinScoreBatch(assignIds);
-            totalScoreList = examPaperResultManager.getExamTotalScoreBatch(assignIds);
-            for (int i = 0; i < assignIds.size(); i++) {
-                ExamData data = examDatas.get(i);
-                data.setTotalAssignNum(totalAssignNumList.get(i));
-                data.setTakeExamNum(takeNumList.get(i));
-                data.setUnTakeExamNum(unTakeNumList.get(i));
-                data.setPassedNum(passedNumList.get(i));
-                data.setNotPassNum(unPassNumList.get(i));
-                data.setMaxScore(maxScoreList.get(i));
-                data.setMinScore(minScoreList.get(i));
-                data.setTotalScore(totalScoreList.get(i));
-                data.setPassingScore(data.getTotalScore() == 0 ? 0 : data.getTotalScore() * data.getPassingScore() / 100);
-                data.setUpdateTime(now);
-                data.setEntityType(data.getEntityType());
-                examDataManager.insertOrUpdateExamData(data);
-            }
-            if (currentPage == pageInfo.getPages()) {
-                break;
-            }
-            currentPage++;
-            PageHelper.startPage(currentPage, DEFAULT_BATCH_NUM);
-            examDatas = examDataManager.selectExamAssignToUpdate();
-            if (CollectionUtils.isEmpty(examDatas)) {
-                break;
-            }
-            assignIds = examDatas.stream().map(a -> a.getAssignId()).collect(Collectors.toList());
-        } while (currentPage <= pageInfo.getPages());
-    }*/
+
 
     /**
      * 将集合按照没 pageSize进行分组
