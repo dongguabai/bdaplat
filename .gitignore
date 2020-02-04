@@ -45,6 +45,7 @@ target/
 *.ipr
 *.iml
 *.iws
+.svn
 
 # temp file
 
